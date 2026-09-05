@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 40 6% 97%;
+    --muted: 0 0% 42%;
+    --border: 0 0% 18%;
+    --gold: 37 38% 61%;
+    --radius: 0px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-antho-black text-antho-white font-sans;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-antho-gold/30 text-antho-white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-antho-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-antho-ash rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-antho-muted;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-antho-gold;
+  }
+
+  /* Smooth image loading */
+  img {
+    @apply max-w-full h-auto;
+  }
+}
+
+@layer components {
+  /* Editorial heading style */
+  .editorial-heading {
+    @apply font-serif italic tracking-tight;
+  }
+
+  /* Overline text */
+  .overline {
+    @apply text-overline uppercase tracking-[0.12em] text-antho-stone font-medium;
+  }
+
+  /* Hairline divider */
+  .divider {
+    @apply border-t border-antho-border;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Container */
+  .container-wide {
+    @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply max-w-[960px] mx-auto px-4 sm:px-6;
+  }
+
+  /* Product card hover image swap */
+  .product-card-image .secondary-image {
+    @apply opacity-0 transition-opacity duration-600 ease-luxury;
+  }
+
+  .product-card-image:hover .secondary-image {
+    @apply opacity-100;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center font-sans font-medium
+           transition-all duration-400 ease-luxury
+           disabled:opacity-50 disabled:cursor-not-allowed
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-antho-gold;
+  }
+
+  .btn-primary {
+    @apply btn bg-antho-white text-antho-black px-8 py-3.5 text-caption uppercase tracking-[0.08em]
+           hover:bg-antho-gold hover:text-antho-black;
+  }
+
+  .btn-secondary {
+    @apply btn border border-antho-white/30 text-antho-white px-8 py-3.5 text-caption uppercase tracking-[0.08em]
+           hover:bg-antho-white hover:text-antho-black;
+  }
+
+  .btn-ghost {
+    @apply btn text-antho-white px-4 py-2 text-caption uppercase tracking-[0.08em]
+           hover:text-antho-gold;
+  }
+
+  /* Input base */
+  .input-base {
+    @apply w-full bg-transparent border border-antho-border px-4 py-3
+           text-body text-antho-white placeholder:text-antho-muted
+           transition-colors duration-300
+           focus:border-antho-stone focus:outline-none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-stagger > * {
+    animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
+  .animate-stagger > *:nth-child(2) { animation-delay: 80ms; }
+  .animate-stagger > *:nth-child(3) { animation-delay: 160ms; }
+  .animate-stagger > *:nth-child(4) { animation-delay: 240ms; }
+  .animate-stagger > *:nth-child(5) { animation-delay: 320ms; }
+  .animate-stagger > *:nth-child(6) { animation-delay: 400ms; }
+  .animate-stagger > *:nth-child(7) { animation-delay: 480ms; }
+  .animate-stagger > *:nth-child(8) { animation-delay: 560ms; }
+}

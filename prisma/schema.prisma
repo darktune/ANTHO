@@ -1,0 +1,163 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id               String           @id @default(cuid())
+  name             String
+  slug             String           @unique
+  description      String
+  price            Int              // in kobo
+  compareAtPrice   Int?             // in kobo
+  category         String
+  materials        String?
+  careInstructions String?
+  isPublished      Boolean          @default(false)
+  isFeatured       Boolean          @default(false)
+  isBestSeller     Boolean          @default(false)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  variants         ProductVariant[]
+  images           ProductImage[]
+  collections      CollectionProduct[]
+  orderItems       OrderItem[]
+}
+
+model ProductVariant {
+  id        String  @id @default(cuid())
+  size      String
+  color     String
+  colorHex  String  @default("#000000")
+  stock     Int     @default(0)
+  sku       String?
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model ProductImage {
+  id          String  @id @default(cuid())
+  url         String
+  alt         String
+  position    Int     @default(0)
+  blurDataUrl String?
+  productId   String
+  product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Collection {
+  id          String              @id @default(cuid())
+  name        String
+  slug        String              @unique
+  description String?
+  imageUrl    String?
+  isPublished Boolean             @default(false)
+  position    Int                 @default(0)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  products    CollectionProduct[]
+}
+
+model CollectionProduct {
+  id           String     @id @default(cuid())
+  productId    String
+  collectionId String
+  product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, collectionId])
+}
+
+model Order {
+  id             String      @id @default(cuid())
+  orderNumber    String      @unique
+  status         String      @default("pending") // pending, confirmed, processing, shipped, delivered, cancelled
+  subtotal       Int         // kobo
+  shippingCost   Int         @default(0) // kobo
+  total          Int         // kobo
+  customerName   String
+  customerEmail  String
+  customerPhone  String
+  shippingAddress String
+  shippingCity   String
+  shippingState  String
+  paymentRef     String?
+  paymentStatus  String      @default("pending") // pending, paid, failed
+  paymentMethod  String?
+  notes          String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  items          OrderItem[]
+}
+
+model OrderItem {
+  id          String  @id @default(cuid())
+  productName String
+  productSlug String
+  variant     String  // "Size: L, Color: Black"
+  quantity    Int
+  price       Int     // kobo
+  imageUrl    String?
+  orderId     String
+  order       Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String?
+  product     Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+}
+
+model SiteContent {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   // JSON stored as string
+  updatedAt DateTime @updatedAt
+}
+
+model Newsletter {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  subscribedAt DateTime @default(now())
+}
+
+model LookbookImage {
+  id           String   @id @default(cuid())
+  url          String
+  alt          String
+  caption      String?
+  campaignName String?
+  position     Int      @default(0)
+  isPublished  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model HeroCampaign {
+  id            String   @id @default(cuid())
+  desktopImage  String
+  mobileImage   String?
+  videoOptional String?
+  title         String
+  subtitle      String?
+  ctaText       String   @default("EXPLORE COLLECTION")
+  ctaUrl        String   @default("/collections")
+  altText       String?
+  priority      Int      @default(0)
+  startDate     DateTime?
+  endDate       DateTime?
+  status        String   @default("draft") // draft, active, scheduled, archived
+  animationType String   @default("drift") // drift, parallax, none
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
