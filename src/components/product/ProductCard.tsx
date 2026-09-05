@@ -11,7 +11,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
   // Safely extract images
   const images: ProductImage[] = product.images || [];
-  const primaryImage = images.length > 0 ? images[0].url : '/images/placeholder.jpg';
+  const primaryImage = images.length > 0 ? images[0].url : '/images/antho-shoot/IMG_3806.JPG';
   const secondaryImage = images.length > 1 ? images[1].url : primaryImage;
 
   return (

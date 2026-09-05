@@ -1,15 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import SizeSelector from './SizeSelector';
 import ColorSelector from './ColorSelector';
-import { Minus, Plus, Share2 } from 'lucide-react';
+import { Minus, Plus, Share2, Check } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
+import { useCartStore } from '@/stores/cartStore';
+import { useUIStore } from '@/stores/uiStore';
 
 export default function ProductInfo({ product }: { product: any }) {
+  const router = useRouter();
+  const { addItem } = useCartStore();
+  const { openCartDrawer } = useUIStore();
+
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState('M');
   const [color, setColor] = useState('Black');
+  const [added, setAdded] = useState(false);
 
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
   const colors = [
@@ -19,7 +27,28 @@ export default function ProductInfo({ product }: { product: any }) {
   ];
 
   const handleAddToCart = () => {
-    // Add to cart
+    const imageUrl = product.images?.[0]?.url || '/images/antho-shoot/IMG_3806.JPG';
+    addItem({
+      productId: product.id,
+      name: product.name,
+      slug: product.slug,
+      price: product.price,
+      imageUrl,
+      size,
+      color,
+      colorHex: colors.find((c) => c.color === color)?.colorHex || '#000000',
+      quantity,
+      maxStock: 50,
+      variantId: `${product.id}-${size}-${color}`,
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+    openCartDrawer();
+  };
+
+  const handleBuyNow = () => {
+    handleAddToCart();
+    router.push('/checkout');
   };
 
   return (
@@ -63,9 +92,9 @@ export default function ProductInfo({ product }: { product: any }) {
 
       <div className="flex flex-col gap-3 pt-4">
         <button onClick={handleAddToCart} className="w-full bg-[#FAFAF9] text-[#0A0A0A] font-medium py-4 rounded-md hover:bg-white transition-colors">
-          ADD TO BAG
+          {added ? 'ADDED TO BAG' : 'ADD TO BAG'}
         </button>
-        <button className="w-full bg-transparent border border-[#A8A29E] text-[#FAFAF9] font-medium py-4 rounded-md hover:border-white transition-colors">
+        <button onClick={handleBuyNow} className="w-full bg-transparent border border-[#A8A29E] text-[#FAFAF9] font-medium py-4 rounded-md hover:border-white transition-colors">
           BUY NOW
         </button>
       </div>

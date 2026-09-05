@@ -3,7 +3,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 export default async function OrderConfirmationPage({ params }: { params: Promise<{ id: string }> }) {
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh] flex flex-col items-center justify-center">
+    <div className="container mx-auto px-4 py-24 pt-32 md:pt-40 min-h-[70vh] flex flex-col items-center justify-center">
       <div className="max-w-xl w-full bg-stone-900/50 border border-stone-800 p-8 md:p-12 text-center">
         <div className="flex justify-center mb-6">
           <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center text-gold">

@@ -13,7 +13,7 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-24 min-h-[60vh] flex flex-col items-center justify-center">
+      <div className="container mx-auto px-4 py-24 pt-32 md:pt-40 min-h-[60vh] flex flex-col items-center justify-center">
         <h1 className="text-4xl font-serif mb-6 text-center">YOUR BAG</h1>
         <p className="text-stone-400 mb-8 text-center max-w-md">
           Your cart is currently empty. Discover our latest collection and elevate your style.
@@ -29,7 +29,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16 lg:py-24">
+    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24">
       <h1 className="text-4xl lg:text-5xl font-serif mb-12">YOUR BAG</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -54,7 +54,7 @@ export default function CartPage() {
                   <div className="w-24 h-32 bg-stone-900 relative flex-shrink-0">
                     <div className="absolute inset-0 flex items-center justify-center text-stone-800">
                       <Image
-                        src={item.imageUrl}
+                        src={item.imageUrl || '/images/antho-shoot/IMG_3806.JPG'}
                         alt={item.name}
                         fill
                         className="object-cover"
@@ -62,7 +62,7 @@ export default function CartPage() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <Link href={`/shop/products/${item.productId}`} className="text-lg font-medium hover:text-gold transition-colors">
+                    <Link href={`/products/${item.slug || item.productId}`} className="text-lg font-medium hover:text-[#C9A96E] transition-colors">
                       {item.name}
                     </Link>
                     <p className="text-sm text-stone-400 mt-1">{formatPrice(item.price)}</p>

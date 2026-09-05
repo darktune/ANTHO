@@ -36,7 +36,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16 lg:py-24">
+    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36">
       <div className="text-center mb-16">
         <h1 className="text-4xl lg:text-6xl font-serif mb-4">GET IN TOUCH</h1>
         <p className="text-stone-400 max-w-xl mx-auto">

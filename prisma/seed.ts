@@ -49,7 +49,7 @@ async function main() {
       slug: 'lagos-nights-silk-shirt',
       description: 'Premium silk shirt featuring a relaxed fit, custom horn buttons, and subtle tonal embroidery on the chest pocket. Perfect for evening wear.',
       price: 4500000, // ₦45,000.00
-      images: ['/products/shirt-1.jpg', '/products/shirt-2.jpg'],
+      images: ['/images/antho-shoot/IMG_3806.JPG', '/images/antho-shoot/Snapchat-1522984318.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'lagos-nights')?.id,
       variants: [
         { name: 'Size', value: 'S', stock: 10 },
@@ -64,7 +64,7 @@ async function main() {
       slug: 'harmattan-heavyweight-hoodie',
       description: 'Ultra-heavyweight 500gsm cotton fleece hoodie. Dropped shoulders, slightly cropped body, and a massive double-lined hood.',
       price: 6500000, // ₦65,000.00
-      images: ['/products/hoodie-1.jpg', '/products/hoodie-2.jpg'],
+      images: ['/images/antho-shoot/IMG_3807.JPG', '/images/antho-shoot/Snapchat-1782284509.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'essentials')?.id,
       variants: [
         { name: 'Size', value: 'M', stock: 8 },
@@ -79,7 +79,7 @@ async function main() {
       slug: 'vi-tailored-trousers',
       description: 'Wide-leg tailored trousers made from a premium wool-blend. Features double pleats, side adjusters, and a slight break at the hem.',
       price: 5500000,
-      images: ['/products/trousers-1.jpg'],
+      images: ['/images/antho-shoot/IMG_3801.JPG', '/images/antho-shoot/Snapchat-396574672.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'new-arrivals')?.id,
       variants: [
         { name: 'Size', value: '30', stock: 5 },
@@ -92,7 +92,7 @@ async function main() {
       slug: 'eko-essential-tee',
       description: 'The perfect boxy t-shirt. 280gsm heavyweight cotton, tight collar, and dropped shoulders.',
       price: 2500000,
-      images: ['/products/tee-1.jpg'],
+      images: ['/images/antho-shoot/IMG_3803.JPG', '/images/antho-shoot/Snapchat-617620438.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'essentials')?.id,
       variants: [
         { name: 'Size', value: 'S', stock: 20 },
@@ -107,7 +107,7 @@ async function main() {
       slug: 'adire-camp-collar',
       description: 'Modern camp collar shirt featuring custom hand-dyed Adire patterns. Each piece is unique.',
       price: 3500000,
-      images: ['/products/adire-1.jpg'],
+      images: ['/images/antho-shoot/IMG_3804.JPG', '/images/antho-shoot/Snapchat-848713023.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'heritage')?.id,
       variants: [
         { name: 'Size', value: 'M', stock: 5 },
@@ -119,7 +119,7 @@ async function main() {
       slug: 'oshodi-cargo',
       description: 'Technical cargo pants with articulated knees, multiple 3D pockets, and adjustable hems.',
       price: 5000000,
-      images: ['/products/cargo-1.jpg'],
+      images: ['/images/antho-shoot/IMG_3805.JPG', '/images/antho-shoot/Snapchat-903653531.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'new-arrivals')?.id,
       variants: [
         { name: 'Size', value: 'S', stock: 10 },
@@ -133,7 +133,7 @@ async function main() {
       slug: 'mainland-denim',
       description: 'Cropped, boxy denim jacket made from 14oz raw selvedge denim. Contrast stitching and custom hardware.',
       price: 7500000,
-      images: ['/products/denim-1.jpg'],
+      images: ['/images/antho-shoot/IMG_3808.JPG', '/images/antho-shoot/photo_1_2026-09-04_09-11-37.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'essentials')?.id,
       variants: [
         { name: 'Size', value: 'M', stock: 8 },
@@ -145,7 +145,7 @@ async function main() {
       slug: 'ikoyi-knit-polo',
       description: 'Textured open-knit polo shirt. Breathable and elegant.',
       price: 3200000,
-      images: ['/products/polo-1.jpg'],
+      images: ['/images/antho-shoot/Snapchat-1079248294.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'lagos-nights')?.id,
       variants: [
         { name: 'Size', value: 'S', stock: 12 },
@@ -159,7 +159,7 @@ async function main() {
       slug: 'aso-oke-tote',
       description: 'Everyday tote bag constructed from traditional Aso-Oke fabric with leather handles.',
       price: 2800000,
-      images: ['/products/bag-1.jpg'],
+      images: ['/images/antho-shoot/Snapchat-1522984318.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'heritage')?.id,
       variants: [
         { name: 'Size', value: 'One Size', stock: 20 },
@@ -170,7 +170,7 @@ async function main() {
       slug: 'gidi-graphic-hoodie',
       description: 'Heavyweight hoodie featuring a distressed screenprint inspired by Lagos street art.',
       price: 5500000,
-      images: ['/products/hoodie-3.jpg'],
+      images: ['/images/antho-shoot/IMG_3806.JPG', '/images/antho-shoot/IMG_3807.JPG'],
       collectionId: createdCollections.find(c => c.slug === 'new-arrivals')?.id,
       variants: [
         { name: 'Size', value: 'L', stock: 10 },
@@ -182,7 +182,7 @@ async function main() {
       slug: 'lekki-linen-shorts',
       description: 'Relaxed linen shorts with an elasticated waistband and internal drawstring.',
       price: 2200000,
-      images: ['/products/shorts-1.jpg'],
+      images: ['/images/antho-shoot/Snapchat-1782284509.jpg'],
       collectionId: createdCollections.find(c => c.slug === 'essentials')?.id,
       variants: [
         { name: 'Size', value: 'M', stock: 25 },
@@ -196,7 +196,7 @@ async function main() {
       slug: 'festac-track-jacket',
       description: 'Retro-inspired track jacket with contrast piping and a two-way zipper.',
       price: 4800000,
-      images: ['/products/track-1.jpg'],
+      images: ['/images/antho-shoot/IMG_3803.JPG', '/images/antho-shoot/IMG_3804.JPG'],
       collectionId: createdCollections.find(c => c.slug === 'new-arrivals')?.id,
       variants: [
         { name: 'Size', value: 'S', stock: 5 },

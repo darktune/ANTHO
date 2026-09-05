@@ -11,11 +11,22 @@ export default function AboutPage() {
   return (
     <div className="pb-24">
       {/* Hero */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center bg-gradient-to-b from-stone-900 to-black overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay pointer-events-none"></div>
-        <div className="z-10 text-center px-4">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 tracking-tight">ABOUT ANTHO</h1>
-          <p className="text-lg md:text-xl text-stone-400 max-w-2xl mx-auto font-light">
+      <section className="relative h-[65vh] min-h-[520px] flex items-center justify-center bg-black overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero/IMG_3807.JPG"
+            alt="ANTHO Lagos"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center filter grayscale contrast-125 opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black" />
+        </div>
+        <div className="z-10 text-center px-4 max-w-4xl mx-auto pt-20">
+          <span className="text-xs uppercase tracking-[0.3em] text-[#C9A96E] mb-4 block">OUR GENESIS</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 tracking-tight">ABOUT ANTHO</h1>
+          <p className="text-base md:text-xl text-neutral-300 font-light tracking-wide uppercase">
             Born in Lagos. Crafted for the World.
           </p>
         </div>
@@ -25,9 +36,9 @@ export default function AboutPage() {
       <section className="container mx-auto px-4 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="space-y-6 text-stone-300 leading-relaxed text-lg font-light">
-            <h2 className="text-3xl font-serif text-white mb-8">Our Story</h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-white mb-8">The Narrative</h2>
             <p>
-              ANTHO emerged from the vibrant, chaotic, and endlessly inspiring streets of Lagos, Nigeria. What started as a small capsule collection in 2024 has grown into a movement that redefines contemporary African fashion.
+              ANTHO emerged from the vibrant, chaotic, and endlessly inspiring streets of Lagos, Nigeria. What started as a small capsule collection has grown into a movement that redefines contemporary African fashion.
             </p>
             <p>
               We believe in the power of blending our rich cultural heritage with modern, minimalist design principles. Every piece we create is a testament to the resilience, creativity, and unapologetic bold energy of our home city.
@@ -36,11 +47,14 @@ export default function AboutPage() {
               Our commitment goes beyond aesthetics. We source premium materials, partner with skilled local artisans, and maintain a focus on quality that ensures our garments stand the test of time, both in durability and style.
             </p>
           </div>
-          <div className="relative aspect-[3/4] w-full bg-stone-900">
-            {/* Placeholder for brand image */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-stone-900 to-stone-800 flex items-center justify-center">
-              <span className="text-stone-700 font-serif text-2xl">Lagos, NG</span>
-            </div>
+          <div className="relative aspect-[3/4] w-full bg-stone-900 border border-white/10 overflow-hidden">
+            <Image
+              src="/images/antho-shoot/IMG_3803.JPG"
+              alt="ANTHO Lagos Heritage"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-center filter grayscale contrast-115"
+            />
           </div>
         </div>
       </section>

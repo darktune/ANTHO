@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useRef } from 'react';
 
+import Image from 'next/image';
+
 export default function BrandStory() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -10,16 +12,25 @@ export default function BrandStory() {
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <section ref={containerRef} className="py-24 px-4 md:px-8 max-w-[1400px] mx-auto bg-[#0A0A0A] overflow-hidden">
       <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
-        <div className="w-full md:w-1/2 aspect-[3/4] relative overflow-hidden bg-zinc-900">
+        <div className="w-full md:w-1/2 aspect-[3/4] relative overflow-hidden bg-zinc-900 border border-white/5">
           <motion.div 
             style={{ y }}
-            className="absolute inset-[-10%] bg-gradient-to-tr from-zinc-800 to-zinc-900"
-          />
+            className="absolute inset-[-10%] w-[120%] h-[120%]"
+          >
+            <Image
+              src="/images/antho-shoot/IMG_3803.JPG"
+              alt="ANTHO Lagos Brand Story"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-center filter grayscale contrast-125"
+            />
+            <div className="absolute inset-0 bg-black/20" />
+          </motion.div>
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col items-start text-left">

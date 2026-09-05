@@ -34,7 +34,7 @@ export default function CheckoutPage() {
   const total = subtotal + shippingCost;
 
   return (
-    <div className="container mx-auto px-4 py-12 lg:py-16">
+    <div className="container mx-auto px-4 py-12 pt-28 md:pt-36 lg:py-16 lg:pt-36">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
         {/* Left Column - Form */}
         <div className="lg:col-span-7">
@@ -48,7 +48,7 @@ export default function CheckoutPage() {
 
         {/* Right Column - Order Summary */}
         <div className="lg:col-span-5">
-          <div className="bg-stone-900/50 border border-stone-800 p-6 lg:p-8 sticky top-24">
+          <div className="bg-stone-900/50 border border-stone-800 p-6 lg:p-8 sticky top-28">
             <h2 className="text-xl font-medium mb-6">ORDER SUMMARY</h2>
             
             <div className="space-y-4 mb-6 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
@@ -56,7 +56,7 @@ export default function CheckoutPage() {
                 <div key={`${item.productId}-${item.variantId}`} className="flex gap-4">
                   <div className="w-16 h-20 bg-stone-900 relative flex-shrink-0 border border-stone-800">
                     <Image
-                      src={item.imageUrl}
+                      src={item.imageUrl || '/images/antho-shoot/IMG_3806.JPG'}
                       alt={item.name}
                       fill
                       className="object-cover"

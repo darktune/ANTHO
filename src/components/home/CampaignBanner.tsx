@@ -1,11 +1,21 @@
 'use client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function CampaignBanner() {
   return (
-    <section className="relative w-full py-32 md:py-48 flex items-center justify-center overflow-hidden bg-zinc-950 border-y border-zinc-900">
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-700 via-black to-black mix-blend-overlay" />
+    <section className="relative w-full py-36 md:py-56 flex items-center justify-center overflow-hidden bg-zinc-950 border-y border-white/10">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero/IMG_3808.JPG"
+          alt="ANTHO The Lagos Edit Campaign"
+          fill
+          sizes="100vw"
+          className="object-cover object-center filter grayscale contrast-125 opacity-35"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black" />
+      </div>
       
       <div className="relative z-10 flex flex-col items-center text-center px-4">
         <motion.div

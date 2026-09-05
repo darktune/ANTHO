@@ -98,7 +98,7 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
+    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36 max-w-4xl">
       <h1 className="text-4xl lg:text-6xl font-serif mb-12 text-center">FAQ</h1>
 
       <div className="space-y-16">

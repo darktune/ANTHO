@@ -1,23 +1,68 @@
 'use client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
-
-const formatPrice = (amountInKobo: number) => {
-  return new Intl.NumberFormat('en-NG', {
-    style: 'currency',
-    currency: 'NGN',
-  }).format(amountInKobo / 100);
-};
+import { formatPrice } from '@/lib/utils';
 
 const products = [
-  { id: 1, name: 'Onyx Silk Shirt', price: 8500000, slug: 'onyx-silk-shirt', category: 'Tops' },
-  { id: 2, name: 'Heritage Linen Trousers', price: 9500000, slug: 'heritage-linen-trousers', category: 'Bottoms' },
-  { id: 3, name: 'Asa Cropped Jacket', price: 15000000, slug: 'asa-cropped-jacket', category: 'Outerwear' },
-  { id: 4, name: 'Zola Pleated Skirt', price: 7200000, slug: 'zola-pleated-skirt', category: 'Bottoms' },
-  { id: 5, name: 'Eko Oversized Tee', price: 4500000, slug: 'eko-oversized-tee', category: 'Tops' },
-  { id: 6, name: 'Nomad Duster Coat', price: 18500000, slug: 'nomad-duster-coat', category: 'Outerwear' },
+  { 
+    id: 1, 
+    name: 'Lagos Nights Silk Shirt', 
+    price: 4500000, 
+    slug: 'lagos-nights-silk-shirt', 
+    category: 'Tops',
+    image: '/images/antho-shoot/IMG_3806.JPG'
+  },
+  { 
+    id: 2, 
+    name: 'Harmattan Heavyweight Hoodie', 
+    price: 6500000, 
+    slug: 'harmattan-heavyweight-hoodie', 
+    category: 'Tops',
+    image: '/images/antho-shoot/IMG_3807.JPG'
+  },
+  { 
+    id: 3, 
+    name: 'VI Tailored Trousers', 
+    price: 5500000, 
+    slug: 'vi-tailored-trousers', 
+    category: 'Bottoms',
+    image: '/images/antho-shoot/IMG_3801.JPG'
+  },
+  { 
+    id: 4, 
+    name: 'Eko Essential Boxy Tee', 
+    price: 2500000, 
+    slug: 'eko-essential-tee', 
+    category: 'Tops',
+    image: '/images/antho-shoot/IMG_3803.JPG'
+  },
+  { 
+    id: 5, 
+    name: 'Adire Modern Camp Shirt', 
+    price: 3500000, 
+    slug: 'adire-camp-collar', 
+    category: 'Tops',
+    image: '/images/antho-shoot/IMG_3804.JPG'
+  },
+  { 
+    id: 6, 
+    name: 'Oshodi Technical Cargo Pants', 
+    price: 5000000, 
+    slug: 'oshodi-cargo', 
+    category: 'Bottoms',
+    image: '/images/antho-shoot/IMG_3805.JPG'
+  },
+  { 
+    id: 7, 
+    name: 'Mainland Boxy Denim Jacket', 
+    price: 7500000, 
+    slug: 'mainland-denim', 
+    category: 'Outerwear',
+    image: '/images/antho-shoot/IMG_3808.JPG'
+  },
 ];
 
 export default function BestSellers() {
@@ -41,23 +86,31 @@ export default function BestSellers() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-xs uppercase tracking-[0.2em] text-[#C9A96E] mb-4 block">CURATED</span>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#FAFAF9]">Best Sellers</h2>
+            <span className="text-xs uppercase tracking-[0.25em] text-[#C9A96E] mb-3 block">BEST OF ANTHO</span>
+            <h2 className="font-serif text-3xl md:text-4xl text-[#FAFAF9]">Signature Pieces</h2>
           </motion.div>
           
-          <div className="hidden md:flex gap-4">
-            <button onClick={() => scroll('left')} className="p-2 border border-[#A8A29E] text-[#A8A29E] hover:text-[#FAFAF9] hover:border-[#FAFAF9] transition-colors rounded-full">
-              <ChevronLeft className="w-5 h-5" />
+          <div className="hidden md:flex gap-3">
+            <button 
+              onClick={() => scroll('left')} 
+              aria-label="Scroll left"
+              className="p-3 border border-white/20 text-white/70 hover:text-white hover:border-white transition-colors rounded-full"
+            >
+              <ChevronLeft className="w-4 h-4" />
             </button>
-            <button onClick={() => scroll('right')} className="p-2 border border-[#A8A29E] text-[#A8A29E] hover:text-[#FAFAF9] hover:border-[#FAFAF9] transition-colors rounded-full">
-              <ChevronRight className="w-5 h-5" />
+            <button 
+              onClick={() => scroll('right')} 
+              aria-label="Scroll right"
+              className="p-3 border border-white/20 text-white/70 hover:text-white hover:border-white transition-colors rounded-full"
+            >
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         <div 
           ref={scrollRef}
-          className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-8"
+          className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-6"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {products.map((product, i) => (
@@ -66,17 +119,24 @@ export default function BestSellers() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
               className="min-w-[280px] md:min-w-[320px] flex-shrink-0 snap-start group"
             >
-              <Link href={`/product/${product.slug}`}>
-                <div className="aspect-[3/4] bg-zinc-900 mb-6 overflow-hidden">
-                  <div className="w-full h-full bg-zinc-800 group-hover:scale-105 transition-transform duration-700" />
+              <Link href={`/products/${product.slug}`}>
+                <div className="aspect-[3/4] relative bg-zinc-900 mb-5 overflow-hidden border border-white/5">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 768px) 280px, 320px"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-95 group-hover:brightness-100"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-[10px] uppercase tracking-widest text-[#A8A29E]">{product.category}</span>
-                  <h3 className="text-[#FAFAF9] font-medium font-serif text-lg">{product.name}</h3>
-                  <p className="text-[#A8A29E] text-sm">{formatPrice(product.price)}</p>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#C9A96E] font-medium">{product.category}</span>
+                  <h3 className="text-[#FAFAF9] font-medium text-sm uppercase tracking-wider group-hover:text-[#C9A96E] transition-colors">{product.name}</h3>
+                  <p className="text-neutral-400 text-xs tracking-widest">{formatPrice(product.price)}</p>
                 </div>
               </Link>
             </motion.div>

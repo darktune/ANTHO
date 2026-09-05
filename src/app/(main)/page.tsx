@@ -1,4 +1,5 @@
 import HeroSection from '@/components/home/HeroSection';
+import Marquee from '@/components/ui/Marquee';
 import FeaturedCollection from '@/components/home/FeaturedCollection';
 import BrandStory from '@/components/home/BrandStory';
 import BestSellers from '@/components/home/BestSellers';
@@ -16,6 +17,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0A0A0A] text-[#FAFAF9]">
       <HeroSection />
+      <Marquee text="ANTHO — GOD IS THE GREATEST — LAGOS TO THE WORLD — SS26" />
       <FeaturedCollection />
       <BrandStory />
       <BestSellers />

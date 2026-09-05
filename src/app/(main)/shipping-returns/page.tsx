@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function ShippingReturnsPage() {
   return (
-    <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
+    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36 max-w-4xl">
       <h1 className="text-4xl lg:text-6xl font-serif mb-16 text-center">SHIPPING & RETURNS</h1>
 
       <div className="space-y-16">
