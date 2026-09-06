@@ -13,6 +13,8 @@ export function formatPrice(priceInKobo: number): string {
   }).format(priceInKobo / 100);
 }
 
+export const formatCurrency = formatPrice;
+
 export function getUniqueSizes(variants: any[]): string[] {
   if (!variants) return [];
   const sizes = new Set(variants.map(v => v.size).filter(Boolean));

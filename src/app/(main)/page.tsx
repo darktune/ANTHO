@@ -1,30 +1,16 @@
-import HeroSection from '@/components/home/HeroSection';
-import Marquee from '@/components/ui/Marquee';
-import FeaturedCollection from '@/components/home/FeaturedCollection';
-import BrandStory from '@/components/home/BrandStory';
-import BestSellers from '@/components/home/BestSellers';
-import CampaignBanner from '@/components/home/CampaignBanner';
-import EditorialGrid from '@/components/home/EditorialGrid';
-import Newsletter from '@/components/home/Newsletter';
-import TrustSignals from '@/components/home/TrustSignals';
+import MinimalShowcase from '@/components/home/MinimalShowcase';
+import CurrentDrop from '@/components/home/CurrentDrop';
 
 export const metadata = {
-  title: 'ANTHO | Premium Nigerian Contemporary Fashion',
-  description: 'For the culture. By the culture. Premium clothing brand blending contemporary fashion with cultural heritage.',
+  title: 'ANTHO | Official Store',
+  description: 'God is the Greatest. Premium Nigerian Streetwear.',
 };
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] text-[#FAFAF9]">
-      <HeroSection />
-      <Marquee text="ANTHO — GOD IS THE GREATEST — LAGOS TO THE WORLD — SS26" />
-      <FeaturedCollection />
-      <BrandStory />
-      <BestSellers />
-      <CampaignBanner />
-      <EditorialGrid />
-      <Newsletter />
-      <TrustSignals />
+    <main className="min-h-screen">
+      <MinimalShowcase />
+      <CurrentDrop />
     </main>
   );
 }

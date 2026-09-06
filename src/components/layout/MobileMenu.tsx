@@ -2,35 +2,42 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useUIStore } from '@/stores/uiStore';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
-const LINKS = [
-  { label: 'Shop', href: '/shop' },
-  { label: 'Collections', href: '/collections' },
-  { label: 'Lookbook', href: '/lookbook' },
-  { label: 'About', href: '/about' },
+const SHOP_LINKS = [
+  { label: 'All Products', href: '/shop' },
+  { label: 'Tees & Shirts', href: '/shop?category=tees' },
+  { label: 'Hoodies & Sweaters', href: '/shop?category=hoodies' },
+  { label: 'Trousers & Denim', href: '/shop?category=trousers' },
+  { label: 'Jackets & Outerwear', href: '/shop?category=jackets' },
+  { label: 'Accessories & Headwear', href: '/shop?category=accessories' },
+];
+
+const DROP_LINKS = [
+  { label: 'Current Drop // Lagos Noir', href: '/collections/lagos-noir', tag: 'ACTIVE' },
+  { label: 'Collection 001 // Genesis', href: '/collections/genesis' },
+  { label: 'Editorial Lookbook', href: '/lookbook', tag: 'SS26' },
+  { label: 'All Collections', href: '/collections' },
+];
+
+const INFO_LINKS = [
+  { label: 'Brand Story', href: '/about' },
+  { label: 'Shipping & Returns', href: '/shipping-returns' },
+  { label: 'Client FAQs', href: '/faq' },
+  { label: 'Contact & Concierge', href: '/contact' },
 ];
 
 const overlayVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } },
-  exit: { opacity: 0, transition: { duration: 0.5, ease: 'easeInOut', delay: 0.2 } }
-};
-
-const navVariants: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.25, ease: 'easeIn' } }
 };
 
 export default function MobileMenu() {
-  const { isMobileMenuOpen, closeMobileMenu } = useUIStore();
+  const { isMobileMenuOpen, closeMobileMenu, theme, toggleTheme } = useUIStore();
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -51,39 +58,154 @@ export default function MobileMenu() {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-50 bg-black flex flex-col justify-center px-6 md:px-24"
+          className="fixed inset-0 z-50 overflow-y-auto bg-[#FAFAF9] dark:bg-[#0A0A0A] text-[#0A0A0A] dark:text-[#FAFAF9] flex flex-col justify-between px-6 sm:px-12 md:px-20 py-8 md:py-12 transition-colors duration-300"
         >
-          <div className="absolute top-8 right-6 md:right-12 z-50">
-            <button onClick={() => closeMobileMenu()} className="text-white uppercase tracking-widest text-xs font-medium hover:opacity-50 mix-blend-difference">
-              CLOSE
-            </button>
+          {/* Top Bar */}
+          <div className="flex items-center justify-between pb-8 border-b border-black/10 dark:border-white/10">
+            <Link 
+              href="/" 
+              onClick={() => closeMobileMenu()}
+              className="relative h-10 w-28 md:w-36 block"
+            >
+              <Image 
+                src="/images/logos/antho-wordmark-red.png" 
+                alt="ANTHO" 
+                fill 
+                className="object-contain object-left block dark:hidden"
+              />
+              <Image 
+                src="/images/logos/antho-wordmark-white.png" 
+                alt="ANTHO" 
+                fill 
+                className="object-contain object-left hidden dark:block"
+              />
+            </Link>
+
+            <div className="flex items-center gap-6">
+              <button
+                onClick={() => toggleTheme()}
+                className="flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] px-3 py-1.5 border border-black/20 dark:border-white/20 rounded-full hover:border-black dark:hover:border-white transition-colors"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#C9A96E]" />
+                <span>{theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE'}</span>
+              </button>
+
+              <button 
+                onClick={() => closeMobileMenu()} 
+                className="uppercase tracking-[0.25em] text-xs md:text-sm font-semibold hover:opacity-60 transition-opacity"
+              >
+                [ CLOSE &times; ]
+              </button>
+            </div>
           </div>
 
-          <div className="flex-1 flex flex-col justify-center">
-            <motion.nav variants={navVariants} initial="hidden" animate="visible" className="flex flex-col space-y-4">
-              {LINKS.map((link) => (
-                <motion.div key={link.label} variants={itemVariants} className="overflow-hidden">
-                  <Link
-                    href={link.href}
-                    onClick={() => closeMobileMenu()}
-                    className="font-serif text-5xl md:text-8xl lg:text-[10rem] uppercase tracking-tighter text-white hover:italic transition-all duration-500 block leading-[0.85]"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.nav>
+          {/* Menu Sections Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 py-12 md:py-16">
+            
+            {/* Section 1: SHOP */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#C9A96E]">01 // Shop</span>
+                <span className="h-px flex-1 bg-black/10 dark:bg-white/10" />
+              </div>
+              <ul className="space-y-3.5">
+                {SHOP_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      onClick={() => closeMobileMenu()}
+                      className="group flex items-center justify-between text-base sm:text-lg font-medium tracking-tight hover:text-[#C9A96E] transition-colors"
+                    >
+                      <span className="group-hover:translate-x-1.5 transition-transform duration-300">
+                        {link.label}
+                      </span>
+                      <span className="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity text-[#C9A96E]">
+                        &rarr;
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Section 2: DROPS & VISUALS */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#C9A96E]">02 // Drops & Visuals</span>
+                <span className="h-px flex-1 bg-black/10 dark:bg-white/10" />
+              </div>
+              <ul className="space-y-3.5">
+                {DROP_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      onClick={() => closeMobileMenu()}
+                      className="group flex items-center justify-between text-base sm:text-lg font-medium tracking-tight hover:text-[#C9A96E] transition-colors"
+                    >
+                      <span className="group-hover:translate-x-1.5 transition-transform duration-300">
+                        {link.label}
+                      </span>
+                      {link.tag && (
+                        <span className="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded border border-black/20 dark:border-white/20 text-[#C9A96E]">
+                          {link.tag}
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Section 3: CLIENT CARE & INFO */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#C9A96E]">03 // Information</span>
+                <span className="h-px flex-1 bg-black/10 dark:bg-white/10" />
+              </div>
+              <ul className="space-y-3.5">
+                {INFO_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      onClick={() => closeMobileMenu()}
+                      className="group flex items-center justify-between text-base sm:text-lg font-medium tracking-tight hover:text-[#C9A96E] transition-colors"
+                    >
+                      <span className="group-hover:translate-x-1.5 transition-transform duration-300">
+                        {link.label}
+                      </span>
+                      <span className="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity text-[#C9A96E]">
+                        &rarr;
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
 
-          <div className="pb-12 pt-8 flex justify-between items-end border-t border-white/10 mt-12">
-            <div className="flex space-x-6">
+          {/* Bottom Utility Bar */}
+          <div className="pt-8 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs tracking-widest uppercase text-neutral-500">
+            <div className="flex items-center gap-6">
               {Object.entries(SOCIAL_LINKS).map(([name, href]) => (
-                <a key={name} href={href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-stone-400 uppercase tracking-widest text-xs transition-colors">
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black dark:hover:text-white transition-colors"
+                >
                   {name}
                 </a>
               ))}
             </div>
+
+            <div className="flex items-center gap-4 text-[11px]">
+              <span>Nigeria &bull; ₦ NGN</span>
+              <span className="italic text-[#C9A96E] font-serif lowercase">god is the greatest</span>
+            </div>
           </div>
+
         </motion.div>
       )}
     </AnimatePresence>

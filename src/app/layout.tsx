@@ -62,6 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${instrumentSans.variable} ${playfairDisplay.variable} scroll-smooth`}
     >
       <body className="antialiased">{children}</body>

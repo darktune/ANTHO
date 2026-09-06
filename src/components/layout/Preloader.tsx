@@ -86,7 +86,7 @@ export default function Preloader() {
               priority
             />
             <Image 
-              src="/images/logos/antho-wordmark-black.png" 
+              src="/images/logos/antho-wordmark-red.png" 
               alt="ANTHO Logo" 
               width={260} 
               height={150} 
