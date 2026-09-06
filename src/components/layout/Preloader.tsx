@@ -71,11 +71,11 @@ export default function Preloader() {
             className="mb-4"
           >
             <Image 
-              src="/images/logo.jpg" 
+              src="/images/logos/antho-wordmark-white.png" 
               alt="ANTHO Logo" 
-              width={240} 
-              height={80} 
-              className="h-20 w-auto mix-blend-difference invert dark:invert-0 dark:brightness-200" 
+              width={260} 
+              height={150} 
+              className="h-20 md:h-24 w-auto object-contain" 
               priority
             />
           </motion.div>
