@@ -22,11 +22,17 @@ export default function Preloader() {
       const timer = setTimeout(() => {
         setIsVisible(false);
         sessionStorage.setItem('antho_hasSeenIntro', 'true');
-        setTimeout(() => setShouldRender(false), 800); // Wait for exit animation
-      }, 1500); // 1.5s total duration for the preloader content
+        setTimeout(() => setShouldRender(false), 400); // Wait for fast exit animation
+      }, 500); // 500ms snappy display
       return () => clearTimeout(timer);
     }
   }, []);
+
+  const dismiss = () => {
+    setIsVisible(false);
+    sessionStorage.setItem('antho_hasSeenIntro', 'true');
+    setTimeout(() => setShouldRender(false), 300);
+  };
 
   if (!shouldRender) {
       return null;
@@ -35,7 +41,7 @@ export default function Preloader() {
   const containerVariants = {
     hidden: { opacity: 1 },
     visible: { opacity: 1 },
-    exit: { opacity: 0, transition: { duration: 0.8 } }
+    exit: { opacity: 0, transition: { duration: 0.4 } }
   };
 
   const textVariants = {
@@ -43,7 +49,7 @@ export default function Preloader() {
     visible: { 
       opacity: 1, 
       filter: 'blur(0px)',
-      transition: { duration: 0.8, ease: "easeOut" } 
+      transition: { duration: 0.4, ease: "easeOut" } 
     }
   };
 
@@ -52,7 +58,7 @@ export default function Preloader() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { delay: 0.5, duration: 0.8, ease: "easeOut" } 
+      transition: { delay: 0.2, duration: 0.4, ease: "easeOut" } 
     }
   };
 
@@ -64,7 +70,8 @@ export default function Preloader() {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-[9999] bg-[#FAFAFA] dark:bg-[#0A0A0A] flex flex-col items-center justify-center pointer-events-none"
+          onClick={dismiss}
+          className="fixed inset-0 z-[9999] bg-[#FAFAFA] dark:bg-[#0A0A0A] flex flex-col items-center justify-center cursor-pointer select-none"
         >
           <motion.div 
             variants={textVariants as any}
@@ -75,13 +82,21 @@ export default function Preloader() {
               alt="ANTHO Logo" 
               width={260} 
               height={150} 
-              className="h-20 md:h-24 w-auto object-contain" 
+              className="h-16 md:h-20 w-auto object-contain hidden dark:block" 
+              priority
+            />
+            <Image 
+              src="/images/logos/antho-wordmark-black.png" 
+              alt="ANTHO Logo" 
+              width={260} 
+              height={150} 
+              className="h-16 md:h-20 w-auto object-contain block dark:hidden" 
               priority
             />
           </motion.div>
           <motion.div
             variants={mottoVariants as any}
-            className="text-xs md:text-sm tracking-[0.1em] text-neutral-500 uppercase font-light"
+            className="text-xs md:text-sm tracking-[0.15em] text-neutral-500 uppercase font-light"
           >
             God is the Greatest
           </motion.div>
