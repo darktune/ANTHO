@@ -98,7 +98,7 @@ export default function FAQPage() {
     <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36 max-w-4xl">
       <Breadcrumbs 
         items={[
-          { label: 'Client Care' },
+          { label: 'Client Care', href: '/shipping-returns' },
           { label: 'FAQ' }
         ]} 
         className="mb-8"

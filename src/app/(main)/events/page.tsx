@@ -1,4 +1,4 @@
-﻿import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 
 export const metadata = {
@@ -41,7 +41,7 @@ export default function EventsPage() {
     <div className="max-w-5xl mx-auto px-6 sm:px-8 py-16 pt-28 md:pt-36">
       <Breadcrumbs 
         items={[
-          { label: 'Drops & Visuals' },
+          { label: 'Drops & Visuals', href: '/collections' },
           { label: 'Events & Pop-Ups' }
         ]} 
       />

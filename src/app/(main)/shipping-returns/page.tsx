@@ -1,4 +1,4 @@
-﻿import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const metadata = {
   title: 'Shipping & Returns | ANTHO',
@@ -10,7 +10,7 @@ export default function ShippingReturnsPage() {
     <div className="max-w-4xl mx-auto px-6 sm:px-8 py-16 pt-28 md:pt-36">
       <Breadcrumbs 
         items={[
-          { label: 'Client Care' },
+          { label: 'Client Care', href: '/faq' },
           { label: 'Shipping & Returns' }
         ]} 
       />

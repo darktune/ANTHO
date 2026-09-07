@@ -40,7 +40,7 @@ export default function ContactPage() {
     <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36 max-w-6xl">
       <Breadcrumbs 
         items={[
-          { label: 'Client Care' },
+          { label: 'Client Care', href: '/faq' },
           { label: 'Contact' }
         ]} 
         className="mb-8"

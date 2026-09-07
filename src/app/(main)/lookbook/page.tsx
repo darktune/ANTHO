@@ -26,6 +26,7 @@ export default function LookbookPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 pt-28 md:pt-36">
       <Breadcrumbs 
         items={[
+          { label: 'Drops & Visuals', href: '/collections' },
           { label: 'Lookbook' }
         ]}
         className="mb-8"
