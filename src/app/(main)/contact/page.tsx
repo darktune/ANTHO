@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Input from '@/components/ui/Input';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { MapPin, Mail, Phone, Clock, Instagram, MessageCircle } from 'lucide-react';
 import { Loader2 } from 'lucide-react';
 
@@ -36,12 +37,20 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36">
+    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36 max-w-6xl">
+      <Breadcrumbs 
+        items={[
+          { label: 'Client Care' },
+          { label: 'Contact' }
+        ]} 
+        className="mb-8"
+      />
+
       <div className="text-center mb-16">
-        <h1 className="text-4xl lg:text-6xl font-serif mb-4">GET IN TOUCH</h1>
-        <p className="text-stone-400 max-w-xl mx-auto">
-          Have a question about an order, sizing, or just want to say hello? 
-          Fill out the form below or reach us directly.
+        <h1 className="text-4xl lg:text-6xl font-serif mb-4 text-neutral-900 dark:text-white">GET IN TOUCH</h1>
+        <p className="text-neutral-600 dark:text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
+          Have a question about an order, sizing, or private consultation? 
+          Contact client concierge directly.
         </p>
       </div>
 

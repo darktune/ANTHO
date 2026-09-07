@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cartStore';
 import { formatPrice } from '@/lib/utils';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { Minus, Plus, X } from 'lucide-react';
 import Image from 'next/image';
 
@@ -14,13 +15,14 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="container mx-auto px-4 py-24 pt-32 md:pt-40 min-h-[60vh] flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-serif mb-6 text-center">YOUR BAG</h1>
-        <p className="text-stone-400 mb-8 text-center max-w-md">
-          Your cart is currently empty. Discover our latest collection and elevate your style.
+        <Breadcrumbs items={[{ label: 'Bag' }]} className="mb-8" />
+        <h1 className="text-4xl font-serif mb-6 text-center text-neutral-900 dark:text-white">YOUR BAG</h1>
+        <p className="text-neutral-500 dark:text-stone-400 mb-8 text-center max-w-md text-sm">
+          Your cart is currently empty. Discover our latest pieces and elevated streetwear.
         </p>
         <Link 
           href="/shop" 
-          className="bg-white text-black px-8 py-4 font-medium hover:bg-stone-200 transition-colors"
+          className="bg-black text-white dark:bg-white dark:text-black px-8 py-4 text-xs font-semibold uppercase tracking-widest hover:opacity-90 transition-opacity"
         >
           CONTINUE SHOPPING
         </Link>
@@ -29,8 +31,9 @@ export default function CartPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24">
-      <h1 className="text-4xl lg:text-5xl font-serif mb-12">YOUR BAG</h1>
+    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 max-w-7xl">
+      <Breadcrumbs items={[{ label: 'Bag' }]} className="mb-8" />
+      <h1 className="text-4xl lg:text-5xl font-serif mb-12 text-neutral-900 dark:text-white">YOUR BAG</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8">

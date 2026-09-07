@@ -32,22 +32,13 @@ export default function ProductGrid({ products }: { products: any[] }) {
       variants={container as any}
       initial="hidden"
       animate="show"
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-y-16 gap-x-8"
+      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
     >
-      {products.map((product, index) => {
-        // Create an alternating asymmetrical grid layout
-        // Mobile is 1 col. Tablet is 2 cols. Desktop is 12-col grid.
-        // We'll alternate between 5-col, 7-col, 6-col widths to create a lookbook feel
-        const colSpan = index % 3 === 0 ? 'lg:col-span-5' 
-                     : index % 3 === 1 ? 'lg:col-span-7 lg:mt-24' 
-                     : 'lg:col-span-6 lg:col-start-4';
-
-        return (
-          <motion.div key={product.id} variants={item as any} className={colSpan}>
-            <ProductCard product={product} />
-          </motion.div>
-        );
-      })}
+      {products.map((product) => (
+        <motion.div key={product.id} variants={item as any} className="w-full">
+          <ProductCard product={product} />
+        </motion.div>
+      ))}
     </motion.div>
   );
 }

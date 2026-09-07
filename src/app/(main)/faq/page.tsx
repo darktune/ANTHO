@@ -1,4 +1,5 @@
 import Accordion from '@/components/ui/Accordion';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const metadata = {
   title: 'FAQ | ANTHO',
@@ -9,30 +10,26 @@ export default function FAQPage() {
   const orderShippingItems = [
     {
       title: 'How long will it take to receive my order?',
-      content: 'Orders within Lagos typically take 1-2 business days to arrive. Orders to other states in Nigeria take 3-7 business days depending on the location. International shipping is currently unavailable but coming soon.'
+      content: 'Domestic orders within Nigeria take 5-7 business days following processing. International orders take 7-15 business days.'
     },
     {
       title: 'How can I track my order?',
-      content: 'Once your order has been dispatched, you will receive an email containing a tracking number and a link to track your package\'s journey.'
+      content: 'Once your order has been dispatched, you will receive an email containing a tracking number and confirmation.'
     },
     {
       title: 'Can I change or cancel my order?',
-      content: 'We process orders very quickly to ensure fast delivery. If you need to make a change or cancel, please contact us via WhatsApp within 1 hour of placing your order. Once an order is processed, we cannot make changes.'
+      content: 'Orders are processed quickly. Contact client concierge within 1 hour of placing your order if adjustments are needed.'
     }
   ];
 
   const returnsItems = [
     {
       title: 'What is your return policy?',
-      content: 'We accept returns within 14 days of delivery. Items must be unworn, unwashed, and have all original tags attached. Final sale items cannot be returned or exchanged.'
+      content: 'All sales are final. Refunds are not offered unless the item is confirmed unavailable or lost in transit.'
     },
     {
-      title: 'How do I initiate a return?',
-      content: 'Please email hello@antho.ng with your order number and reason for return. Our team will provide you with instructions and a return shipping address. Please note that return shipping costs are the responsibility of the customer.'
-    },
-    {
-      title: 'When will I receive my refund?',
-      content: 'Once we receive and inspect your return, we will process your refund within 3-5 business days. The funds will be returned to your original payment method. Depending on your bank, it may take an additional 2-5 days to appear on your statement.'
+      title: 'What if my item arrives damaged?',
+      content: 'Contact us within 48 hours of delivery at info@antho.com with photographs of the piece and packaging.'
     }
   ];
 
@@ -99,7 +96,15 @@ export default function FAQPage() {
 
   return (
     <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36 max-w-4xl">
-      <h1 className="text-4xl lg:text-6xl font-serif mb-12 text-center">FAQ</h1>
+      <Breadcrumbs 
+        items={[
+          { label: 'Client Care' },
+          { label: 'FAQ' }
+        ]} 
+        className="mb-8"
+      />
+
+      <h1 className="text-4xl lg:text-6xl font-serif mb-12 text-center text-neutral-900 dark:text-white">FAQ</h1>
 
       <div className="space-y-16">
         <section>

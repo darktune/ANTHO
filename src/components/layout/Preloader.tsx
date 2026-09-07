@@ -19,11 +19,12 @@ export default function Preloader() {
       setIsVisible(false);
       setShouldRender(false);
     } else {
+      // 2.2s cinematic opening presentation
       const timer = setTimeout(() => {
         setIsVisible(false);
         sessionStorage.setItem('antho_hasSeenIntro', 'true');
-        setTimeout(() => setShouldRender(false), 400); // Wait for fast exit animation
-      }, 500); // 500ms snappy display
+        setTimeout(() => setShouldRender(false), 600); // smooth exit
+      }, 2200);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -31,74 +32,78 @@ export default function Preloader() {
   const dismiss = () => {
     setIsVisible(false);
     sessionStorage.setItem('antho_hasSeenIntro', 'true');
-    setTimeout(() => setShouldRender(false), 300);
+    setTimeout(() => setShouldRender(false), 400);
   };
 
   if (!shouldRender) {
-      return null;
+    return null;
   }
-
-  const containerVariants = {
-    hidden: { opacity: 1 },
-    visible: { opacity: 1 },
-    exit: { opacity: 0, transition: { duration: 0.4 } }
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, filter: 'blur(4px)' },
-    visible: { 
-      opacity: 1, 
-      filter: 'blur(0px)',
-      transition: { duration: 0.4, ease: "easeOut" } 
-    }
-  };
-
-  const mottoVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { delay: 0.2, duration: 0.4, ease: "easeOut" } 
-    }
-  };
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          variants={containerVariants as any}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)', transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }}
           onClick={dismiss}
-          className="fixed inset-0 z-[9999] bg-[#FAFAFA] dark:bg-[#0A0A0A] flex flex-col items-center justify-center cursor-pointer select-none"
+          className="fixed inset-0 z-[9999] bg-[#0A0A0A] flex flex-col items-center justify-center cursor-pointer select-none px-4"
         >
-          <motion.div 
-            variants={textVariants as any}
-            className="mb-4"
+          {/* Subtle Ambient Radial Glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,169,110,0.08)_0%,transparent_70%)] pointer-events-none" />
+
+          {/* Newly Added Emblem Logo with Cinematic Zoom-In */}
+          <motion.div
+            initial={{ scale: 0.45, opacity: 0, filter: 'blur(16px)' }}
+            animate={{ 
+              scale: 1, 
+              opacity: 1, 
+              filter: 'blur(0px)',
+              transition: { 
+                duration: 1.1, 
+                ease: [0.16, 1, 0.3, 1] 
+              } 
+            }}
+            className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 mb-8"
           >
-            <Image 
-              src="/images/logos/antho-wordmark-white.png" 
-              alt="ANTHO Logo" 
-              width={260} 
-              height={150} 
-              className="h-16 md:h-20 w-auto object-contain hidden dark:block" 
+            <Image
+              src="/images/logos/antho-emblem-transparent.png"
+              alt="ANTHO Emblem"
+              fill
               priority
-            />
-            <Image 
-              src="/images/logos/antho-wordmark-red.png" 
-              alt="ANTHO Logo" 
-              width={260} 
-              height={150} 
-              className="h-16 md:h-20 w-auto object-contain block dark:hidden" 
-              priority
+              className="object-contain drop-shadow-[0_0_25px_rgba(201,169,110,0.25)]"
             />
           </motion.div>
+
+          {/* God is the greatest Quote Reveal */}
           <motion.div
-            variants={mottoVariants as any}
-            className="text-xs md:text-sm tracking-[0.15em] text-neutral-500 uppercase font-light"
+            initial={{ opacity: 0, y: 16, letterSpacing: '0.2em' }}
+            animate={{ 
+              opacity: 1, 
+              y: 0, 
+              letterSpacing: '0.35em',
+              transition: { 
+                delay: 0.75, 
+                duration: 0.9, 
+                ease: [0.16, 1, 0.3, 1] 
+              } 
+            }}
+            className="flex items-center gap-4 select-none"
           >
-            God is the Greatest
+            <span className="h-px w-6 sm:w-12 bg-[#C9A96E]/40" />
+            <span className="text-[11px] sm:text-xs tracking-[0.35em] text-[#C9A96E] font-serif uppercase italic font-medium">
+              God is the greatest
+            </span>
+            <span className="h-px w-6 sm:w-12 bg-[#C9A96E]/40" />
+          </motion.div>
+
+          {/* Skip hint */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4, transition: { delay: 1.4, duration: 0.6 } }}
+            className="absolute bottom-8 text-[9px] uppercase tracking-[0.25em] text-neutral-500 font-light"
+          >
+            Tap anywhere to enter
           </motion.div>
         </motion.div>
       )}

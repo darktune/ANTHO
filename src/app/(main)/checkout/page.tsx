@@ -6,6 +6,7 @@ import { useCartStore } from '@/stores/cartStore';
 import { formatPrice } from '@/lib/utils';
 import { CheckoutForm } from '@/components/checkout/CheckoutForm';
 import { FREE_SHIPPING_THRESHOLD, getShippingCost } from "@/lib/constants";
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -34,13 +35,21 @@ export default function CheckoutPage() {
   const total = subtotal + shippingCost;
 
   return (
-    <div className="container mx-auto px-4 py-12 pt-28 md:pt-36 lg:py-16 lg:pt-36">
+    <div className="container mx-auto px-4 py-12 pt-28 md:pt-36 lg:py-16 lg:pt-36 max-w-7xl">
+      <Breadcrumbs 
+        items={[
+          { label: 'Bag', href: '/cart' },
+          { label: 'Checkout' }
+        ]} 
+        className="mb-8"
+      />
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
         {/* Left Column - Form */}
         <div className="lg:col-span-7">
           <div className="mb-8">
-            <h1 className="text-3xl font-serif mb-2">CHECKOUT</h1>
-            <p className="text-stone-400">Complete your order details below.</p>
+            <h1 className="text-3xl font-serif mb-2 text-neutral-900 dark:text-white">CHECKOUT</h1>
+            <p className="text-neutral-500 dark:text-stone-400 text-sm">Complete your order details below.</p>
           </div>
           
           <CheckoutForm subtotal={subtotal} />

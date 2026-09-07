@@ -34,7 +34,7 @@ export default function ShopFilters() {
     <div className="flex flex-wrap items-center gap-6 text-xs md:text-sm tracking-widest uppercase font-medium">
       <button 
         onClick={() => router.push(pathname, { scroll: false })}
-        className={`transition-colors duration-300 ${!currentCategory ? 'text-white border-b border-white pb-1' : 'text-stone-500 hover:text-stone-300'}`}
+        className={`transition-colors duration-300 ${!currentCategory ? 'text-neutral-900 dark:text-white border-b-2 border-neutral-900 dark:border-white pb-1 font-semibold' : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'}`}
       >
         All
       </button>
@@ -42,7 +42,7 @@ export default function ShopFilters() {
         <button 
           key={cat}
           onClick={() => handleCategoryClick(cat)}
-          className={`transition-colors duration-300 ${currentCategory === cat ? 'text-white border-b border-white pb-1' : 'text-stone-500 hover:text-stone-300'}`}
+          className={`transition-colors duration-300 ${currentCategory === cat ? 'text-neutral-900 dark:text-white border-b-2 border-neutral-900 dark:border-white pb-1 font-semibold' : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'}`}
         >
           {cat}
         </button>

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const metadata = {
   title: 'Lookbook | ANTHO — SS26 The Lagos Edit',
@@ -22,12 +23,19 @@ const lookbookImages = [
 
 export default function LookbookPage() {
   return (
-    <div className="pb-32 pt-28 md:pt-36">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 pt-28 md:pt-36">
+      <Breadcrumbs 
+        items={[
+          { label: 'Lookbook' }
+        ]}
+        className="mb-8"
+      />
+
       {/* Header */}
       <section className="text-center px-4 max-w-4xl mx-auto mb-16">
         <span className="text-xs uppercase tracking-[0.3em] text-[#C9A96E] mb-3 block">EDITORIAL JOURNAL</span>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tight mb-4">LOOKBOOK</h1>
-        <p className="text-sm md:text-base text-neutral-400 font-light tracking-[0.2em] uppercase">SS26 — The Lagos Edit</p>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-neutral-900 dark:text-white tracking-tight mb-4">LOOKBOOK</h1>
+        <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 font-light tracking-[0.2em] uppercase">SS26 — The Lagos Edit</p>
       </section>
 
       {/* Masonry Grid */}

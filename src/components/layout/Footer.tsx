@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FOOTER_LINKS } from '@/lib/constants';
+import SocialLinks from '@/components/ui/SocialIcons';
 
 export default function Footer() {
   return (
@@ -12,14 +13,14 @@ export default function Footer() {
           <div className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C9A96E]">
             Inner Circle // Access & Drops
           </div>
-          <form className="flex w-full sm:w-auto max-w-md border-b border-black/30 dark:border-white/30 focus-within:border-[#C9A96E] transition-colors">
+          <form className="flex w-full sm:w-80 md:w-96 border-b border-black/30 dark:border-white/30 focus-within:border-[#C9A96E] transition-colors">
             <input 
               type="email" 
               placeholder="ENTER EMAIL FOR DROPS" 
-              className="flex-1 bg-transparent border-none focus:ring-0 text-xs tracking-widest px-2 py-2.5 outline-none placeholder:text-neutral-400"
+              className="flex-1 min-w-0 bg-transparent border-none focus:ring-0 text-[11px] sm:text-xs tracking-wider px-2 py-2.5 outline-none placeholder:text-neutral-400"
               required
             />
-            <button type="submit" className="text-[11px] uppercase tracking-widest font-bold px-4 hover:text-[#C9A96E] transition-colors">
+            <button type="submit" className="text-[11px] uppercase tracking-widest font-bold px-4 shrink-0 hover:text-[#C9A96E] transition-colors">
               JOIN
             </button>
           </form>
@@ -122,7 +123,7 @@ export default function Footer() {
           <div className="flex items-center gap-4 md:gap-8 mt-6 select-none">
             <span className="h-px w-8 md:w-20 bg-black/15 dark:bg-white/15" />
             <span className="text-[10px] md:text-xs tracking-[0.35em] uppercase text-[#C9A96E] font-serif italic">
-              God is the Greatest
+              God is the greatest
             </span>
             <span className="h-px w-8 md:w-20 bg-black/15 dark:bg-white/15" />
           </div>
@@ -130,10 +131,11 @@ export default function Footer() {
 
         <div className="w-full h-px bg-black/10 dark:bg-white/10 mb-8"></div>
 
-        {/* Bottom copyright & region section */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-[11px] text-neutral-500 tracking-widest uppercase">
+        {/* Bottom copyright, social & region section */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] sm:text-[11px] text-neutral-500 tracking-widest uppercase">
           <p>&copy; {new Date().getFullYear()} ANTHO. All rights reserved.</p>
-          <div className="mt-4 md:mt-0 flex space-x-6">
+          <SocialLinks />
+          <div className="flex space-x-6">
             <span>Region: Nigeria</span>
             <span>Currency: ₦ NGN</span>
           </div>

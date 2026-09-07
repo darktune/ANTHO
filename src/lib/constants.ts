@@ -53,12 +53,9 @@ export const SIZE_CHART = {
 } as const;
 
 export const CATEGORIES = [
-  "Tops",
-  "Bottoms",
-  "Outerwear",
-  "Dresses",
-  "Accessories",
-  "Footwear",
+  "Classic ANTHO Polos",
+  "ANTHO Sweatpants",
+  "ANTHO Graphic Tees",
 ] as const;
 
 export const PRODUCT_COLORS = [
@@ -93,27 +90,27 @@ export const NAV_LINKS = [
   { label: "Shop", href: "/shop" },
   { label: "Collections", href: "/collections" },
   { label: "Lookbook", href: "/lookbook" },
-  { label: "About", href: "/about" },
+  { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export const FOOTER_LINKS = {
   shop: [
     { label: "All Products", href: "/shop" },
-    { label: "New Arrivals", href: "/collections/new-arrivals" },
-    { label: "Best Sellers", href: "/collections/best-sellers" },
-    { label: "Sale", href: "/collections/sale" },
+    { label: "Classic ANTHO Polos", href: "/shop?category=Classic+ANTHO+Polos" },
+    { label: "ANTHO Sweatpants", href: "/shop?category=ANTHO+Sweatpants" },
+    { label: "ANTHO Graphic Tees", href: "/shop?category=ANTHO+Graphic+Tees" },
   ],
   help: [
-    { label: "FAQ", href: "/faq" },
+    { label: "Client FAQs", href: "/faq" },
     { label: "Shipping & Returns", href: "/shipping-returns" },
-    { label: "Size Guide", href: "/faq#size-guide" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "Size Guide", href: "/faq" },
+    { label: "Contact Concierge", href: "/contact" },
   ],
   company: [
-    { label: "About ANTHO", href: "/about" },
-    { label: "Lookbook", href: "/lookbook" },
-    { label: "Careers", href: "/contact" },
+    { label: "Collections", href: "/collections" },
+    { label: "Editorial Lookbook", href: "/lookbook" },
+    { label: "Events & Pop-Ups", href: "/events" },
   ],
 } as const;
 

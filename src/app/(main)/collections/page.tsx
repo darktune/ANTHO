@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 const collections = [
   { 
@@ -44,9 +45,16 @@ export const metadata = {
 export default function CollectionsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28 md:pt-36">
+      <Breadcrumbs 
+        items={[
+          { label: 'Collections' },
+        ]} 
+        className="mb-8"
+      />
+      
       <div className="mb-14">
         <span className="text-xs uppercase tracking-[0.25em] text-[#C9A96E] mb-3 block">CURATED ARCHIVE</span>
-        <h1 className="text-4xl md:text-6xl font-serif text-[#FAFAF9] tracking-tight">Collections</h1>
+        <h1 className="text-4xl md:text-6xl font-serif text-neutral-900 dark:text-[#FAFAF9] tracking-tight">Collections</h1>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

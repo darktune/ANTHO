@@ -54,8 +54,8 @@ export default function ProductInfo({ product }: { product: any }) {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-3xl font-serif text-[#FAFAF9] mb-2">{product.name}</h1>
-        <div className="text-2xl text-[#FAFAF9]">
+        <h1 className="text-3xl font-serif text-neutral-900 dark:text-[#FAFAF9] mb-2">{product.name}</h1>
+        <div className="text-2xl font-medium text-neutral-900 dark:text-[#FAFAF9]">
           {formatPrice ? formatPrice(product.price) : `₦${product.price / 100}`}
         </div>
       </div>
@@ -63,27 +63,27 @@ export default function ProductInfo({ product }: { product: any }) {
       <div className="space-y-4">
         <div>
           <div className="flex justify-between mb-2">
-            <span className="text-sm text-[#A8A29E]">Color: {color}</span>
+            <span className="text-sm text-neutral-600 dark:text-[#A8A29E]">Color: {color}</span>
           </div>
           <ColorSelector colors={colors} selectedColor={color} onSelect={setColor} />
         </div>
 
         <div>
           <div className="flex justify-between mb-2">
-            <span className="text-sm text-[#A8A29E]">Size: {size}</span>
-            <button className="text-xs text-[#A8A29E] underline">Size Guide</button>
+            <span className="text-sm text-neutral-600 dark:text-[#A8A29E]">Size: {size}</span>
+            <button className="text-xs text-neutral-600 dark:text-[#A8A29E] underline">Size Guide</button>
           </div>
           <SizeSelector sizes={sizes} selectedSize={size} onSelect={setSize} variants={[]} />
         </div>
 
         <div>
-          <span className="text-sm text-[#A8A29E] block mb-2">Quantity</span>
-          <div className="flex items-center border border-[#A8A29E] rounded-md w-32">
-            <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 text-[#A8A29E] hover:text-white">
+          <span className="text-sm text-neutral-600 dark:text-[#A8A29E] block mb-2">Quantity</span>
+          <div className="flex items-center border border-neutral-300 dark:border-[#A8A29E] rounded-md w-32">
+            <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 py-2 text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white">
               <Minus className="w-4 h-4" />
             </button>
-            <span className="flex-1 text-center text-[#FAFAF9]">{quantity}</span>
-            <button onClick={() => setQuantity(quantity + 1)} className="px-3 py-2 text-[#A8A29E] hover:text-white">
+            <span className="flex-1 text-center text-neutral-900 dark:text-[#FAFAF9]">{quantity}</span>
+            <button onClick={() => setQuantity(quantity + 1)} className="px-3 py-2 text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white">
               <Plus className="w-4 h-4" />
             </button>
           </div>
@@ -91,54 +91,54 @@ export default function ProductInfo({ product }: { product: any }) {
       </div>
 
       <div className="flex flex-col gap-3 pt-4">
-        <button onClick={handleAddToCart} className="w-full bg-[#FAFAF9] text-[#0A0A0A] font-medium py-4 rounded-md hover:bg-white transition-colors">
+        <button onClick={handleAddToCart} className="w-full bg-black text-white dark:bg-[#FAFAF9] dark:text-[#0A0A0A] font-medium py-4 rounded-md hover:opacity-90 transition-opacity">
           {added ? 'ADDED TO BAG' : 'ADD TO BAG'}
         </button>
-        <button onClick={handleBuyNow} className="w-full bg-transparent border border-[#A8A29E] text-[#FAFAF9] font-medium py-4 rounded-md hover:border-white transition-colors">
+        <button onClick={handleBuyNow} className="w-full bg-transparent border border-neutral-400 dark:border-[#A8A29E] text-neutral-900 dark:text-[#FAFAF9] font-medium py-4 rounded-md hover:border-black dark:hover:border-white transition-colors">
           BUY NOW
         </button>
       </div>
 
-      <div className="flex items-center justify-between pt-4 border-t border-[#A8A29E]/30">
-        <span className="text-sm text-green-500">In Stock</span>
-        <button className="flex items-center gap-2 text-sm text-[#A8A29E] hover:text-white">
+      <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-[#A8A29E]/30">
+        <span className="text-sm text-green-600 dark:text-green-500 font-medium">In Stock</span>
+        <button className="flex items-center gap-2 text-sm text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white">
           <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
 
       {/* Accordions */}
-      <div className="mt-6 divide-y divide-[#A8A29E]/30 border-y border-[#A8A29E]/30">
+      <div className="mt-6 divide-y divide-neutral-200 dark:divide-[#A8A29E]/30 border-y border-neutral-200 dark:border-[#A8A29E]/30">
         <details className="group py-4">
-          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-[#FAFAF9]">
+          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9]">
             <span>Description</span>
             <span className="transition group-open:rotate-180">
               <Plus className="w-4 h-4" />
             </span>
           </summary>
-          <div className="text-[#A8A29E] text-sm mt-3">
+          <div className="text-neutral-600 dark:text-[#A8A29E] text-sm mt-3 leading-relaxed">
             {product.description || 'Premium product designed in Lagos.'}
           </div>
         </details>
         <details className="group py-4">
-          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-[#FAFAF9]">
+          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9]">
             <span>Materials & Care</span>
             <span className="transition group-open:rotate-180">
               <Plus className="w-4 h-4" />
             </span>
           </summary>
-          <div className="text-[#A8A29E] text-sm mt-3">
-            100% Cotton. Machine wash cold.
+          <div className="text-neutral-600 dark:text-[#A8A29E] text-sm mt-3 leading-relaxed">
+            100% Premium Cotton. Gentle machine wash cold with like colours. Do not tumble dry.
           </div>
         </details>
         <details className="group py-4">
-          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-[#FAFAF9]">
+          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9]">
             <span>Shipping & Returns</span>
             <span className="transition group-open:rotate-180">
               <Plus className="w-4 h-4" />
             </span>
           </summary>
-          <div className="text-[#A8A29E] text-sm mt-3">
-            Free shipping on orders over ₦100,000. Easy returns within 14 days.
+          <div className="text-neutral-600 dark:text-[#A8A29E] text-sm mt-3 leading-relaxed">
+            All sales are final. Domestic delivery takes 5–7 business days. International shipping takes 7–15 business days.
           </div>
         </details>
       </div>
