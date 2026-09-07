@@ -1,0 +1,7 @@
+ANTHO SHOOT/
+.env*.local
+*.db
+*.db-journal
+*.sqlite
+.gemini/
+scratch/
