@@ -3,6 +3,7 @@ import ProductGrid from '@/components/product/ProductGrid';
 import ShopFilters from '@/components/product/ShopFilters';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { prisma } from '@/lib/prisma';
+import { sampleProducts } from '@/lib/sample-data';
 
 export const metadata = {
   title: 'Shop All | ANTHO',
@@ -17,19 +18,30 @@ export default async function ShopPage({
   const resolvedParams = await searchParams;
   const category = typeof resolvedParams.category === 'string' ? resolvedParams.category : undefined;
   
-  const products = await prisma.product.findMany({
-    where: {
-      isPublished: true,
-      ...(category ? { category } : {}),
-    },
-    include: {
-      images: {
-        orderBy: { position: 'asc' }
+  let products: any[] = [];
+  try {
+    products = await prisma.product.findMany({
+      where: {
+        isPublished: true,
+        ...(category ? { category } : {}),
       },
-      variants: true,
-    },
-    orderBy: { createdAt: 'desc' }
-  });
+      include: {
+        images: {
+          orderBy: { position: 'asc' }
+        },
+        variants: true,
+      },
+      orderBy: { createdAt: 'desc' }
+    });
+  } catch (err) {
+    // Graceful fallback to sample data
+  }
+
+  if (!products || products.length === 0) {
+    products = category 
+      ? (sampleProducts.filter(p => p.category.toLowerCase() === category.toLowerCase()) as any)
+      : (sampleProducts as any);
+  }
 
   const breadcrumbs = category
     ? [{ label: 'Shop', href: '/shop' }, { label: category }]

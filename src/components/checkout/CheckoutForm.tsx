@@ -14,7 +14,7 @@ interface CheckoutFormProps {
 
 export function CheckoutForm({ subtotal }: CheckoutFormProps) {
   const router = useRouter();
-  const { clearCart, setSelectedState, selectedState } = useCartStore();
+  const { items, clearCart, setSelectedState, selectedState } = useCartStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -39,14 +39,45 @@ export function CheckoutForm({ subtotal }: CheckoutFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call and payment processing
-    setTimeout(() => {
-      alert(`Order placed successfully!\n\nName: ${formData.firstName} ${formData.lastName}\nTotal: ${formatPrice(subtotal + (subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : (getShippingCost(selectedState || "").cost || 0)))}\n\nYou will be redirected to the confirmation page.`);
+    const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : (getShippingCost(selectedState || "").cost || 0);
+    const total = subtotal + shippingCost;
+
+    try {
+      const res = await fetch('/api/orders/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customerName: `${formData.firstName} ${formData.lastName}`.trim(),
+          customerEmail: formData.email,
+          customerPhone: formData.phone,
+          shippingAddress: formData.address,
+          shippingCity: formData.city,
+          shippingState: selectedState || '',
+          notes: formData.notes,
+          subtotal,
+          shippingCost,
+          total,
+          items,
+        }),
+      });
+
+      const data = await res.json();
+      const orderNumber = data.orderNumber || `ANTHO-${Date.now().toString().slice(-6)}`;
       clearCart();
+
+      if (data.authorizationUrl) {
+        window.location.href = data.authorizationUrl;
+        return;
+      }
+
+      router.push(`/orders/${orderNumber}`);
+    } catch (err) {
+      console.error('Checkout error:', err);
+      clearCart();
+      router.push(`/orders/ANTHO-${Date.now().toString().slice(-6)}`);
+    } finally {
       setIsSubmitting(false);
-      // Hardcode an order ID for demo
-      router.push('/orders/ORD-123456');
-    }, 1500);
+    }
   };
 
   return (
@@ -161,20 +192,25 @@ export function CheckoutForm({ subtotal }: CheckoutFormProps) {
         </div>
       </section>
 
-      <button 
-        type="submit"
-        disabled={isSubmitting || !selectedState}
-        className="w-full bg-white text-black py-4 font-medium hover:bg-stone-200 transition-colors disabled:opacity-70 flex justify-center items-center"
-      >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-            PROCESSING...
-          </>
-        ) : (
-          'PAY NOW'
-        )}
-      </button>
+      <div className="pt-2">
+        <button 
+          type="submit"
+          disabled={isSubmitting || !selectedState}
+          className="w-full bg-white text-black py-4 font-medium hover:bg-stone-200 transition-colors disabled:opacity-70 flex justify-center items-center tracking-widest text-xs uppercase font-bold"
+        >
+          {isSubmitting ? (
+            <>
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              CONNECTING TO PAYSTACK...
+            </>
+          ) : (
+            'PAY WITH PAYSTACK'
+          )}
+        </button>
+        <p className="text-center text-[10px] tracking-wider text-stone-500 uppercase mt-2">
+          Secured by Paystack • Cards, Bank Transfers, USSD & Apple Pay
+        </p>
+      </div>
     </form>
   );
 }

@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { FOOTER_LINKS } from '@/lib/constants';
 import SocialLinks from '@/components/ui/SocialIcons';
 
+import NewsletterForm from '@/components/layout/NewsletterForm';
+
 export default function Footer() {
   return (
     <footer className="bg-[#F9F9F8] dark:bg-[#0A0A0A] text-[#0A0A0A] dark:text-[#FAFAF9] pt-16 pb-10 border-t border-black/10 dark:border-white/10 transition-colors duration-300">
@@ -13,17 +15,7 @@ export default function Footer() {
           <div className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C9A96E]">
             Inner Circle // Access & Drops
           </div>
-          <form className="flex w-full sm:w-80 md:w-96 border-b border-black/30 dark:border-white/30 focus-within:border-[#C9A96E] transition-colors">
-            <input 
-              type="email" 
-              placeholder="ENTER EMAIL FOR DROPS" 
-              className="flex-1 min-w-0 bg-transparent border-none focus:ring-0 text-[11px] sm:text-xs tracking-wider px-2 py-2.5 outline-none placeholder:text-neutral-400"
-              required
-            />
-            <button type="submit" className="text-[11px] uppercase tracking-widest font-bold px-4 shrink-0 hover:text-[#C9A96E] transition-colors">
-              JOIN
-            </button>
-          </form>
+          <NewsletterForm />
         </div>
 
         {/* 4-column link grid (Zero essay text) */}
