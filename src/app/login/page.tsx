@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Input from '@/components/ui/Input';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ShieldCheck, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export default function LoginPage() {
@@ -18,50 +18,52 @@ export default function LoginPage() {
     setIsLoading(true);
     setError('');
 
-    // Simulate authentication
-    // In a real app, this would be an API call to authenticate against the DB
-    setTimeout(() => {
-      // Very basic client-side check just for demo purposes
-      // The prompt asked to check against env vars client-side for now
-      // Since we can't securely expose env vars to client without NEXT_PUBLIC_, 
-      // we'll just use hardcoded demo credentials or accept anything temporarily
-      
-      const demoEmail = 'admin@antho.ng';
-      const demoPass = 'password123';
-      
-      if (email === demoEmail && password === demoPass) {
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
         sessionStorage.setItem('antho_admin_auth', 'true');
         router.push('/admin');
       } else {
-        setError('Invalid email or password. Use admin@antho.ng / password123 for demo.');
-        setIsLoading(false);
+        setError(data.error || 'Authentication failed. Please check your credentials.');
       }
-    }, 1000);
+    } catch {
+      setError('Network communication error. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black px-4 relative overflow-hidden">
-      {/* Background noise/texture */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-screen pointer-events-none"></div>
-      
       <div className="w-full max-w-md relative z-10">
-        <div className="text-center mb-10">
+        <div className="text-center mb-8">
           <Link href="/" className="inline-block">
-            <h1 className="text-4xl font-serif tracking-widest text-white mb-2">ANTHO</h1>
+            <h1 className="text-3xl font-serif tracking-[0.25em] text-white mb-2">ANTHO</h1>
           </Link>
-          <p className="text-stone-400 text-sm tracking-widest uppercase">Admin Portal</p>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] tracking-widest font-semibold uppercase bg-stone-900 border border-stone-800 text-[#C9A96E]">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            ADMINISTRATIVE CONCIERGE PORTAL
+          </div>
         </div>
 
-        <div className="bg-stone-900 border border-stone-800 p-8 shadow-2xl">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-stone-950 border border-stone-800 p-8 shadow-2xl backdrop-blur-sm">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {error && (
-              <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-500 text-sm text-center">
-                {error}
+              <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-xs text-center flex items-center justify-center gap-2">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                <span>{error}</span>
               </div>
             )}
             
             <Input 
-              label="Email Address" 
+              label="Admin Email Address" 
               type="email" 
               name="email" 
               value={email}
@@ -71,34 +73,34 @@ export default function LoginPage() {
             />
             
             <Input 
-              label="Password" 
+              label="Master Password" 
               type="password" 
               name="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required 
-              placeholder="••••••••"
+              placeholder="••••••••••••"
             />
 
             <button 
               type="submit"
               disabled={isLoading}
-              className="w-full bg-white text-black py-3.5 font-medium hover:bg-stone-200 transition-colors disabled:opacity-70 flex justify-center items-center mt-4"
+              className="w-full bg-white text-black py-3.5 text-xs uppercase tracking-widest font-bold hover:bg-stone-200 transition-colors disabled:opacity-70 flex justify-center items-center mt-6"
             >
               {isLoading ? (
                 <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  SIGNING IN...
+                  AUTHENTICATING...
                 </>
               ) : (
-                'SIGN IN'
+                'ENTER ADMIN PORTAL'
               )}
             </button>
           </form>
           
           <div className="mt-6 text-center">
-            <Link href="/" className="text-sm text-stone-500 hover:text-white transition-colors">
-              &larr; Back to Store
+            <Link href="/" className="text-xs text-stone-500 hover:text-white transition-colors tracking-wider uppercase">
+              &larr; Return to Storefront
             </Link>
           </div>
         </div>
