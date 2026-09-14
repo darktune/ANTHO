@@ -1,9 +1,14 @@
-﻿const CACHE_NAME = 'antho-cache-v1';
+const CACHE_NAME = 'antho-cache-v2';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',
+  '/favicon.ico',
+  '/icon.png',
+  '/icon-192.png',
+  '/icon-512.png',
+  '/apple-icon.png',
   '/images/logos/antho-emblem-dark.png',
-  '/images/logo.png',
+  '/images/logos/antho-emblem-transparent.png',
   '/images/logos/antho-wordmark-white.png',
   '/images/logos/antho-wordmark-gold.png'
 ];

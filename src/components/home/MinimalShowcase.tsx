@@ -100,8 +100,8 @@ export default function MinimalShowcase() {
         </AnimatePresence>
       </div>
 
-      {/* Subtle Grain Overlay */}
-      <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png')] opacity-10 mix-blend-overlay pointer-events-none z-10" />
+      {/* Subtle Grain Overlay (Zero external network request) */}
+      <div className="absolute inset-0 bg-noise opacity-15 mix-blend-overlay pointer-events-none z-10" />
 
       {/* Top Details */}
       <div className="absolute top-24 md:top-28 left-6 md:left-12 right-6 md:right-12 z-20 flex justify-between items-center text-white text-[10px] md:text-xs tracking-[0.25em] uppercase font-medium">

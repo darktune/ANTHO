@@ -40,8 +40,8 @@ export default function HeroSection() {
           />
         </motion.div>
         
-        {/* Grain overlay for editorial feel */}
-        <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png')] opacity-10 mix-blend-overlay pointer-events-none" />
+        {/* Grain overlay for editorial feel (Zero external network request) */}
+        <div className="absolute inset-0 bg-noise opacity-15 mix-blend-overlay pointer-events-none" />
         
         {/* Gradient overlays to ensure text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
