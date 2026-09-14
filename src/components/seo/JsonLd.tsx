@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 interface JsonLdProps {
   data: Record<string, any>;
@@ -29,9 +29,10 @@ export function OrganizationJsonLd() {
       name: 'Lagos, Nigeria'
     },
     sameAs: [
-      'https://instagram.com/antho.ng',
-      'https://x.com/antho_ng',
-      'https://tiktok.com/@antho.ng'
+      'https://www.instagram.com/antho.syllogi',
+      'https://x.com/syllogiantho?s=21',
+      'https://www.tiktok.com/@antho.syllogi',
+      'https://snapchat.com/t/yXLe7p2I'
     ],
     contactPoint: {
       '@type': 'ContactPoint',

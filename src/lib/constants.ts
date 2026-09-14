@@ -1,36 +1,32 @@
 import type { ShippingZone } from "@/types";
 
 export const NIGERIAN_STATES = [
+  "Covenant University",
+  "Lagos",
   "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
   "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu",
   "FCT - Abuja", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina",
-  "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo",
+  "Kebbi", "Kogi", "Kwara", "Nasarawa", "Niger", "Ogun", "Ondo",
   "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara",
 ] as const;
 
 export const SHIPPING_ZONES: ShippingZone[] = [
-  { state: "Lagos", cost: 250000, estimatedDays: "1-2 business days" },
-  { state: "FCT - Abuja", cost: 350000, estimatedDays: "2-3 business days" },
-  { state: "Ogun", cost: 300000, estimatedDays: "2-3 business days" },
-  { state: "Rivers", cost: 400000, estimatedDays: "3-5 business days" },
-  { state: "Oyo", cost: 300000, estimatedDays: "2-4 business days" },
-  { state: "Delta", cost: 400000, estimatedDays: "3-5 business days" },
-  { state: "Enugu", cost: 400000, estimatedDays: "3-5 business days" },
-  { state: "Kano", cost: 500000, estimatedDays: "4-6 business days" },
-  { state: "Kaduna", cost: 500000, estimatedDays: "4-6 business days" },
+  { state: "Covenant University", cost: 300000, estimatedDays: "Campus drop / Tradefair pickup" },
+  { state: "Lagos", cost: 650000, estimatedDays: "1-2 business days" },
+  { state: "Ogun", cost: 650000, estimatedDays: "2-3 business days" },
 ];
 
-// Default shipping for states not explicitly listed
+// Default shipping for other states across Nigeria
 export const DEFAULT_SHIPPING: ShippingZone = {
-  state: "Other",
-  cost: 450000,
-  estimatedDays: "3-7 business days",
+  state: "Other States (Nationwide)",
+  cost: 900000,
+  estimatedDays: "3-5 business days",
 };
 
-export const FREE_SHIPPING_THRESHOLD = 5000000; // ₦50,000 in kobo
+export const FREE_SHIPPING_THRESHOLD = 50000000; // Free threshold (or high default)
 
 export function getShippingCost(state: string): ShippingZone {
-  return SHIPPING_ZONES.find((z) => z.state === state) || { ...DEFAULT_SHIPPING, state };
+  return SHIPPING_ZONES.find((z) => z.state.toLowerCase() === state.toLowerCase()) || { ...DEFAULT_SHIPPING, state };
 }
 
 export const SIZE_CHART = {
@@ -115,7 +111,15 @@ export const FOOTER_LINKS = {
 } as const;
 
 export const SOCIAL_LINKS = {
-  instagram: "https://instagram.com/antho.ng",
-  twitter: "https://x.com/antho_ng",
-  tiktok: "https://tiktok.com/@antho.ng",
+  instagram: "https://www.instagram.com/antho.syllogi",
+  twitter: "https://x.com/syllogiantho?s=21",
+  tiktok: "https://www.tiktok.com/@antho.syllogi",
+  snapchat: "https://snapchat.com/t/yXLe7p2I",
+} as const;
+
+export const CONTACT_INFO = {
+  email: "antho.syllogi@gmail.com",
+  phone: "+234 810 000 0000",
+  address: "Lagos, Nigeria",
+  eventLocation: "Covenant University, Ota, Ogun State",
 } as const;

@@ -1,4 +1,7 @@
-﻿'use client';
+'use client';
+
+import Image from 'next/image';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
 export function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -45,11 +48,25 @@ export function TikTokIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+export function SnapchatIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <span className={`relative inline-block ${className}`}>
+      <Image 
+        src="/snap.png" 
+        alt="Snapchat" 
+        width={18} 
+        height={18} 
+        className="w-full h-full object-contain filter invert dark:invert-0 brightness-90 hover:brightness-100 transition-all"
+      />
+    </span>
+  );
+}
+
 export default function SocialLinks({ className = "flex items-center gap-5" }: { className?: string }) {
   return (
     <div className={className}>
       <a 
-        href="https://instagram.com" 
+        href={SOCIAL_LINKS.instagram} 
         target="_blank" 
         rel="noopener noreferrer" 
         aria-label="Instagram"
@@ -58,7 +75,7 @@ export default function SocialLinks({ className = "flex items-center gap-5" }: {
         <InstagramIcon className="w-4 h-4" />
       </a>
       <a 
-        href="https://x.com" 
+        href={SOCIAL_LINKS.twitter} 
         target="_blank" 
         rel="noopener noreferrer" 
         aria-label="X (Twitter)"
@@ -67,13 +84,22 @@ export default function SocialLinks({ className = "flex items-center gap-5" }: {
         <XTwitterIcon className="w-4 h-4" />
       </a>
       <a 
-        href="https://tiktok.com" 
+        href={SOCIAL_LINKS.tiktok} 
         target="_blank" 
         rel="noopener noreferrer" 
         aria-label="TikTok"
         className="p-1.5 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
       >
         <TikTokIcon className="w-4 h-4" />
+      </a>
+      <a 
+        href={SOCIAL_LINKS.snapchat} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="Snapchat"
+        className="p-1.5 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+      >
+        <SnapchatIcon className="w-4 h-4" />
       </a>
     </div>
   );

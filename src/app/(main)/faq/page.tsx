@@ -19,26 +19,30 @@ export default function FAQPage() {
   const orderShippingItems = [
     {
       title: 'How long will it take to receive my order?',
-      content: 'Domestic orders within Nigeria take 5-7 business days following processing. International orders take 7-15 business days.'
+      content: 'All orders are processed within 10–14 business days. Following processing, Covenant University deliveries take 1 business day, Lagos takes 1–2 business days, and nationwide delivery across other states takes 3–5 business days.'
+    },
+    {
+      title: 'What are your shipping rates?',
+      content: 'Covenant University (CU) delivery is ₦3,000 NGN; Lagos State is ₦6,500 NGN; and Nationwide shipping across all other 35 states in Nigeria is ₦9,000 NGN.'
     },
     {
       title: 'How can I track my order?',
-      content: 'Once your order has been dispatched, you will receive an email containing a tracking number and confirmation.'
+      content: 'Once your order has been dispatched, you will receive an automated email containing full courier tracking information.'
     },
     {
       title: 'Can I change or cancel my order?',
-      content: 'Orders are processed quickly. Contact client concierge within 1 hour of placing your order if adjustments are needed.'
+      content: 'Orders are processed quickly. Contact client concierge at antho.syllogi@gmail.com within 1 hour of placing your order if adjustments are needed.'
     }
   ];
 
   const returnsItems = [
     {
       title: 'What is your return policy?',
-      content: 'All sales are final. Refunds are not offered unless the item is confirmed unavailable or lost in transit.'
+      content: 'All sales are final. Due to limited release sizes, refunds or replacements are not offered unless the piece is confirmed damaged upon delivery.'
     },
     {
       title: 'What if my item arrives damaged?',
-      content: 'Contact us within 48 hours of delivery at info@antho.com with photographs of the piece and packaging.'
+      content: 'Contact us within 48 hours of delivery at antho.syllogi@gmail.com with photographs of the piece and packaging.'
     }
   ];
 

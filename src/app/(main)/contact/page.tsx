@@ -164,13 +164,13 @@ export default function ContactPage() {
           <div>
             <h2 className="text-xs uppercase tracking-[0.25em] font-semibold mb-6 text-[#C9A96E]">DIRECT CHANNELS</h2>
             <div className="space-y-6">
-              <a href="mailto:concierge@antho.ng" className="flex items-start gap-4 text-stone-300 hover:text-white transition-colors group">
+              <a href="mailto:antho.syllogi@gmail.com" className="flex items-start gap-4 text-stone-300 hover:text-white transition-colors group">
                 <div className="p-2.5 bg-stone-900 border border-stone-800 rounded group-hover:border-stone-700">
                   <Mail className="w-4 h-4 text-[#C9A96E]" />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-stone-400 font-medium">Concierge Email</p>
-                  <p className="text-sm font-mono mt-0.5">concierge@antho.ng</p>
+                  <p className="text-sm font-mono mt-0.5">antho.syllogi@gmail.com</p>
                 </div>
               </a>
               
@@ -194,9 +194,9 @@ export default function ContactPage() {
                   <MapPin className="w-4 h-4 text-[#C9A96E]" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-wider text-stone-400 font-medium">Atelier & Studio</p>
-                  <p className="text-sm text-stone-300 mt-0.5">Victoria Island, Lagos, Nigeria</p>
-                  <p className="text-xs text-stone-500 mt-0.5">(Private showroom fittings by appointment)</p>
+                  <p className="text-xs uppercase tracking-wider text-stone-400 font-medium">Atelier & Pop-Up Presence</p>
+                  <p className="text-sm text-stone-300 mt-0.5">Lagos, Nigeria & Covenant University</p>
+                  <p className="text-xs text-stone-500 mt-0.5">(Tradefair drops & private fittings)</p>
                 </div>
               </div>
               
@@ -214,16 +214,45 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <h2 className="text-xs uppercase tracking-[0.25em] font-semibold mb-4 text-[#C9A96E]">COMMUNITY</h2>
-            <a 
-              href="https://instagram.com/antho.ng" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-stone-700 transition-colors text-xs tracking-wider"
-            >
-              <Instagram className="w-4 h-4 text-[#C9A96E]" />
-              <span>@antho.ng on Instagram &rarr;</span>
-            </a>
+            <h2 className="text-xs uppercase tracking-[0.25em] font-semibold mb-4 text-[#C9A96E]">COMMUNITY & SOCIALS</h2>
+            <div className="grid grid-cols-2 gap-3">
+              <a 
+                href="https://www.instagram.com/antho.syllogi" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2.5 p-3 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-[#C9A96E]/50 transition-colors text-xs tracking-wider"
+              >
+                <Instagram className="w-4 h-4 text-[#C9A96E]" />
+                <span>Instagram</span>
+              </a>
+              <a 
+                href="https://www.tiktok.com/@antho.syllogi" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2.5 p-3 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-[#C9A96E]/50 transition-colors text-xs tracking-wider"
+              >
+                <span className="text-xs font-bold text-[#C9A96E]">TT</span>
+                <span>TikTok</span>
+              </a>
+              <a 
+                href="https://x.com/syllogiantho?s=21" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2.5 p-3 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-[#C9A96E]/50 transition-colors text-xs tracking-wider"
+              >
+                <span className="text-xs font-bold text-[#C9A96E]">𝕏</span>
+                <span>Twitter / X</span>
+              </a>
+              <a 
+                href="https://snapchat.com/t/yXLe7p2I" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2.5 p-3 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-[#C9A96E]/50 transition-colors text-xs tracking-wider"
+              >
+                <span className="text-xs font-bold text-[#C9A96E]">SC</span>
+                <span>Snapchat</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

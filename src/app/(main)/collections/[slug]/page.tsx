@@ -61,23 +61,19 @@ export default async function CollectionPage({ params }: Props) {
     // Graceful fallback
   }
 
-  // Smart fallback filtering
+  // Smart fallback filtering based on curated capsules
   let products = dbProducts;
   if (!products || products.length === 0) {
-    if (slug === 'lagos-nights') {
+    if (slug === 'global-prevails') {
       products = sampleProducts.filter(p => 
-        p.category.toLowerCase().includes('polo') || p.category.toLowerCase().includes('tee')
+        p.category.toLowerCase().includes('graphic') || p.name.toLowerCase().includes('global') || p.name.toLowerCase().includes('prevails')
       ) as any;
-    } else if (slug === 'essentials') {
+    } else if (slug === 'npng-fleece') {
       products = sampleProducts.filter(p => 
-        p.category.toLowerCase().includes('sweatpant') || p.category.toLowerCase().includes('tee')
+        p.category.toLowerCase().includes('sweatpant') || p.category.toLowerCase().includes('polo')
       ) as any;
-    } else if (slug === 'heritage') {
-      products = sampleProducts.filter(p => 
-        p.category.toLowerCase().includes('polo')
-      ) as any;
-    } else if (slug === 'new-arrivals') {
-      products = sampleProducts.slice(0, 6) as any;
+    } else if (slug === 'the-premier-launch' || slug === 'lagos-archival' || slug === 'new-arrivals') {
+      products = sampleProducts as any;
     } else {
       products = sampleProducts as any;
     }

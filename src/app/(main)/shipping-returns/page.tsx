@@ -3,13 +3,13 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Shipping, Delivery & Returns Protocol | ANTHO',
-  description: 'ANTHO fulfillment timeline, nationwide delivery across Nigeria via tracked courier, international express shipping, and return policies.',
+  description: 'ANTHO fulfillment timeline, nationwide delivery across Nigeria via tracked courier, Covenant University drop, Lagos rates, and return policies.',
   alternates: {
     canonical: '/shipping-returns',
   },
   openGraph: {
     title: 'Shipping & Returns | ANTHO',
-    description: 'Nationwide delivery across Nigeria and international express shipping guidelines.',
+    description: 'Nationwide delivery across Nigeria and campus fulfillment guidelines.',
     url: 'https://www.anthosyllogi.xyz/shipping-returns',
   },
 };
@@ -31,6 +31,56 @@ export default function ShippingReturnsPage() {
       </div>
 
       <div className="space-y-16 text-sm sm:text-base leading-relaxed">
+        {/* Processing & Fulfillment Timeline */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-red-600" />
+            <h2 className="text-xs uppercase tracking-[0.25em] font-bold text-[#C9A96E]">
+              Order Processing Timeline
+            </h2>
+          </div>
+          <div className="space-y-3 pl-5 border-l border-black/10 dark:border-white/10 text-neutral-700 dark:text-neutral-300">
+            <p className="font-medium text-black dark:text-white">
+              All orders are processed within 10–14 business days before they are sent out for delivery.
+            </p>
+            <p>
+              Once your piece is inspected and packaged, you will receive an automated email confirmation containing full tracking information.
+            </p>
+          </div>
+        </section>
+
+        {/* Domestic Delivery Rates */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-red-600" />
+            <h2 className="text-xs uppercase tracking-[0.25em] font-bold text-[#C9A96E]">
+              Delivery Rates (Nigeria)
+            </h2>
+          </div>
+          <div className="space-y-4 pl-5 border-l border-black/10 dark:border-white/10 text-neutral-700 dark:text-neutral-300">
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2">
+                <span className="text-[#C9A96E]">&bull;</span>
+                <span>
+                  <strong className="text-black dark:text-white font-medium">Covenant University (CU):</strong> ₦3,000 NGN — Campus drop / Tradefair pop-up pickup.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#C9A96E]">&bull;</span>
+                <span>
+                  <strong className="text-black dark:text-white font-medium">Lagos State:</strong> ₦6,500 NGN — 1–2 business days dispatch following processing.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#C9A96E]">&bull;</span>
+                <span>
+                  <strong className="text-black dark:text-white font-medium">Nationwide (All Other 35 States):</strong> ₦9,000 NGN — Tracked domestic logistics across Nigeria (3–5 business days).
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
         {/* Return Policy */}
         <section className="space-y-4">
           <div className="flex items-center gap-3">
@@ -44,50 +94,17 @@ export default function ShippingReturnsPage() {
               All sales are final.
             </p>
             <p>
-              Refunds are not offered unless the item is confirmed unavailable or lost in transit.
+              Due to the limited release and small-batch production of each drop, refunds or exchanges are not offered unless an item is confirmed damaged or unavailable upon arrival.
             </p>
           </div>
         </section>
 
-        {/* Shipping Policy */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-red-600" />
-            <h2 className="text-xs uppercase tracking-[0.25em] font-bold text-[#C9A96E]">
-              Shipping Policy
-            </h2>
-          </div>
-          <div className="space-y-4 pl-5 border-l border-black/10 dark:border-white/10 text-neutral-700 dark:text-neutral-300">
-            <p>
-              Orders are processed within <strong className="text-black dark:text-white font-medium">24–48 hours</strong> following order confirmation.
-            </p>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-2">
-                <span className="text-[#C9A96E]">&bull;</span>
-                <span><strong className="text-black dark:text-white font-medium">Domestic Shipping (Nigeria):</strong> Estimated delivery is 5–7 business days after processing.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#C9A96E]">&bull;</span>
-                <span><strong className="text-black dark:text-white font-medium">International Shipping:</strong> Estimated delivery is 7–15 business days after processing.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#C9A96E]">&bull;</span>
-                <span><strong className="text-black dark:text-white font-medium">Import Duties:</strong> Duties and local taxes may apply depending on your jurisdiction.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#C9A96E]">&bull;</span>
-                <span><strong className="text-black dark:text-white font-medium">Calculation:</strong> Exact shipping rates are calculated dynamically at checkout.</span>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        {/* Assistance */}
+        {/* Client Support Assistance */}
         <section className="pt-8 border-t border-black/10 dark:border-white/10 text-xs tracking-wider uppercase text-neutral-500">
           <p>
             For order inquiries or support, contact client concierge at{' '}
-            <a href="mailto:info@antho.com" className="text-black dark:text-white underline underline-offset-4 hover:text-[#C9A96E]">
-              info@antho.com
+            <a href="mailto:antho.syllogi@gmail.com" className="text-black dark:text-white underline underline-offset-4 hover:text-[#C9A96E]">
+              antho.syllogi@gmail.com
             </a>
           </p>
         </section>

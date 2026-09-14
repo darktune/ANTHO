@@ -25,10 +25,10 @@ async function main() {
 
   // Create Collections
   const collections = [
-    { name: 'New Arrivals', slug: 'new-arrivals', description: 'The latest additions to the ANTHO catalog.' },
-    { name: 'Essentials', slug: 'essentials', description: 'Core pieces for everyday wear.' },
-    { name: 'Lagos Nights', slug: 'lagos-nights', description: 'Premium evening wear inspired by the city that never sleeps.' },
-    { name: 'Heritage', slug: 'heritage', description: 'Pieces celebrating Nigerian culture and traditional textiles.' },
+    { name: 'The Premier Launch', slug: 'the-premier-launch', description: 'The definitive 4-piece launch capsule engineered for youth and young adult streetwear connoisseurs.' },
+    { name: 'Global Prevails', slug: 'global-prevails', description: 'Iconic high-density graphic tees honoring cultural resilience and contemporary youth expression.' },
+    { name: 'NPNG & Architectural Fleece', slug: 'npng-fleece', description: 'Milled French terry sweatpants and boxy pique polo shirts designed with intentional stacked drape.' },
+    { name: 'Lagos Archival Syndicate', slug: 'lagos-archival', description: 'Documented streetwear drops and campaign silhouettes from our Covenant University tradefair pop-up series.' },
   ];
 
   const createdCollections = await Promise.all(

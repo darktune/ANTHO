@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
-import EventArchiveFolder, { CU_ARCHIVE_DATA } from '@/components/events/EventArchiveFolder';
+import EventArchiveFolder, { CU_ARCHIVE_DATA, CAMPAIGN_MEDIA_ARCHIVE_DATA } from '@/components/events/EventArchiveFolder';
 import { EventJsonLd, BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Events & Archival Dossiers | ANTHO',
-    description: 'Documenting the ANTHO x CU Tradefair 2026 and future international residencies.',
+    description: 'Documenting the ANTHO x CU Tradefair 2026 and SS26 Campaign Media Vault.',
     url: 'https://www.anthosyllogi.xyz/events',
-    images: ['/images/antho-shoot/IMG_3806.JPG'],
+    images: ['/images/slideshow/1.jpg'],
   },
 };
 
@@ -40,11 +40,11 @@ export default function EventsPage() {
             Events & Pop-Ups
           </h1>
           <p className="text-xs uppercase tracking-[0.25em] text-neutral-500 mt-2 font-medium">
-            Installations &bull; Campus Residencies &bull; Community
+            Installations &bull; Campus Residencies &bull; Community Archives
           </p>
         </div>
         <div className="text-xs font-mono text-[#C9A96E] font-semibold">
-          [ 01 UPCOMING // 01 ARCHIVED DOSSIER ]
+          [ 01 UPCOMING // 02 ARCHIVED DOSSIERS ]
         </div>
       </div>
 
@@ -74,7 +74,7 @@ export default function EventsPage() {
               </h3>
 
               <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                International debut pop-up bringing Nigerian luxury streetwear silhouettes to London. Features private styling lounges and limited capsule garments.
+                International debut pop-up bringing contemporary Nigerian youth streetwear silhouettes to London. Features private styling lounges and limited capsule garments.
               </p>
 
               <div className="text-[11px] font-mono tracking-wider text-neutral-500 pt-1">
@@ -84,7 +84,7 @@ export default function EventsPage() {
 
             <div className="shrink-0 w-full md:w-auto">
               <a
-                href="mailto:events@antho.com?subject=RSVP%20London%20Pop-Up"
+                href="mailto:antho.syllogi@gmail.com?subject=RSVP%20London%20Pop-Up"
                 className="block text-center px-6 py-3.5 bg-black dark:bg-white text-white dark:text-black text-xs uppercase tracking-[0.2em] font-bold hover:bg-[#C9A96E] dark:hover:bg-[#C9A96E] dark:hover:text-white transition-colors"
               >
                 REQUEST RSVP &rarr;
@@ -93,8 +93,8 @@ export default function EventsPage() {
           </div>
         </section>
 
-        {/* Section 2: Archive Dossier (Folder Design) */}
-        <section className="space-y-6">
+        {/* Section 2: Archive Dossiers (Folder Designs) */}
+        <section className="space-y-8">
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-neutral-400" />
             <h2 className="text-xs uppercase tracking-[0.25em] font-bold text-neutral-900 dark:text-white">
@@ -104,11 +104,20 @@ export default function EventsPage() {
           </div>
 
           <p className="text-xs text-neutral-500 uppercase tracking-wider font-mono">
-            // Click folder jacket to open full photo &amp; video process dossier
+            // Click any folder jacket to open full photo &amp; video process dossier
           </p>
 
-          {/* Interactive Archival Folder */}
-          <EventArchiveFolder />
+          {/* Dossier 1: Covenant University Tradefair '26 */}
+          <EventArchiveFolder 
+            folderData={CU_ARCHIVE_DATA} 
+            archiveNumber="001" 
+          />
+
+          {/* Dossier 2: New Campaign Assets & Media Vault */}
+          <EventArchiveFolder 
+            folderData={CAMPAIGN_MEDIA_ARCHIVE_DATA} 
+            archiveNumber="002" 
+          />
         </section>
 
       </div>
