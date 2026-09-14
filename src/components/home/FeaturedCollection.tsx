@@ -6,39 +6,41 @@ import Image from 'next/image';
 const collections = [
   {
     id: 1,
-    name: 'New Arrivals',
-    subtitle: 'SS26 Capsule',
-    href: '/shop',
-    image: '/images/antho-shoot/IMG_3804.JPG',
+    name: 'The Premier Launch',
+    subtitle: 'SS26 Four-Piece Hero Capsule',
+    description: 'The definitive 4-piece launch capsule engineered for youth streetwear connoisseurs.',
+    href: '/collections/the-premier-launch',
+    image: '/images/slideshow/1.jpg',
   },
   {
     id: 2,
-    name: 'Essentials',
-    subtitle: 'Foundational Wardrobe',
-    href: '/collections/essentials',
-    image: '/images/antho-shoot/IMG_3807.JPG',
+    name: 'Global Prevails',
+    subtitle: '300gsm Heavyweight Cut',
+    description: 'High-density silkscreen graphic tees honoring contemporary cultural resilience.',
+    href: '/collections/global-prevails',
+    image: '/images/global_black/global_black_BACK.png',
   },
 ];
 
 export default function FeaturedCollection() {
   return (
-    <section className="py-24 px-4 md:px-8 max-w-[1400px] mx-auto bg-[#0A0A0A]">
+    <section className="py-20 md:py-28 px-4 md:px-8 max-w-[1400px] mx-auto bg-transparent">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between"
+        className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between border-b border-black/10 dark:border-white/10 pb-6"
       >
         <div>
-          <span className="text-xs uppercase tracking-[0.25em] text-[#C9A96E] mb-3 block">FEATURED CAMPAIGNS</span>
-          <h2 className="font-serif text-4xl md:text-5xl text-[#FAFAF9] tracking-tight">Curated Series</h2>
+          <span className="text-xs uppercase tracking-[0.25em] text-[#C9A96E] mb-2 block">CURATED CAPSULES</span>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-neutral-900 dark:text-[#FAFAF9] tracking-tight">Featured Series</h2>
         </div>
         <Link 
           href="/collections"
-          className="mt-4 md:mt-0 text-xs uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition-colors"
+          className="mt-4 md:mt-0 text-xs uppercase tracking-[0.2em] font-semibold text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
         >
-          View All Collections &rarr;
+          [ View All Collections &rarr; ]
         </Link>
       </motion.div>
 
@@ -50,7 +52,7 @@ export default function FeaturedCollection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: i * 0.2 }}
-            className="group relative aspect-[4/5] overflow-hidden bg-zinc-900 border border-white/5"
+            className="group relative aspect-[4/5] overflow-hidden bg-zinc-900 border border-black/10 dark:border-white/10"
           >
             <Image
               src={collection.image}
@@ -64,12 +66,15 @@ export default function FeaturedCollection() {
             
             <div className="absolute bottom-8 left-8 right-8 z-20 flex flex-col items-start">
               <span className="text-xs uppercase tracking-[0.2em] text-[#C9A96E] mb-2">{collection.subtitle}</span>
-              <h3 className="font-serif text-3xl md:text-4xl text-[#FAFAF9] mb-4">{collection.name}</h3>
+              <h3 className="font-serif text-3xl md:text-4xl text-[#FAFAF9] mb-2">{collection.name}</h3>
+              <p className="text-xs text-neutral-300 mb-4 max-w-sm">
+                {collection.description}
+              </p>
               <Link 
                 href={collection.href}
                 className="text-xs uppercase tracking-[0.2em] text-[#FAFAF9] border-b border-[#FAFAF9] pb-1 hover:text-[#C9A96E] hover:border-[#C9A96E] transition-colors"
               >
-                Explore Capsule
+                Explore Capsule &rarr;
               </Link>
             </div>
           </motion.div>
