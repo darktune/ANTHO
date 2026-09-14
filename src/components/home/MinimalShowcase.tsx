@@ -17,12 +17,10 @@ interface Slide {
 const SLIDES: Slide[] = [
   { id: 1, type: 'video', src: '/images/antho-shoot/video_2026-09-04_09-11-38.mp4', tag: 'CAMPAIGN MOTION' },
   { id: 2, type: 'image', src: '/images/slideshow/1.jpg', tag: 'GLOBAL SILHOUETTE // 001' },
-  { id: 3, type: 'image', src: '/images/slideshow/4.JPEG', tag: 'HEAVYWEIGHT DRAPE // 002' },
-  { id: 4, type: 'image', src: '/images/global_white/IMG_6580.JPEG', tag: 'GLOBAL WHITE // 003' },
-  { id: 5, type: 'image', src: '/images/white_prevails/IMG_6714.JPEG', tag: 'PREVAILS TEE // 004' },
-  { id: 6, type: 'image', src: '/images/slideshow/10.jpg', tag: 'STREET ATTITUDE // 005' },
-  { id: 7, type: 'image', src: '/images/slideshow/13.JPEG', tag: 'SYLLOGI SEQUENCE // 006' },
-  { id: 8, type: 'image', src: '/images/global_black/global_black_BACK.png', tag: 'INSIGNIA NOIR // 007' },
+  { id: 3, type: 'image', src: '/images/slideshow/5.JPEG', tag: 'MONOCHROME DRAPE // 002' },
+  { id: 4, type: 'image', src: '/images/slideshow/7.JPEG', tag: 'PREVAILS ATTITUDE // 003' },
+  { id: 5, type: 'image', src: '/images/slideshow/9.jpg', tag: 'ARCHITECTURAL BALANCE // 004' },
+  { id: 6, type: 'image', src: '/images/slideshow/13.JPEG', tag: 'SYLLOGI SEQUENCE // 005' },
 ];
 
 export default function MinimalShowcase() {

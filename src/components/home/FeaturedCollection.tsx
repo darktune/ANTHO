@@ -10,7 +10,7 @@ const collections = [
     subtitle: 'SS26 Four-Piece Hero Capsule',
     description: 'The definitive 4-piece launch capsule engineered for youth streetwear connoisseurs.',
     href: '/collections/the-premier-launch',
-    image: '/images/slideshow/1.jpg',
+    image: '/images/slideshow/3.JPEG',
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const collections = [
     subtitle: '300gsm Heavyweight Cut',
     description: 'High-density silkscreen graphic tees honoring contemporary cultural resilience.',
     href: '/collections/global-prevails',
-    image: '/images/global_black/global_black_BACK.png',
+    image: '/images/slideshow/8.jpg',
   },
 ];
 

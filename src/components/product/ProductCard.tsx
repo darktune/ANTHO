@@ -48,11 +48,6 @@ export default function ProductCard({ product }: { product: Product }) {
             Best Seller
           </div>
         )}
-        {!product.isBestSeller && product.compareAtPrice && (
-          <div className="absolute top-3 left-3 bg-[#C9A96E] text-black text-[9px] font-bold px-2.5 py-1 uppercase tracking-widest z-10">
-            Sale
-          </div>
-        )}
       </div>
 
       <div className="flex flex-col gap-1 items-center text-center">
@@ -63,11 +58,6 @@ export default function ProductCard({ product }: { product: Product }) {
           <span className="text-xs text-neutral-600 dark:text-stone-400 tracking-widest font-medium">
             {formatPrice(product.price)}
           </span>
-          {product.compareAtPrice && (
-            <span className="text-[10px] text-neutral-400 dark:text-stone-600 line-through tracking-widest">
-              {formatPrice(product.compareAtPrice)}
-            </span>
-          )}
         </div>
       </div>
     </Link>

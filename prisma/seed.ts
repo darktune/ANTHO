@@ -59,7 +59,6 @@ async function main() {
         slug: p.slug,
         description: p.description,
         price: p.price,
-        compareAtPrice: p.compareAtPrice,
         category: p.category,
         materials: p.materials,
         careInstructions: p.careInstructions,

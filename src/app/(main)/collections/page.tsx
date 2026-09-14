@@ -12,7 +12,7 @@ const collections = [
     count: 4,
     subtitle: 'SS26 Hero Capsule',
     description: 'The definitive 4-piece launch capsule engineered for youth and young adult streetwear connoisseurs.',
-    image: '/images/slideshow/1.jpg'
+    image: '/images/slideshow/6.JPEG'
   },
   { 
     id: '2', 
@@ -30,7 +30,7 @@ const collections = [
     count: 2,
     subtitle: '500gsm Streetwear Silhouettes',
     description: 'Milled French terry sweatpants and boxy pique polo shirts designed with intentional stacked drape.',
-    image: '/images/slideshow/4.jpg'
+    image: '/images/antho-shoot/IMG_3807.JPG'
   },
   { 
     id: '4', 
@@ -39,7 +39,7 @@ const collections = [
     count: 4,
     subtitle: 'Pop-Up & Tradefair Archive',
     description: 'Documented streetwear drops and campaign silhouettes from our Covenant University tradefair pop-up series.',
-    image: '/images/slideshow/10.jpg'
+    image: '/images/antho-shoot/IMG_3808.JPG'
   },
 ];
 

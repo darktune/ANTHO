@@ -35,29 +35,28 @@ interface LookbookItem {
 const lookbookActs = [
   {
     actNumber: '01',
-    actTitle: 'Act I — Global Presence & Campaign Stills',
-    actSubtitle: 'High-energy editorial captures documenting the SS26 launch drop.',
+    actTitle: 'Act I — Global Presence & Street Movement',
+    actSubtitle: 'High-energy editorial captures documenting contemporary Lagos youth expression.',
     items: [
-      { id: '1', src: '/images/slideshow/1.jpg', title: 'Look 01 — Architectural Form', aspect: 'aspect-[3/4]', act: 'Act I' },
-      { id: '2', src: '/images/slideshow/2.JPEG', title: 'Look 02 — Urban Silhouette', aspect: 'aspect-[4/5]', act: 'Act I' },
-      { id: '3', src: '/images/slideshow/3.JPEG', title: 'Look 03 — Shadow Play', aspect: 'aspect-[3/4]', act: 'Act I' },
-      { id: '4', src: '/images/slideshow/4.JPEG', title: 'Look 04 — Relaxed Heavyweight Cut', aspect: 'aspect-[4/5]', act: 'Act I' },
-      { id: '5', src: '/images/slideshow/5.JPEG', title: 'Look 05 — Monochrome Narrative', aspect: 'aspect-[3/4]', act: 'Act I' },
-      { id: '6', src: '/images/slideshow/6.JPEG', title: 'Look 06 — Intentional Drape', aspect: 'aspect-[4/5]', act: 'Act I' },
+      { id: '1', src: '/images/slideshow/10.jpg', title: 'Look 01 — Architectural Form', aspect: 'aspect-[3/4]', act: 'Act I' },
+      { id: '2', src: '/images/slideshow/11.JPEG', title: 'Look 02 — Raw Textile Structure', aspect: 'aspect-[4/5]', act: 'Act I' },
+      { id: '3', src: '/images/slideshow/12.jpg', title: 'Look 03 — Lagos Night Horizon', aspect: 'aspect-[3/4]', act: 'Act I' },
+      { id: '4', src: '/images/global_white/IMG_6580.JPEG', title: 'Look 04 — Global White Silhouette', aspect: 'aspect-[4/5]', act: 'Act I' },
+      { id: '5', src: '/images/global_white/IMG_6727.JPEG', title: 'Look 05 — Contemporary Cut Detail', aspect: 'aspect-[3/4]', act: 'Act I' },
+      { id: '6', src: '/images/global_black/IMG_6550.jpg', title: 'Look 06 — Onyx Black Street Attitude', aspect: 'aspect-[4/5]', act: 'Act I' },
     ]
   },
   {
     actNumber: '02',
-    actTitle: 'Act II — Lagos Archival Movement',
-    actSubtitle: 'Everyday street armor and culture rooted in youthful energy.',
+    actTitle: 'Act II — Prevails Movement & Silhouette',
+    actSubtitle: 'Everyday street armor and culture rooted in youthful resilience.',
     items: [
-      { id: '7', src: '/images/slideshow/7.JPEG', title: 'Look 07 — The Prevails Attitude', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '8', src: '/images/slideshow/8.JPEG', title: 'Look 08 — Concrete & Culture', aspect: 'aspect-[4/5]', act: 'Act II' },
-      { id: '9', src: '/images/slideshow/9.JPEG', title: 'Look 09 — Architectural Balance', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '10', src: '/images/slideshow/10.jpg', title: 'Look 10 — The Tradefair Edit', aspect: 'aspect-[4/5]', act: 'Act II' },
-      { id: '11', src: '/images/slideshow/11.JPEG', title: 'Look 11 — Raw Textile Structure', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '12', src: '/images/slideshow/12.JPEG', title: 'Look 12 — Night Horizon', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '13', src: '/images/slideshow/13.JPEG', title: 'Look 13 — Syllogi In Motion', aspect: 'aspect-[4/5]', act: 'Act II' },
+      { id: '7', src: '/images/white_prevails/IMG_6714.JPEG', title: 'Look 07 — The Prevails Attitude', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '8', src: '/images/white_prevails/IMG_6590.JPEG', title: 'Look 08 — White Back Arch Detail', aspect: 'aspect-[4/5]', act: 'Act II' },
+      { id: '9', src: '/images/white_prevails/IMG_6630.JPEG', title: 'Look 09 — High-Density Silkscreen Form', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '10', src: '/images/black_prevails/IMG_4911.jpg', title: 'Look 10 — Prevails Noir Street Style', aspect: 'aspect-[4/5]', act: 'Act II' },
+      { id: '11', src: '/images/black_prevails/IMG_6704.JPEG', title: 'Look 11 — Dropped Shoulder Tailoring', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '12', src: '/images/black_prevails/IMG_6715.JPEG', title: 'Look 12 — Elastic Plastisol Detail', aspect: 'aspect-[4/5]', act: 'Act II' },
     ]
   },
   {
@@ -65,12 +64,12 @@ const lookbookActs = [
     actTitle: 'Act III — Studio Atelier & Streetwear Detail',
     actSubtitle: 'High-density silk-screen prints, mother-of-pearl buttons, and 500gsm fleece details.',
     items: [
-      { id: '14', src: '/images/global_black/IMG_4346.jpg', title: 'Look 14 — Global Black Stance', aspect: 'aspect-[3/4]', act: 'Act III' },
-      { id: '15', src: '/images/global_white/IMG_4344.jpg', title: 'Look 15 — Global White Silhouette', aspect: 'aspect-[4/5]', act: 'Act III' },
-      { id: '16', src: '/images/black_prevails/IMG_4911.jpg', title: 'Look 16 — Prevails Noir Expression', aspect: 'aspect-[3/4]', act: 'Act III' },
-      { id: '17', src: '/images/white_prevails/IMG_6714.JPEG', title: 'Look 17 — Prevails Pure Form', aspect: 'aspect-[4/5]', act: 'Act III' },
-      { id: '18', src: '/images/antho-shoot/IMG_3806.JPG', title: 'Look 18 — Editorial Drape', aspect: 'aspect-[3/4]', act: 'Act III' },
-      { id: '19', src: '/images/antho-shoot/IMG_3801.JPG', title: 'Look 19 — NPNG Stacked Hem', aspect: 'aspect-[4/5]', act: 'Act III' },
+      { id: '13', src: '/images/global_black/IMG_4346.jpg', title: 'Look 13 — 300gsm Combed Cotton Drape', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '14', src: '/images/global_black/IMG_6693.JPEG', title: 'Look 14 — Chest Typography Insignia', aspect: 'aspect-[4/5]', act: 'Act III' },
+      { id: '15', src: '/images/global_white/IMG_4344.jpg', title: 'Look 15 — Clean Architectural Form', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '16', src: '/images/white_prevails/IMG_6598.JPEG', title: 'Look 16 — Hem & Cuff Reinforcement', aspect: 'aspect-[4/5]', act: 'Act III' },
+      { id: '17', src: '/images/black_prevails/IMG_6594.JPEG', title: 'Look 17 — Monochrome Tonal Balance', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '18', src: '/images/antho-shoot/IMG_3806.JPG', title: 'Look 18 — Editorial Drape On Form', aspect: 'aspect-[4/5]', act: 'Act III' },
     ]
   }
 ];

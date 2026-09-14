@@ -201,8 +201,8 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
   ],
   previews: [
     "/images/global_black/IMG_6729.JPEG",
-    "/images/slideshow/1.jpg",
-    "/images/white_prevails/IMG_6714.JPEG"
+    "/images/global_white/IMG_6733.JPEG",
+    "/images/black_prevails/IMG_6738.JPEG"
   ],
   items: [
     {
