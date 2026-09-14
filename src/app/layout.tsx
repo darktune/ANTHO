@@ -118,7 +118,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${instrumentSans.variable} ${playfairDisplay.variable} scroll-smooth`}
     >
-      <head>
+      <head suppressHydrationWarning>
         <OrganizationJsonLd />
         <WebSiteJsonLd />
       </head>

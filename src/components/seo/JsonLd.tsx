@@ -1,14 +1,19 @@
 import React from 'react';
 
 interface JsonLdProps {
+  id?: string;
   data: Record<string, any>;
 }
 
-export default function JsonLd({ data }: JsonLdProps) {
+export default function JsonLd({ id, data }: JsonLdProps) {
+  const scriptId = id || (data?.['@type'] ? `jsonld-${String(data['@type']).toLowerCase()}` : 'jsonld-schema');
   return (
     <script
+      id={scriptId}
+      key={scriptId}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      suppressHydrationWarning
     />
   );
 }
@@ -43,7 +48,7 @@ export function OrganizationJsonLd() {
     }
   };
 
-  return <JsonLd data={schema} />;
+  return <JsonLd id="jsonld-organization" data={schema} />;
 }
 
 export function WebSiteJsonLd() {
@@ -61,7 +66,7 @@ export function WebSiteJsonLd() {
     }
   };
 
-  return <JsonLd data={schema} />;
+  return <JsonLd id="jsonld-website" data={schema} />;
 }
 
 export function ProductJsonLd({ product }: { product: any }) {
@@ -99,7 +104,7 @@ export function ProductJsonLd({ product }: { product: any }) {
     }
   };
 
-  return <JsonLd data={schema} />;
+  return <JsonLd id={`jsonld-product-${product.slug || product.id || 'current'}`} data={schema} />;
 }
 
 export function BreadcrumbJsonLd({ items }: { items: { name: string; url?: string }[] }) {
@@ -116,7 +121,7 @@ export function BreadcrumbJsonLd({ items }: { items: { name: string; url?: strin
     }))
   };
 
-  return <JsonLd data={schema} />;
+  return <JsonLd id="jsonld-breadcrumbs" data={schema} />;
 }
 
 export function EventJsonLd({ event }: { event: any }) {
@@ -150,5 +155,5 @@ export function EventJsonLd({ event }: { event: any }) {
     }
   };
 
-  return <JsonLd data={schema} />;
+  return <JsonLd id={`jsonld-event-${event.id || 'current'}`} data={schema} />;
 }
