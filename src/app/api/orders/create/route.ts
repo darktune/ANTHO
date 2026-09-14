@@ -68,7 +68,8 @@ export async function POST(request: Request) {
     }
 
     // Determine base URL for Paystack callback
-    const origin = request.headers.get('origin') || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const rawOrigin = request.headers.get('origin') || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const origin = rawOrigin.replace(/\/+$/, '');
     const callbackUrl = `${origin}/api/paystack/callback`;
 
     // Initialize Paystack transaction (amount in Kobo)

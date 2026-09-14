@@ -8,7 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
   ({ label, error, className = '', textarea = false, ...rest }, ref) => {
-    const baseClasses = "w-full bg-transparent border-b border-[#A8A29E]/50 focus:border-[#C9A96E] outline-none text-white py-2 transition-colors placeholder:text-[#A8A29E]/50";
+    const baseClasses = "w-full bg-transparent border-b border-[#A8A29E]/50 focus:border-[#C9A96E] outline-none text-neutral-900 dark:text-white py-2 transition-colors placeholder:text-[#A8A29E]/50";
     const errorClasses = error ? "border-red-500 focus:border-red-500" : "";
     
     return (

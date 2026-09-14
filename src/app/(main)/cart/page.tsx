@@ -113,49 +113,49 @@ export default function CartPage() {
         </div>
 
         <div className="lg:col-span-4">
-          <div className="bg-stone-900/50 border border-stone-800 p-8 sticky top-24">
-            <h2 className="text-xl font-medium mb-6">ORDER SUMMARY</h2>
+          <div className="bg-stone-100 dark:bg-stone-900/60 border border-black/10 dark:border-stone-800 p-6 sm:p-8 sticky top-24">
+            <h2 className="text-sm uppercase tracking-[0.2em] font-semibold mb-6 text-neutral-900 dark:text-white">ORDER SUMMARY</h2>
             
-            <div className="space-y-4 mb-6 pb-6 border-b border-stone-800 text-sm">
+            <div className="space-y-4 mb-6 pb-6 border-b border-black/10 dark:border-stone-800 text-sm">
               <div className="flex justify-between">
-                <span className="text-stone-400">Subtotal</span>
-                <span>{formatPrice(subtotal)}</span>
+                <span className="text-neutral-500 dark:text-stone-400">Subtotal</span>
+                <span className="font-mono text-neutral-900 dark:text-white">{formatPrice(subtotal)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-stone-400">Shipping</span>
-                <span>Calculated at checkout</span>
+                <span className="text-neutral-500 dark:text-stone-400">Shipping</span>
+                <span className="text-neutral-600 dark:text-stone-400 text-xs">Calculated at checkout</span>
               </div>
             </div>
             
             <div className="flex justify-between items-end mb-8">
-              <span className="text-lg font-medium">Total</span>
-              <span className="text-2xl font-serif">{formatPrice(subtotal)}</span>
+              <span className="text-base uppercase tracking-wider font-semibold text-neutral-900 dark:text-white">Total</span>
+              <span className="text-2xl font-mono text-[#C9A96E] font-bold">{formatPrice(subtotal)}</span>
             </div>
 
             <div className="space-y-4">
               <Link 
                 href="/checkout" 
-                className="block w-full bg-white text-black text-center py-4 font-medium hover:bg-stone-200 transition-colors"
+                className="block w-full bg-black text-white dark:bg-white dark:text-black text-center py-4 font-bold text-xs uppercase tracking-[0.25em] hover:bg-[#C9A96E] dark:hover:bg-[#C9A96E] dark:hover:text-white transition-colors duration-300 shadow-sm"
               >
-                CHECKOUT
+                PROCEED TO CHECKOUT &rarr;
               </Link>
               
               <Link 
                 href="/shop" 
-                className="block w-full text-center py-4 text-sm font-medium text-stone-400 hover:text-white transition-colors border border-stone-800"
+                className="block w-full text-center py-4 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-600 dark:text-stone-400 hover:text-black dark:hover:text-white transition-colors border border-black/15 dark:border-stone-800"
               >
                 CONTINUE SHOPPING
               </Link>
             </div>
 
             {subtotal < 5000000 && (
-              <p className="text-xs text-center text-stone-500 mt-6">
-                Spend {formatPrice(5000000 - subtotal)} more to get free shipping.
+              <p className="text-xs text-center text-neutral-500 dark:text-stone-500 mt-6">
+                Spend {formatPrice(5000000 - subtotal)} more to unlock free shipping across Nigeria.
               </p>
             )}
             {subtotal >= 5000000 && (
-              <p className="text-xs text-center text-gold mt-6 uppercase tracking-wider">
-                ✓ Free shipping unlocked
+              <p className="text-xs text-center text-[#C9A96E] font-semibold mt-6 uppercase tracking-wider">
+                ✓ Free Shipping Unlocked
               </p>
             )}
           </div>
