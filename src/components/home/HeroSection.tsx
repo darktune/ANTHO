@@ -18,7 +18,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-[100svh] h-[100svh] w-full flex items-center justify-center overflow-hidden bg-black">
       {/* Background Creative Illustration */}
       <motion.div 
         style={{ y }}
@@ -48,7 +48,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 w-full max-w-7xl mx-auto h-full pb-20 pt-32">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 w-full max-w-7xl mx-auto h-full pb-12 sm:pb-20 pt-24 sm:pt-32">
         <div className="flex-1 flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -56,7 +56,7 @@ export default function HeroSection() {
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
             className="flex flex-col items-center"
           >
-            <h1 className="font-serif text-5xl md:text-8xl lg:text-[11rem] tracking-tight text-white mb-2 md:mb-6">
+            <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] tracking-tight text-white mb-2 md:mb-6">
               ANTHO
             </h1>
             <p className="text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] text-neutral-300 font-light uppercase">
@@ -70,22 +70,22 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: mounted ? 1 : 0 }}
           transition={{ duration: 1, delay: 1 }}
-          className="w-full flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0 mt-auto"
+          className="w-full flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-0 mt-auto"
         >
           <div className="hidden md:block w-1/3 text-left">
             <span className="text-xs tracking-widest text-neutral-400 uppercase">Collection 004</span>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-1/3 justify-center">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full md:w-1/3 justify-center">
             <Link 
               href="/collections"
-              className="inline-block border border-white text-white px-8 py-3 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors duration-500 w-full sm:w-auto"
+              className="inline-flex items-center justify-center border border-white text-white px-8 py-3.5 min-h-[48px] text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors duration-500 w-full sm:w-auto"
             >
               Explore Collection
             </Link>
             <Link 
               href="/shop"
-              className="inline-block text-white px-8 py-3 text-xs tracking-widest uppercase hover:text-neutral-400 transition-colors duration-500 w-full sm:w-auto"
+              className="inline-flex items-center justify-center border border-white/20 sm:border-transparent text-white px-8 py-3.5 min-h-[48px] text-xs tracking-widest uppercase hover:text-neutral-400 transition-colors duration-500 w-full sm:w-auto"
             >
               Shop
             </Link>

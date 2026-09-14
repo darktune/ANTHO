@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -112,7 +112,7 @@ export default function VIPIntentModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-lg bg-white dark:bg-[#0E0E0E] text-neutral-900 dark:text-white border border-black/10 dark:border-white/10 p-8 md:p-10 shadow-2xl overflow-hidden"
+            className="relative w-full max-w-lg bg-white dark:bg-[#0E0E0E] text-neutral-900 dark:text-white border border-black/10 dark:border-white/10 p-6 sm:p-8 md:p-10 shadow-2xl overflow-hidden max-h-[90dvh] overflow-y-auto"
           >
             {/* Ambient Gold Accent Light */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#C9A96E]/10 rounded-full blur-3xl pointer-events-none" />
@@ -120,14 +120,14 @@ export default function VIPIntentModal() {
             {/* Close Button */}
             <button
               onClick={handleDismiss}
-              className="absolute top-5 right-5 p-2 text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
 
             {isSuccess ? (
-              <div className="py-8 text-center">
+              <div className="py-6 sm:py-8 text-center">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#C9A96E]/15 text-[#C9A96E] mb-6">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
@@ -143,18 +143,18 @@ export default function VIPIntentModal() {
               </div>
             ) : (
               <div>
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 mb-3 sm:mb-4">
                   <ShieldCheck className="w-4 h-4 text-[#C9A96E]" />
-                  <span className="text-[10px] font-mono tracking-[0.25em] text-[#C9A96E] uppercase">
+                  <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.25em] text-[#C9A96E] uppercase">
                     EXCLUSIVE INVITATION
                   </span>
                 </div>
 
-                <h3 className="font-serif text-2xl md:text-3xl tracking-wide mb-3">
+                <h3 className="font-serif text-2xl sm:text-3xl tracking-wide mb-2 sm:mb-3">
                   SYLLOGI INNER CIRCLE
                 </h3>
 
-                <p className="text-sm text-neutral-600 dark:text-neutral-300 font-light leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-light leading-relaxed mb-5 sm:mb-6">
                   Privileged access to archival re-issues, secret midnight drops, and private showroom invitations in Lagos.
                 </p>
 
@@ -166,7 +166,7 @@ export default function VIPIntentModal() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="ENTER YOUR EMAIL FOR DROP ACCESS"
                       required
-                      className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 px-4 py-3.5 text-xs font-mono tracking-wider text-black dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C9A96E] transition-colors"
+                      className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 px-4 py-3.5 text-base sm:text-xs font-mono tracking-wider text-black dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C9A96E] transition-colors"
                     />
                     {errorMessage && (
                       <p className="text-red-500 text-[11px] mt-1.5 font-mono">{errorMessage}</p>
@@ -176,7 +176,7 @@ export default function VIPIntentModal() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black text-xs font-mono tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50"
+                    className="w-full py-3.5 min-h-[48px] bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black text-xs font-mono tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 shadow-md"
                   >
                     <span>{isSubmitting ? 'VERIFYING...' : 'REQUEST PRIVILEGED ACCESS'}</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cartStore';
 import { formatPrice } from '@/lib/utils';
@@ -9,10 +9,12 @@ import { FREE_SHIPPING_THRESHOLD, getShippingCost } from "@/lib/constants";
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ChevronDown } from 'lucide-react';
 
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, selectedState } = useCartStore();
+  const [isMobileSummaryOpen, setIsMobileSummaryOpen] = useState(false);
   
   useEffect(() => {
     if (items.length === 0) {
@@ -35,21 +37,53 @@ export default function CheckoutPage() {
   const total = subtotal + shippingCost;
 
   return (
-    <div className="container mx-auto px-4 py-12 pt-28 md:pt-36 lg:py-16 lg:pt-36 max-w-7xl">
+    <div className="container mx-auto px-4 py-8 sm:py-12 pt-20 sm:pt-28 md:pt-36 lg:py-16 lg:pt-36 max-w-7xl">
       <Breadcrumbs 
         items={[
           { label: 'Bag', href: '/cart' },
           { label: 'Checkout' }
         ]} 
-        className="mb-8"
+        className="mb-6 sm:mb-8"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+      {/* Mobile Collapsible Order Summary Banner */}
+      <div className="block lg:hidden mb-6 border border-black/10 dark:border-stone-800 bg-stone-100 dark:bg-stone-900/70 p-4">
+        <button
+          type="button"
+          onClick={() => setIsMobileSummaryOpen(!isMobileSummaryOpen)}
+          className="w-full flex items-center justify-between text-xs uppercase tracking-wider font-semibold min-h-[44px]"
+        >
+          <div className="flex items-center gap-2">
+            <span>{isMobileSummaryOpen ? 'Hide Summary' : 'Show Order Summary'} ({items.length})</span>
+            <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isMobileSummaryOpen ? 'rotate-180 text-[#C9A96E]' : ''}`} />
+          </div>
+          <span className="font-mono text-sm text-[#C9A96E]">{formatPrice(total)}</span>
+        </button>
+        
+        {isMobileSummaryOpen && (
+          <div className="mt-3 pt-3 border-t border-black/10 dark:border-stone-800 space-y-3">
+            {items.map((item) => (
+              <div key={`m-${item.productId}-${item.variantId}`} className="flex justify-between items-center text-xs">
+                <span className="truncate pr-4 text-neutral-800 dark:text-neutral-200">{item.name} &times; {item.quantity}</span>
+                <span className="font-mono shrink-0 text-neutral-900 dark:text-white">{formatPrice(item.price * item.quantity)}</span>
+              </div>
+            ))}
+            <div className="pt-2 border-t border-black/5 dark:border-white/5 flex justify-between text-xs text-neutral-500">
+              <span>Shipping</span>
+              <span className="font-mono text-neutral-800 dark:text-neutral-200">
+                {!selectedState ? 'Enter state' : shippingCost === 0 ? 'Free' : formatPrice(shippingCost)}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
         {/* Left Column - Form */}
         <div className="lg:col-span-7">
-          <div className="mb-8">
-            <h1 className="text-3xl font-serif mb-2 text-neutral-900 dark:text-white">CHECKOUT</h1>
-            <p className="text-neutral-500 dark:text-stone-400 text-sm">Complete your order details below.</p>
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl font-serif mb-2 text-neutral-900 dark:text-white">CHECKOUT</h1>
+            <p className="text-neutral-500 dark:text-stone-400 text-xs sm:text-sm">Complete your delivery and order details below.</p>
           </div>
           
           <CheckoutForm subtotal={subtotal} />

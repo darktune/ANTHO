@@ -1,7 +1,11 @@
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 
 export const metadata = {
-  title: 'Admin Dashboard | ANTHO',
+  title: 'Admin Concierge OS | ANTHO',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function AdminLayout({

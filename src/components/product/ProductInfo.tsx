@@ -137,118 +137,118 @@ export default function ProductInfo({ product }: { product: any }) {
           <SizeSelector sizes={sizes} selectedSize={size} onSelect={setSize} variants={[]} />
         </div>
 
-        <div>
-          <span className="text-xs uppercase tracking-wider text-neutral-600 dark:text-[#A8A29E] block mb-2 font-medium">
-            Quantity
-          </span>
-          <div className="flex items-center border border-neutral-300 dark:border-neutral-700 w-32">
-            <button 
-              type="button"
-              onClick={() => setQuantity(Math.max(1, quantity - 1))} 
-              className="px-3 py-2 text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white transition-colors"
-              aria-label="Decrease quantity"
-            >
-              <Minus className="w-3.5 h-3.5" />
-            </button>
-            <span className="flex-1 text-center font-mono text-xs text-neutral-900 dark:text-[#FAFAF9]">
-              {quantity}
+          <div>
+            <span className="text-xs uppercase tracking-wider text-neutral-600 dark:text-[#A8A29E] block mb-2 font-medium">
+              Quantity
             </span>
-            <button 
-              type="button"
-              onClick={() => setQuantity(quantity + 1)} 
-              className="px-3 py-2 text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white transition-colors"
-              aria-label="Increase quantity"
-            >
-              <Plus className="w-3.5 h-3.5" />
-            </button>
+            <div className="flex items-center border border-neutral-300 dark:border-neutral-700 w-36 h-11">
+              <button 
+                type="button"
+                onClick={() => setQuantity(Math.max(1, quantity - 1))} 
+                className="w-11 h-11 flex items-center justify-center text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white transition-colors"
+                aria-label="Decrease quantity"
+              >
+                <Minus className="w-3.5 h-3.5" />
+              </button>
+              <span className="flex-1 text-center font-mono text-xs text-neutral-900 dark:text-[#FAFAF9]">
+                {quantity}
+              </span>
+              <button 
+                type="button"
+                onClick={() => setQuantity(quantity + 1)} 
+                className="w-11 h-11 flex items-center justify-center text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white transition-colors"
+                aria-label="Increase quantity"
+              >
+                <Plus className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex flex-col gap-3 pt-4">
-        <button 
-          type="button"
-          onClick={handleAddToCart} 
-          className="w-full bg-black text-white dark:bg-[#FAFAF9] dark:text-[#0A0A0A] font-bold py-4 text-xs tracking-[0.25em] uppercase hover:bg-[#C9A96E] dark:hover:bg-[#C9A96E] dark:hover:text-white transition-colors duration-300 shadow-sm"
-        >
-          {added ? 'ADDED TO BAG ✓' : 'ADD TO BAG'}
-        </button>
-        <button 
-          type="button"
-          onClick={handleBuyNow} 
-          className="w-full bg-transparent border border-black dark:border-white/40 text-neutral-900 dark:text-[#FAFAF9] font-bold py-4 text-xs tracking-[0.25em] uppercase hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-300"
-        >
-          BUY NOW
-        </button>
-      </div>
-
-      <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-[#A8A29E]/30">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold">
-            In Stock &bull; Ready to Ship
-          </span>
+        <div className="flex flex-col gap-3 pt-4">
+          <button 
+            type="button"
+            onClick={handleAddToCart} 
+            className="w-full bg-black text-white dark:bg-[#FAFAF9] dark:text-[#0A0A0A] font-bold min-h-[48px] py-4 text-xs tracking-[0.25em] uppercase hover:bg-[#C9A96E] dark:hover:bg-[#C9A96E] dark:hover:text-white transition-colors duration-300 shadow-sm flex items-center justify-center"
+          >
+            {added ? 'ADDED TO BAG ✓' : 'ADD TO BAG'}
+          </button>
+          <button 
+            type="button"
+            onClick={handleBuyNow} 
+            className="w-full bg-transparent border border-black dark:border-white/40 text-neutral-900 dark:text-[#FAFAF9] font-bold min-h-[48px] py-4 text-xs tracking-[0.25em] uppercase hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-300 flex items-center justify-center"
+          >
+            BUY NOW
+          </button>
         </div>
-        <button 
-          type="button"
-          onClick={handleShare}
-          className="flex items-center gap-2 text-xs uppercase tracking-wider text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white transition-colors"
-        >
-          {copied ? (
-            <>
-              <Check className="w-3.5 h-3.5 text-[#C9A96E]" />
-              <span className="text-[#C9A96E] font-bold">LINK COPIED</span>
-            </>
-          ) : (
-            <>
-              <Share2 className="w-3.5 h-3.5" />
-              <span>SHARE</span>
-            </>
-          )}
-        </button>
-      </div>
 
-      {/* Accordions */}
-      <div className="mt-4 divide-y divide-neutral-200 dark:divide-[#A8A29E]/30 border-y border-neutral-200 dark:border-[#A8A29E]/30">
-        <details className="group py-4">
-          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9] text-xs uppercase tracking-wider">
-            <span>Description & Silhouette</span>
-            <span className="transition group-open:rotate-180">
-              <Plus className="w-4 h-4" />
+        <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-[#A8A29E]/30">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold">
+              In Stock &bull; Ready to Ship
             </span>
-          </summary>
-          <div className="text-neutral-600 dark:text-[#A8A29E] text-xs sm:text-sm mt-3 leading-relaxed">
-            {product.description || 'Premium architectural streetwear piece meticulously designed and finished in Lagos, Nigeria.'}
           </div>
-        </details>
-        <details className="group py-4">
-          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9] text-xs uppercase tracking-wider">
-            <span>Materials & Care</span>
-            <span className="transition group-open:rotate-180">
-              <Plus className="w-4 h-4" />
-            </span>
-          </summary>
-          <div className="text-neutral-600 dark:text-[#A8A29E] text-xs sm:text-sm mt-3 leading-relaxed">
-            100% Heavyweight Cotton. Custom ribbing and hand-distressed detailing. Cold wash with like colors. Do not tumble dry.
-          </div>
-        </details>
-        <details className="group py-4">
-          <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9] text-xs uppercase tracking-wider">
-            <span>Shipping & Concierge Returns</span>
-            <span className="transition group-open:rotate-180">
-              <Plus className="w-4 h-4" />
-            </span>
-          </summary>
-          <div className="text-neutral-600 dark:text-[#A8A29E] text-xs sm:text-sm mt-3 leading-relaxed">
-            Orders are fulfilled within 24–48 hours. Nationwide delivery across Nigeria via tracked courier (1–5 business days). International express delivery via DHL.
-          </div>
-        </details>
-      </div>
+          <button 
+            type="button"
+            onClick={handleShare}
+            className="flex items-center gap-2 text-xs uppercase tracking-wider text-neutral-600 hover:text-black dark:text-[#A8A29E] dark:hover:text-white transition-colors min-h-[44px] px-2"
+          >
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-[#C9A96E]" />
+                <span className="text-[#C9A96E] font-bold">LINK COPIED</span>
+              </>
+            ) : (
+              <>
+                <Share2 className="w-3.5 h-3.5" />
+                <span>SHARE</span>
+              </>
+            )}
+          </button>
+        </div>
 
-      {/* Size Guide Modal */}
-      {isSizeGuideOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#FAFAF9] dark:bg-[#121212] border border-black/10 dark:border-white/15 max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+        {/* Accordions */}
+        <div className="mt-4 divide-y divide-neutral-200 dark:divide-[#A8A29E]/30 border-y border-neutral-200 dark:border-[#A8A29E]/30">
+          <details className="group py-4">
+            <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9] text-xs uppercase tracking-wider min-h-[36px]">
+              <span>Description & Silhouette</span>
+              <span className="transition group-open:rotate-180">
+                <Plus className="w-4 h-4" />
+              </span>
+            </summary>
+            <div className="text-neutral-600 dark:text-[#A8A29E] text-xs sm:text-sm mt-3 leading-relaxed">
+              {product.description || 'Premium architectural streetwear piece meticulously designed and finished in Lagos, Nigeria.'}
+            </div>
+          </details>
+          <details className="group py-4">
+            <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9] text-xs uppercase tracking-wider min-h-[36px]">
+              <span>Materials & Care</span>
+              <span className="transition group-open:rotate-180">
+                <Plus className="w-4 h-4" />
+              </span>
+            </summary>
+            <div className="text-neutral-600 dark:text-[#A8A29E] text-xs sm:text-sm mt-3 leading-relaxed">
+              100% Heavyweight Cotton. Custom ribbing and hand-distressed detailing. Cold wash with like colors. Do not tumble dry.
+            </div>
+          </details>
+          <details className="group py-4">
+            <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-neutral-900 dark:text-[#FAFAF9] text-xs uppercase tracking-wider min-h-[36px]">
+              <span>Shipping & Concierge Returns</span>
+              <span className="transition group-open:rotate-180">
+                <Plus className="w-4 h-4" />
+              </span>
+            </summary>
+            <div className="text-neutral-600 dark:text-[#A8A29E] text-xs sm:text-sm mt-3 leading-relaxed">
+              Orders are fulfilled within 24–48 hours. Nationwide delivery across Nigeria via tracked courier (1–5 business days). International express delivery via DHL.
+            </div>
+          </details>
+        </div>
+
+        {/* Size Guide Modal */}
+        {isSizeGuideOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm">
+            <div className="bg-[#FAFAF9] dark:bg-[#121212] border border-black/10 dark:border-white/15 max-w-lg w-full p-5 sm:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto">
             <div className="flex justify-between items-center pb-4 mb-4 border-b border-black/10 dark:border-white/10">
               <div>
                 <span className="text-[10px] uppercase tracking-[0.25em] text-[#C9A96E] font-bold block">MEASUREMENTS</span>

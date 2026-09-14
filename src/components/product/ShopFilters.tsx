@@ -31,10 +31,10 @@ export default function ShopFilters() {
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-6 text-xs md:text-sm tracking-widest uppercase font-medium">
+    <div className="flex items-center gap-4 sm:gap-6 text-[11px] sm:text-xs md:text-sm tracking-widest uppercase font-medium overflow-x-auto hide-scrollbar max-w-full flex-nowrap sm:flex-wrap pb-2 sm:pb-0 shrink-0">
       <button 
         onClick={() => router.push(pathname, { scroll: false })}
-        className={`transition-colors duration-300 ${!currentCategory ? 'text-neutral-900 dark:text-white border-b-2 border-neutral-900 dark:border-white pb-1 font-semibold' : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'}`}
+        className={`transition-colors duration-300 min-h-[44px] flex items-center shrink-0 ${!currentCategory ? 'text-neutral-900 dark:text-white border-b-2 border-neutral-900 dark:border-white font-semibold' : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'}`}
       >
         All
       </button>
@@ -42,7 +42,7 @@ export default function ShopFilters() {
         <button 
           key={cat}
           onClick={() => handleCategoryClick(cat)}
-          className={`transition-colors duration-300 ${currentCategory === cat ? 'text-neutral-900 dark:text-white border-b-2 border-neutral-900 dark:border-white pb-1 font-semibold' : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'}`}
+          className={`transition-colors duration-300 min-h-[44px] flex items-center shrink-0 ${currentCategory === cat ? 'text-neutral-900 dark:text-white border-b-2 border-neutral-900 dark:border-white font-semibold' : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'}`}
         >
           {cat}
         </button>

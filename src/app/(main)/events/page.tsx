@@ -1,14 +1,32 @@
+import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
-import EventArchiveFolder from '@/components/events/EventArchiveFolder';
+import EventArchiveFolder, { CU_ARCHIVE_DATA } from '@/components/events/EventArchiveFolder';
+import { EventJsonLd, BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
-export const metadata = {
-  title: 'Events & Pop-Ups | ANTHO',
-  description: 'Pop-up experiences, community events, and archival installations by ANTHO.',
+export const metadata: Metadata = {
+  title: 'Events, Pop-Ups & Archive Dossier | ANTHO',
+  description: 'Archival documentation of ANTHO runway activations, campus tradefairs, and international fashion installations.',
+  alternates: {
+    canonical: '/events',
+  },
+  openGraph: {
+    title: 'Events & Archival Dossiers | ANTHO',
+    description: 'Documenting the ANTHO x CU Tradefair 2026 and future international residencies.',
+    url: 'https://www.anthosyllogi.xyz/events',
+    images: ['/images/antho-shoot/IMG_3806.JPG'],
+  },
 };
 
 export default function EventsPage() {
+  const breadcrumbItems = [
+    { name: 'Home', url: '/' },
+    { name: 'Events & Pop-Ups', url: '/events' },
+  ];
+
   return (
-    <div className="max-w-5xl mx-auto px-6 sm:px-8 py-16 pt-28 md:pt-36">
+    <div className="max-w-5xl mx-auto px-4 sm:px-8 py-10 sm:py-16 pt-20 sm:pt-28 md:pt-36">
+      <EventJsonLd event={CU_ARCHIVE_DATA} />
+      <BreadcrumbJsonLd items={breadcrumbItems} />
       <Breadcrumbs 
         items={[
           { label: 'Drops & Visuals', href: '/collections' },

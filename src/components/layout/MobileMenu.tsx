@@ -56,14 +56,14 @@ export default function MobileMenu() {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-50 overflow-y-auto bg-[#FAFAF9] dark:bg-[#0A0A0A] text-[#0A0A0A] dark:text-[#FAFAF9] flex flex-col justify-between px-6 sm:px-12 md:px-20 py-8 md:py-12 transition-colors duration-300"
+          className="fixed inset-0 z-50 overflow-y-auto bg-[#FAFAF9] dark:bg-[#0A0A0A] text-[#0A0A0A] dark:text-[#FAFAF9] flex flex-col justify-between px-4 sm:px-12 md:px-20 py-6 md:py-12 transition-colors duration-300"
         >
           {/* Top Bar */}
-          <div className="flex items-center justify-between pb-8 border-b border-black/10 dark:border-white/10">
+          <div className="flex items-center justify-between pb-6 sm:pb-8 border-b border-black/10 dark:border-white/10 gap-2">
             <Link 
               href="/" 
               onClick={() => closeMobileMenu()}
-              className="relative h-10 w-28 md:w-36 block"
+              className="relative h-8 sm:h-10 w-24 sm:w-28 md:w-36 shrink-0 block"
             >
               <Image 
                 src="/images/logos/antho-wordmark-red.png" 
@@ -79,21 +79,22 @@ export default function MobileMenu() {
               />
             </Link>
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 sm:gap-6">
               <button
                 onClick={() => toggleTheme()}
-                className="flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] px-3 py-1.5 border border-black/20 dark:border-white/20 rounded-full hover:border-black dark:hover:border-white transition-colors"
+                className="flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] md:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] px-2.5 sm:px-3 py-1.5 border border-black/20 dark:border-white/20 rounded-full hover:border-black dark:hover:border-white transition-colors shrink-0"
                 title="Toggle Theme (Light / Dark / Auto)"
               >
-                <span className="w-2 h-2 rounded-full bg-[#C9A96E]" />
-                <span>{theme === 'dark' ? 'DARK MODE' : theme === 'light' ? 'LIGHT MODE' : 'AUTO SYSTEM'}</span>
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#C9A96E]" />
+                <span>{theme === 'dark' ? 'DARK' : theme === 'light' ? 'LIGHT' : 'AUTO'}</span>
               </button>
 
               <button 
                 onClick={() => closeMobileMenu()} 
-                className="uppercase tracking-[0.25em] text-xs md:text-sm font-semibold hover:opacity-60 transition-opacity"
+                className="uppercase tracking-[0.2em] text-xs md:text-sm font-semibold hover:opacity-60 transition-opacity min-h-[44px] px-2 flex items-center shrink-0"
+                aria-label="Close navigation menu"
               >
-                [ CLOSE &times; ]
+                [ &times; ]
               </button>
             </div>
           </div>

@@ -1,6 +1,8 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 const collections = [
   { 
@@ -37,19 +39,34 @@ const collections = [
   },
 ];
 
-export const metadata = {
-  title: 'Collections | ANTHO — Premium Contemporary Nigerian Fashion',
-  description: 'Explore the curated seasonal collections and capsule releases from ANTHO.',
+export const metadata: Metadata = {
+  title: 'Curated Collections & Seasonal Archives | ANTHO',
+  description: 'Explore the curated seasonal collections, capsule drops, and archival releases from ANTHO in Lagos, Nigeria.',
+  alternates: {
+    canonical: '/collections',
+  },
+  openGraph: {
+    title: 'Curated Collections | ANTHO — Luxury Nigerian Streetwear',
+    description: 'Explore seasonal collections, tailoring, and streetwear capsules.',
+    url: 'https://www.anthosyllogi.xyz/collections',
+    images: ['/images/antho-shoot/IMG_3806.JPG'],
+  },
 };
 
 export default function CollectionsPage() {
+  const breadcrumbItems = [
+    { name: 'Home', url: '/' },
+    { name: 'Collections', url: '/collections' },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28 md:pt-36">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pt-20 sm:pt-28 md:pt-36">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
       <Breadcrumbs 
         items={[
           { label: 'Collections' },
         ]} 
-        className="mb-8"
+        className="mb-6 sm:mb-8"
       />
       
       <div className="mb-14">

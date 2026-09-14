@@ -1,9 +1,18 @@
+import type { Metadata } from 'next';
 import Accordion from '@/components/ui/Accordion';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
-export const metadata = {
-  title: 'FAQ | ANTHO',
-  description: 'Frequently asked questions about ANTHO orders, shipping, returns, and sizing.',
+export const metadata: Metadata = {
+  title: 'Client FAQs & Care Guide | ANTHO',
+  description: 'Frequently asked questions regarding ANTHO drops, nationwide delivery in Nigeria, international DHL shipping, tailored sizing, and payment security.',
+  alternates: {
+    canonical: '/faq',
+  },
+  openGraph: {
+    title: 'Client FAQs | ANTHO Concierge',
+    description: 'Frequently asked questions regarding ANTHO drops, delivery, and sizing.',
+    url: 'https://www.anthosyllogi.xyz/faq',
+  },
 };
 
 export default function FAQPage() {
@@ -95,7 +104,7 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-16 pt-28 md:pt-36 lg:py-24 lg:pt-36 max-w-4xl">
+    <div className="container mx-auto px-4 py-10 sm:py-16 pt-20 sm:pt-28 md:pt-36 lg:py-24 lg:pt-36 max-w-4xl">
       <Breadcrumbs 
         items={[
           { label: 'Client Care', href: '/shipping-returns' },

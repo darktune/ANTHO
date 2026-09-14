@@ -1,13 +1,22 @@
+import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
-export const metadata = {
-  title: 'Shipping & Returns | ANTHO',
-  description: 'Shipping and return policies for ANTHO.',
+export const metadata: Metadata = {
+  title: 'Shipping, Delivery & Returns Protocol | ANTHO',
+  description: 'ANTHO fulfillment timeline, nationwide delivery across Nigeria via tracked courier, international express shipping, and return policies.',
+  alternates: {
+    canonical: '/shipping-returns',
+  },
+  openGraph: {
+    title: 'Shipping & Returns | ANTHO',
+    description: 'Nationwide delivery across Nigeria and international express shipping guidelines.',
+    url: 'https://www.anthosyllogi.xyz/shipping-returns',
+  },
 };
 
 export default function ShippingReturnsPage() {
   return (
-    <div className="max-w-4xl mx-auto px-6 sm:px-8 py-16 pt-28 md:pt-36">
+    <div className="max-w-4xl mx-auto px-4 sm:px-8 py-10 sm:py-16 pt-20 sm:pt-28 md:pt-36">
       <Breadcrumbs 
         items={[
           { label: 'Client Care', href: '/faq' },

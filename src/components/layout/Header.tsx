@@ -16,10 +16,11 @@ export default function Header() {
       <div className="flex items-center justify-between w-full h-16 sm:h-20 px-4 sm:px-8 md:px-12">
         
         {/* Left: Menu & Theme Toggle */}
-        <div className="flex-1 flex items-center justify-start gap-2.5 sm:gap-5 min-w-0">
+        <div className="flex-1 flex items-center justify-start gap-1 sm:gap-5 min-w-0">
           <button 
             onClick={() => openMobileMenu()} 
-            className="uppercase tracking-[0.2em] text-[11px] sm:text-xs font-semibold hover:opacity-60 transition-opacity text-black dark:text-white shrink-0"
+            className="uppercase tracking-[0.2em] text-[11px] sm:text-xs font-semibold hover:opacity-60 transition-opacity text-black dark:text-white shrink-0 min-h-[44px] px-2 flex items-center"
+            aria-label="Open navigation menu"
           >
             MENU
           </button>
@@ -29,7 +30,7 @@ export default function Header() {
           <button 
             onClick={() => toggleTheme()}
             aria-label={`Toggle Theme. Current: ${theme}`}
-            className="group flex items-center gap-1.5 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold hover:opacity-60 transition-all text-black dark:text-white shrink-0"
+            className="group flex items-center gap-1.5 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold hover:opacity-60 transition-all text-black dark:text-white shrink-0 min-h-[44px] px-2"
             title={`Current: ${theme.toUpperCase()} (Click to toggle Light / Dark / Auto)`}
           >
             {theme === 'dark' && (
@@ -91,7 +92,8 @@ export default function Header() {
         <div className="flex-1 flex justify-end min-w-0">
           <button 
             onClick={() => openCartDrawer()} 
-            className="uppercase tracking-[0.2em] text-[11px] sm:text-xs font-semibold hover:opacity-60 transition-opacity text-black dark:text-white shrink-0"
+            className="uppercase tracking-[0.2em] text-[11px] sm:text-xs font-semibold hover:opacity-60 transition-opacity text-black dark:text-white shrink-0 min-h-[44px] px-2 flex items-center"
+            aria-label={`View shopping bag containing ${cartCount} items`}
           >
             BAG [{cartCount}]
           </button>

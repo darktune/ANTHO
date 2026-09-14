@@ -196,15 +196,15 @@ export default function EventArchiveFolder() {
         
         {/* Top Folder Tab Notch */}
         <div className="flex items-end">
-          <div className="relative z-10 px-5 sm:px-7 py-2.5 bg-[#E8E5DF] dark:bg-[#1E1D1B] border-t-2 border-l-2 border-r-2 border-black/20 dark:border-white/20 rounded-t-lg flex items-center gap-3 transition-colors duration-300 shadow-sm">
-            <div className="flex items-center gap-2">
+          <div className="relative z-10 px-3.5 sm:px-7 py-2 sm:py-2.5 bg-[#E8E5DF] dark:bg-[#1E1D1B] border-t-2 border-l-2 border-r-2 border-black/20 dark:border-white/20 rounded-t-lg flex items-center gap-2 sm:gap-3 transition-colors duration-300 shadow-sm">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <FolderArchive className="w-3.5 h-3.5 text-[#C9A96E]" />
-              <span className="text-[10px] sm:text-xs font-mono tracking-widest uppercase font-bold text-neutral-800 dark:text-neutral-200">
-                ARCHIVE FILE // 001
+              <span className="text-[9px] sm:text-xs font-mono tracking-widest uppercase font-bold text-neutral-800 dark:text-neutral-200">
+                ARCHIVE // 001
               </span>
             </div>
             <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-            <span className="text-[9px] uppercase tracking-widest px-2 py-0.5 bg-red-600/10 text-red-600 dark:text-red-400 font-bold border border-red-600/20">
+            <span className="text-[8px] sm:text-[9px] uppercase tracking-widest px-1.5 sm:px-2 py-0.5 bg-red-600/10 text-red-600 dark:text-red-400 font-bold border border-red-600/20">
               DECLASSIFIED
             </span>
           </div>
@@ -217,7 +217,7 @@ export default function EventArchiveFolder() {
         </div>
 
         {/* Main Folder Body Jacket */}
-        <div className="relative bg-[#F4F1EB] dark:bg-[#151413] border-2 border-black/20 dark:border-white/20 p-6 sm:p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:border-[#C9A96E]/80">
+        <div className="relative bg-[#F4F1EB] dark:bg-[#151413] border-2 border-black/20 dark:border-white/20 p-5 sm:p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:border-[#C9A96E]/80">
           
           {/* Subtle Folder Inner Stitching Border */}
           <div className="absolute inset-2 sm:inset-3 border border-dashed border-black/10 dark:border-white/10 pointer-events-none" />
@@ -338,29 +338,29 @@ export default function EventArchiveFolder() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 30, scale: 0.98 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-4xl bg-[#FAFAF9] dark:bg-[#0D0D0D] text-[#0A0A0A] dark:text-[#FAFAF9] border border-black/20 dark:border-white/20 shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92vh]"
+              className="relative z-10 w-full max-w-4xl bg-[#FAFAF9] dark:bg-[#0D0D0D] text-[#0A0A0A] dark:text-[#FAFAF9] border border-black/20 dark:border-white/20 shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92dvh] sm:max-h-[90vh]"
             >
               {/* Sticky Top Header Bar */}
-              <div className="sticky top-0 z-30 bg-[#FAFAF9]/95 dark:bg-[#0D0D0D]/95 backdrop-blur-md border-b border-black/10 dark:border-white/10 px-6 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
+              <div className="sticky top-0 z-30 bg-[#FAFAF9]/95 dark:bg-[#0D0D0D]/95 backdrop-blur-md border-b border-black/10 dark:border-white/10 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-red-600 animate-pulse shrink-0" />
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-[#C9A96E] font-bold block">
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-mono text-[#C9A96E] font-bold block">
                       ARCHIVE DOSSIER // DECLASSIFIED
                     </span>
-                    <h3 className="text-xs sm:text-sm font-serif uppercase tracking-wider font-semibold">
+                    <h3 className="text-xs sm:text-sm font-serif uppercase tracking-wider font-semibold line-clamp-1">
                       {CU_ARCHIVE_DATA.shortTitle}
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4">
                   <span className="hidden sm:inline font-mono text-xs text-neutral-400">
                     {CU_ARCHIVE_DATA.date}
                   </span>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="p-2 text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
+                    className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
                     aria-label="Close archive dossier"
                   >
                     <X className="w-5 h-5" />
@@ -369,7 +369,7 @@ export default function EventArchiveFolder() {
               </div>
 
               {/* Scrollable Story Document Content */}
-              <div className="flex-1 overflow-y-auto px-6 sm:px-10 md:px-12 py-8 space-y-12 custom-scrollbar">
+              <div className="flex-1 overflow-y-auto px-4 sm:px-10 md:px-12 py-6 sm:py-8 space-y-8 sm:space-y-12 custom-scrollbar">
                 
                 {/* Document Title Banner */}
                 <div className="border-b border-black/10 dark:border-white/10 pb-8">

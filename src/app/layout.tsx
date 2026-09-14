@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Playfair_Display } from "next/font/google";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -17,41 +18,85 @@ const playfairDisplay = Playfair_Display({
   weight: ["400", "500", "600", "700"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.anthosyllogi.xyz";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAFAF9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0A" },
+  ],
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "ANTHO — Premium Nigerian Fashion",
+    default: "ANTHO — Premium Contemporary Nigerian Fashion & Streetwear",
     template: "%s | ANTHO",
   },
   description:
-    "ANTHO is a premium Nigerian clothing brand blending contemporary design with cultural roots. Shop modern, bold, street-luxury fashion made for the culture.",
+    "ANTHO is a premier Nigerian luxury streetwear atelier blending architectural silhouettes with cultural roots. Shop limited drops, classic polos, heavyweight sweatpants, and archival graphic tees.",
   keywords: [
     "ANTHO",
+    "ANTHO Syllogi",
     "Nigerian fashion",
     "premium clothing",
     "streetwear Nigeria",
     "Lagos fashion",
-    "African fashion",
+    "African luxury fashion",
     "luxury streetwear",
     "Nigerian clothing brand",
+    "contemporary streetwear Lagos",
   ],
-  authors: [{ name: "ANTHO" }],
+  authors: [{ name: "ANTHO", url: siteUrl }],
   creator: "ANTHO",
+  publisher: "ANTHO",
   manifest: "/manifest.json",
-  robots: "index, follow",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_NG",
-    url: process.env.NEXT_PUBLIC_SITE_URL,
+    url: siteUrl,
     siteName: "ANTHO",
-    title: "ANTHO — Premium Nigerian Fashion",
+    title: "ANTHO — Premium Contemporary Nigerian Fashion",
     description:
-      "Premium Nigerian clothing brand. Contemporary design rooted in culture.",
+      "Premier Nigerian luxury streetwear atelier blending architectural silhouettes with cultural roots. Shop limited drops.",
+    images: [
+      {
+        url: "/images/antho-shoot/IMG_3806.JPG",
+        width: 1200,
+        height: 630,
+        alt: "ANTHO — Contemporary Nigerian Streetwear & Editorial",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ANTHO — Premium Nigerian Fashion",
+    title: "ANTHO — Premium Contemporary Nigerian Fashion",
     description:
-      "Premium Nigerian clothing brand. Contemporary design rooted in culture.",
+      "Premier Nigerian luxury streetwear atelier blending architectural silhouettes with cultural roots.",
+    creator: "@antho_ng",
+    images: ["/images/antho-shoot/IMG_3806.JPG"],
+  },
+  icons: {
+    icon: "/images/logos/antho-emblem-dark.png",
+    apple: "/images/logos/antho-emblem-dark.png",
   },
 };
 
@@ -66,6 +111,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${instrumentSans.variable} ${playfairDisplay.variable} scroll-smooth`}
     >
+      <head>
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

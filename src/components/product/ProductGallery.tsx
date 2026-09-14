@@ -70,16 +70,16 @@ export default function ProductGallery({ images = [] }: { images: GalleryImage[]
         </AnimatePresence>
 
         {/* Download High-Res Editorial Asset */}
-        <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
           <a
             href={currentImage.url}
             download={`ANTHO-${(currentImage.alt || 'Asset').replace(/[^a-zA-Z0-9]/g, '_')}.jpg`}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-black/60 hover:bg-[#C9A96E] text-white hover:text-black text-[10px] font-mono tracking-widest uppercase rounded backdrop-blur-md transition-all duration-300 shadow-lg"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 bg-black/70 hover:bg-[#C9A96E] text-white hover:text-black text-[9px] sm:text-[10px] font-mono tracking-widest uppercase rounded backdrop-blur-md transition-all duration-300 shadow-lg"
             title="Download High-Res Media Asset"
             aria-label="Download High-Res Media Asset"
           >
             <Download className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">HIGH-RES</span>
+            <span className="inline">HIGH-RES</span>
           </a>
         </div>
       </div>

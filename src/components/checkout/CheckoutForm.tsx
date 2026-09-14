@@ -162,7 +162,7 @@ export function CheckoutForm({ subtotal }: CheckoutFormProps) {
               onChange={handleChange}
               required
               rows={3}
-              className="w-full bg-stone-50 dark:bg-stone-900 border border-neutral-300 dark:border-stone-800 px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-[#C9A96E] transition-colors text-sm placeholder:text-stone-400"
+              className="w-full bg-stone-50 dark:bg-stone-900 border border-neutral-300 dark:border-stone-800 px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-[#C9A96E] transition-colors text-base sm:text-sm placeholder:text-stone-400"
               placeholder="Street address, estate, apartment, etc."
             />
           </div>
@@ -184,7 +184,7 @@ export function CheckoutForm({ subtotal }: CheckoutFormProps) {
                 value={selectedState || ''}
                 onChange={handleStateChange}
                 required
-                className="w-full bg-stone-50 dark:bg-stone-900 border border-neutral-300 dark:border-stone-800 px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-[#C9A96E] transition-colors text-sm"
+                className="w-full bg-stone-50 dark:bg-stone-900 border border-neutral-300 dark:border-stone-800 px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-[#C9A96E] transition-colors text-base sm:text-sm"
               >
                 <option value="" disabled>Select State</option>
                 {NIGERIAN_STATES.map((state) => (
@@ -201,18 +201,15 @@ export function CheckoutForm({ subtotal }: CheckoutFormProps) {
       {/* Additional Notes */}
       <section>
         <h2 className="text-sm uppercase tracking-[0.2em] font-semibold mb-4 pb-2 border-b border-black/10 dark:border-stone-800 text-neutral-900 dark:text-white">
-          Additional Notes
+          Order Notes (Optional)
         </h2>
         <div className="space-y-2">
-          <label className="block text-[10px] uppercase tracking-[0.2em] text-[#A8A29E] font-semibold">
-            Order Notes (Optional)
-          </label>
           <textarea 
             name="notes"
             value={formData.notes}
             onChange={handleChange}
             rows={2}
-            className="w-full bg-stone-50 dark:bg-stone-900 border border-neutral-300 dark:border-stone-800 px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-[#C9A96E] transition-colors text-sm placeholder:text-stone-400"
+            className="w-full bg-stone-50 dark:bg-stone-900 border border-neutral-300 dark:border-stone-800 px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-[#C9A96E] transition-colors text-base sm:text-sm placeholder:text-stone-400"
             placeholder="Special delivery instructions or gate access..."
           />
         </div>
@@ -222,7 +219,7 @@ export function CheckoutForm({ subtotal }: CheckoutFormProps) {
         <button 
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-black text-white dark:bg-white dark:text-black py-4 font-bold hover:bg-[#C9A96E] dark:hover:bg-[#C9A96E] dark:hover:text-white transition-colors duration-300 disabled:opacity-50 flex justify-center items-center tracking-widest text-xs uppercase"
+          className="w-full bg-black text-white dark:bg-white dark:text-black py-4 min-h-[52px] font-bold hover:bg-[#C9A96E] dark:hover:bg-[#C9A96E] dark:hover:text-white transition-colors duration-300 disabled:opacity-50 flex justify-center items-center tracking-widest text-xs uppercase shadow-md"
         >
           {isSubmitting ? (
             <>
