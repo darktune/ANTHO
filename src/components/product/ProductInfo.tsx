@@ -57,6 +57,8 @@ export default function ProductInfo({ product }: { product: any }) {
 
   const handleShare = async () => {
     if (typeof window === 'undefined') return;
+
+    // 1. Native mobile share sheet
     if (navigator.share) {
       try {
         await navigator.share({
@@ -65,16 +67,36 @@ export default function ProductInfo({ product }: { product: any }) {
           url: window.location.href,
         });
         return;
-      } catch {
-        // User cancelled share dialog
+      } catch (err: any) {
+        if (err?.name === 'AbortError') return;
       }
     }
-    if (navigator.clipboard) {
-      try {
+
+    // 2. Clipboard API
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(window.location.href);
         setCopied(true);
         setTimeout(() => setCopied(false), 2500);
-      } catch {}
+        return;
+      }
+    } catch {}
+
+    // 3. Fallback input copy
+    try {
+      const el = document.createElement('textarea');
+      el.value = window.location.href;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch (e) {
+      console.error('Share link copy failed:', e);
     }
   };
 
