@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Download } from 'lucide-react';
 
 interface GalleryImage {
   id?: string;
@@ -31,7 +32,7 @@ export default function ProductGallery({ images = [] }: { images: GalleryImage[]
               key={img.id || i}
               onClick={() => setActiveIndex(i)}
               className={`relative w-16 md:w-20 aspect-[3/4] shrink-0 bg-stone-900 overflow-hidden border transition-all duration-300 ${
-                activeIndex === i ? 'border-[#C9A96E] opacity-100' : 'border-white/10 opacity-50 hover:opacity-100'
+                activeIndex === i ? 'border-[#C9A96E] opacity-100' : 'border-neutral-200 dark:border-white/10 opacity-60 hover:opacity-100'
               }`}
             >
               <Image 
@@ -47,7 +48,7 @@ export default function ProductGallery({ images = [] }: { images: GalleryImage[]
       )}
       
       {/* Main Image View */}
-      <div className="flex-1 relative aspect-[3/4] bg-stone-900 overflow-hidden border border-white/5">
+      <div className="flex-1 relative aspect-[3/4] bg-stone-900 overflow-hidden border border-neutral-200 dark:border-white/10 group">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndex}
@@ -67,6 +68,20 @@ export default function ProductGallery({ images = [] }: { images: GalleryImage[]
             />
           </motion.div>
         </AnimatePresence>
+
+        {/* Download High-Res Editorial Asset */}
+        <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a
+            href={currentImage.url}
+            download={`ANTHO-${(currentImage.alt || 'Asset').replace(/[^a-zA-Z0-9]/g, '_')}.jpg`}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-black/60 hover:bg-[#C9A96E] text-white hover:text-black text-[10px] font-mono tracking-widest uppercase rounded backdrop-blur-md transition-all duration-300 shadow-lg"
+            title="Download High-Res Media Asset"
+            aria-label="Download High-Res Media Asset"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">HIGH-RES</span>
+          </a>
+        </div>
       </div>
     </div>
   );

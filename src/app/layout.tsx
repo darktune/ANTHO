@@ -36,6 +36,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "ANTHO" }],
   creator: "ANTHO",
+  manifest: "/manifest.json",
   robots: "index, follow",
   openGraph: {
     type: "website",

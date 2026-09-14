@@ -28,11 +28,27 @@ export default function Header() {
 
           <button 
             onClick={() => toggleTheme()}
-            aria-label="Toggle Theme"
+            aria-label={`Toggle Theme. Current: ${theme}`}
             className="group flex items-center gap-1.5 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold hover:opacity-60 transition-all text-black dark:text-white shrink-0"
+            title={`Current: ${theme.toUpperCase()} (Click to toggle Light / Dark / Auto)`}
           >
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A96E] group-hover:scale-125 transition-transform" />
-            <span>{theme === 'dark' ? 'LIGHT' : 'DARK'}</span>
+            {theme === 'dark' && (
+              <svg className="w-3.5 h-3.5 text-[#C9A96E] transition-transform group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
+            {theme === 'light' && (
+              <svg className="w-3.5 h-3.5 text-[#C9A96E] transition-transform group-hover:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            )}
+            {theme === 'system' && (
+              <svg className="w-3.5 h-3.5 text-[#C9A96E] animate-spin" style={{ animationDuration: '8s' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="4 2" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" />
+              </svg>
+            )}
+            <span>{theme === 'dark' ? 'DARK' : theme === 'light' ? 'LIGHT' : 'AUTO'}</span>
           </button>
         </div>
 

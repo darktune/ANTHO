@@ -6,6 +6,8 @@ import CartDrawer from '@/components/cart/CartDrawer';
 import FilmGrain from '@/components/ui/FilmGrain';
 import CustomCursor from '@/components/ui/CustomCursor';
 import ThemeWrapper from '@/components/layout/ThemeWrapper';
+import ServiceWorkerRegister from '@/components/layout/ServiceWorkerRegister';
+import VIPIntentModal from '@/components/layout/VIPIntentModal';
 
 export default function MainLayout({
   children,
@@ -18,6 +20,8 @@ export default function MainLayout({
         <FilmGrain />
         <CustomCursor />
         <Preloader />
+        <ServiceWorkerRegister />
+        <VIPIntentModal />
         <Header />
         <MobileMenu />
         <CartDrawer />

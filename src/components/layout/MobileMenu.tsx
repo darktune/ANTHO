@@ -83,9 +83,10 @@ export default function MobileMenu() {
               <button
                 onClick={() => toggleTheme()}
                 className="flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] px-3 py-1.5 border border-black/20 dark:border-white/20 rounded-full hover:border-black dark:hover:border-white transition-colors"
+                title="Toggle Theme (Light / Dark / Auto)"
               >
                 <span className="w-2 h-2 rounded-full bg-[#C9A96E]" />
-                <span>{theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE'}</span>
+                <span>{theme === 'dark' ? 'DARK MODE' : theme === 'light' ? 'LIGHT MODE' : 'AUTO SYSTEM'}</span>
               </button>
 
               <button 

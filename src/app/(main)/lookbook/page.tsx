@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import { Download } from 'lucide-react';
 
 export const metadata = {
   title: 'Lookbook | ANTHO — SS26 The Lagos Edit',
@@ -36,7 +37,10 @@ export default function LookbookPage() {
       <section className="text-center px-4 max-w-4xl mx-auto mb-16">
         <span className="text-xs uppercase tracking-[0.3em] text-[#C9A96E] mb-3 block">EDITORIAL JOURNAL</span>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-neutral-900 dark:text-white tracking-tight mb-4">LOOKBOOK</h1>
-        <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 font-light tracking-[0.2em] uppercase">SS26 — The Lagos Edit</p>
+        <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 font-light tracking-[0.2em] uppercase mb-4">SS26 — The Lagos Edit</p>
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[10px] font-mono tracking-widest text-neutral-500 uppercase">
+          <span>12 EDITORIAL STILLS &bull; HIGH-RES DOWNLOADS ENABLED</span>
+        </div>
       </section>
 
       {/* Masonry Grid */}
@@ -55,9 +59,22 @@ export default function LookbookPage() {
                 className="object-cover object-center transform transition-transform duration-1000 ease-out group-hover:scale-105 filter grayscale contrast-110 group-hover:grayscale-0 transition-all duration-700"
               />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                <span className="text-xs font-mono text-[#C9A96E] uppercase tracking-widest mb-1">0{item.id}</span>
-                <span className="text-white font-serif text-lg tracking-wider italic">{item.title}</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                <div className="flex justify-between items-end gap-3">
+                  <div>
+                    <span className="text-[10px] font-mono text-[#C9A96E] uppercase tracking-widest mb-1 block">LOOK 0{item.id}</span>
+                    <span className="text-white font-serif text-lg tracking-wider italic block">{item.title}</span>
+                  </div>
+                  <a
+                    href={item.src}
+                    download={`ANTHO-${item.title.replace(/[^a-zA-Z0-9]/g, '_')}.jpg`}
+                    className="p-2.5 bg-white/15 hover:bg-[#C9A96E] text-white hover:text-black rounded-full backdrop-blur-md transition-all duration-300 shrink-0 group/dl shadow-lg"
+                    title="Download High-Res Editorial Still"
+                    aria-label={`Download ${item.title}`}
+                  >
+                    <Download className="w-4 h-4 transition-transform group-hover/dl:translate-y-0.5" />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
