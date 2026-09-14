@@ -91,12 +91,19 @@ export const metadata: Metadata = {
     title: "ANTHO — Premium Contemporary Nigerian Fashion",
     description:
       "Premier Nigerian luxury streetwear atelier blending architectural silhouettes with cultural roots.",
-    creator: "@antho_ng",
+    creator: "@syllogiantho",
     images: ["/images/antho-shoot/IMG_3806.JPG"],
   },
   icons: {
-    icon: "/images/logos/antho-emblem-dark.png",
-    apple: "/images/logos/antho-emblem-dark.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
   },
 };
 
