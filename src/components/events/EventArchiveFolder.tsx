@@ -14,6 +14,7 @@ import {
   VolumeX 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
 export interface ArchiveItem {
   id: string;
@@ -79,7 +80,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Before loading the freight convoy for Ogun State, the ANTHO creative unit captured a 48-hour motion reel in Lagos. We wanted the Covenant University student body to witness how our heavyweight streetwear silhouettes breathe, fall, and retain their architectural lines in kinetic motion rather than on static racks.",
       socialLink: {
         platform: "Instagram",
-        url: "https://www.instagram.com/antho.syllogi",
+        url: SOCIAL_LINKS.instagram,
         label: "Watch Motion Reel on Instagram Stories"
       }
     },
@@ -93,7 +94,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       story: "For the tradefair drop, our studio partnered with master dye artisans in Abeokuta to formulate custom Adire resist-dyed indigo textiles. By binding ancestral dye techniques with heavyweight 380GSM cotton, each piece in the CU collection arrived completely one-of-a-kind.",
       socialLink: {
         platform: "Instagram",
-        url: "https://www.instagram.com/antho.syllogi",
+        url: SOCIAL_LINKS.instagram,
         label: "View Atelier Indigo Dyeing BTS on IG"
       }
     },
@@ -107,7 +108,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Fine-tuning the relaxed Cuban collar and fluid drape. Engineered specifically to breathe in the Ota campus humidity while commanding luxury distinction during university lectures and evening events.",
       socialLink: {
         platform: "X (Twitter)",
-        url: "https://x.com/syllogiantho?s=21",
+        url: SOCIAL_LINKS.twitter,
         label: "Read Design Philosophy Thread on X"
       }
     },
@@ -121,7 +122,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Rigorous fit checks inside our Yaba workshop. The double-layered hood was engineered to remain rigid and sculptural without collapsing, while deep kangaroo pockets were reinforced with double-needle lockstitching.",
       socialLink: {
         platform: "TikTok",
-        url: "https://www.tiktok.com/@antho.syllogi",
+        url: SOCIAL_LINKS.tiktok,
         label: "Watch Tailoring Process on TikTok"
       }
     },
@@ -135,7 +136,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Designed for effortless campus movement between halls and lecture theaters. Gusseted leg seams allow natural stride, while dual cinch cords at the ankles enable styling either as relaxed straight trousers or stacked tapered sweat silhouettes.",
       socialLink: {
         platform: "Instagram",
-        url: "https://www.instagram.com/antho.syllogi",
+        url: SOCIAL_LINKS.instagram,
         label: "View Campus Styling Lookbook on IG"
       }
     },
@@ -149,7 +150,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Constructing the ANTHO experiential pavilion inside the Covenant University Student Activity Center. Over 36 sleepless hours, raw scaffolding tubes were wire-brushed and mounted with warm gallery-spec track lighting.",
       socialLink: {
         platform: "X (Twitter)",
-        url: "https://x.com/syllogiantho?s=21",
+        url: SOCIAL_LINKS.twitter,
         label: "See Booth Construction Time-Lapse on X"
       }
     },
@@ -163,7 +164,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Doors opened at 10:00 AM to a queue extending across the Student Activity Center plaza. Students engaged in on-the-spot styling sessions with creative directors, experiencing the garments directly.",
       socialLink: {
         platform: "Instagram",
-        url: "https://www.instagram.com/antho.syllogi",
+        url: SOCIAL_LINKS.instagram,
         label: "Watch Opening Day Stories on Instagram"
       }
     },
@@ -177,7 +178,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       story: "By Sunday afternoon, all 300 numbered Genesis garments were sold out. A momentous milestone proving that Nigerian university youth demand uncompromising luxury streetwear made with local integrity.",
       socialLink: {
         platform: "X (Twitter)",
-        url: "https://x.com/syllogiantho?s=21",
+        url: SOCIAL_LINKS.twitter,
         label: "Read Founder Debrief & Thanks on X"
       }
     }
@@ -215,7 +216,7 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Close inspection of the high-tensile 300gsm combed cotton weave on the ANTHO Global Tee in Onyx Black. Formulated to resist tropical shrinkage and maintain a sharp, boxy drop shoulder silhouette without deformation under rigorous daily wear.",
       socialLink: {
         platform: "Instagram",
-        url: "https://www.instagram.com/antho.syllogi",
+        url: SOCIAL_LINKS.instagram,
         label: "View Global Black Stills on IG"
       }
     },
@@ -229,7 +230,7 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Achieving true white opacity without board-like stiffness. The custom tight ribbed neckline is double-stitched to eliminate baconing and stretching through dozens of high-temperature wash cycles.",
       socialLink: {
         platform: "TikTok",
-        url: "https://www.tiktok.com/@antho.syllogi",
+        url: SOCIAL_LINKS.tiktok,
         label: "Watch Studio Fit Reel on TikTok"
       }
     },
@@ -243,7 +244,7 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Field testing on the streets of Lagos. The ANTHO PREVAILS silkscreen artwork utilizes custom plastisol pigment formulated with high-tensile elastic binders so the print flexes with the heavy cotton without cracking.",
       socialLink: {
         platform: "X (Twitter)",
-        url: "https://x.com/syllogiantho?s=21",
+        url: SOCIAL_LINKS.twitter,
         label: "Read Silkscreen Formulation Notes on X"
       }
     },
@@ -257,7 +258,7 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Engineered specifically for youth and young adult streetwear connoisseurs: wider sleeve hems, elongated back drop, and clean architectural drape over denim or cargo trousers.",
       socialLink: {
         platform: "Instagram",
-        url: "https://www.instagram.com/antho.syllogi",
+        url: SOCIAL_LINKS.instagram,
         label: "View Model Lookbook on Instagram"
       }
     },
@@ -271,7 +272,7 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Captured in high contrast against industrial concrete in Lagos. Visualizes the defiant elegance and unapologetic swagger of contemporary Nigerian youth culture.",
       socialLink: {
         platform: "Snapchat",
-        url: "https://snapchat.com/t/yXLe7p2I",
+        url: SOCIAL_LINKS.snapchat,
         label: "View Behind-The-Scenes on Snapchat"
       }
     },
@@ -285,7 +286,7 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Documentation of the mobile clothing racks, ambient lighting, and high-energy music at the pop-up drop. Community members gathered to inspect and pick up reserved orders directly.",
       socialLink: {
         platform: "Instagram",
-        url: "https://www.instagram.com/antho.syllogi",
+        url: SOCIAL_LINKS.instagram,
         label: "View Pop-Up Highlights on IG"
       }
     },
@@ -299,7 +300,7 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
       story: "500gsm French terry fleece custom milled to provide thermal weight and structured stacking over low-top or chunky sneakers. Deep reinforced welt pockets and tonal inner drawcords.",
       socialLink: {
         platform: "TikTok",
-        url: "https://www.tiktok.com/@antho.syllogi",
+        url: SOCIAL_LINKS.tiktok,
         label: "Watch Styling Reel on TikTok"
       }
     },
@@ -313,7 +314,7 @@ export const CAMPAIGN_MEDIA_ARCHIVE_DATA: ArchiveFolderData = {
       story: "Refining the classic pique polo into high-end youth streetwear. Boxy relaxed drape, hand-sewn genuine mother-of-pearl buttons, and tonal embroidery.",
       socialLink: {
         platform: "X (Twitter)",
-        url: "https://x.com/syllogiantho?s=21",
+        url: SOCIAL_LINKS.twitter,
         label: "Read Atelier Notes on X"
       }
     }

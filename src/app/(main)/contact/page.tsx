@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Input from '@/components/ui/Input';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { MapPin, Mail, MessageCircle, Clock, Instagram, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -217,7 +218,7 @@ export default function ContactPage() {
             <h2 className="text-xs uppercase tracking-[0.25em] font-semibold mb-4 text-[#C9A96E]">COMMUNITY & SOCIALS</h2>
             <div className="grid grid-cols-2 gap-3">
               <a 
-                href="https://www.instagram.com/antho.syllogi" 
+                href={SOCIAL_LINKS.instagram} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center gap-2.5 p-3 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-[#C9A96E]/50 transition-colors text-xs tracking-wider"
@@ -226,7 +227,7 @@ export default function ContactPage() {
                 <span>Instagram</span>
               </a>
               <a 
-                href="https://www.tiktok.com/@antho.syllogi" 
+                href={SOCIAL_LINKS.tiktok} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center gap-2.5 p-3 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-[#C9A96E]/50 transition-colors text-xs tracking-wider"
@@ -235,7 +236,7 @@ export default function ContactPage() {
                 <span>TikTok</span>
               </a>
               <a 
-                href="https://x.com/syllogiantho?s=21" 
+                href={SOCIAL_LINKS.twitter} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center gap-2.5 p-3 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-[#C9A96E]/50 transition-colors text-xs tracking-wider"
@@ -244,7 +245,7 @@ export default function ContactPage() {
                 <span>Twitter / X</span>
               </a>
               <a 
-                href="https://snapchat.com/t/yXLe7p2I" 
+                href={SOCIAL_LINKS.snapchat} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center gap-2.5 p-3 bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-[#C9A96E]/50 transition-colors text-xs tracking-wider"

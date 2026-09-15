@@ -1,4 +1,5 @@
 import React from 'react';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
 interface JsonLdProps {
   id?: string;
@@ -33,12 +34,7 @@ export function OrganizationJsonLd() {
       '@type': 'Place',
       name: 'Lagos, Nigeria'
     },
-    sameAs: [
-      'https://www.instagram.com/antho.syllogi',
-      'https://x.com/syllogiantho?s=21',
-      'https://www.tiktok.com/@antho.syllogi',
-      'https://snapchat.com/t/yXLe7p2I'
-    ],
+    sameAs: Object.values(SOCIAL_LINKS),
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+2348000000000',

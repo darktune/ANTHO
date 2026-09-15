@@ -111,9 +111,9 @@ export const FOOTER_LINKS = {
 } as const;
 
 export const SOCIAL_LINKS = {
-  instagram: "https://www.instagram.com/antho.syllogi",
-  twitter: "https://x.com/syllogiantho?s=21",
-  tiktok: "https://www.tiktok.com/@antho.syllogi",
+  instagram: "https://www.instagram.com/antho.syllogi?stkn=MWUzbnIyYndqMHNiMA%3D%3D&utm_source=qr",
+  twitter: "https://x.com/syllogiantho?s=11",
+  tiktok: "https://www.tiktok.com/@thicboi_niffy?_r=1&_t=ZS-9620HeSNBlo",
   snapchat: "https://snapchat.com/t/yXLe7p2I",
 } as const;
 
