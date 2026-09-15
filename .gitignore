@@ -7,3 +7,5 @@ node_modules/
 *.sqlite
 ANTHO SHOOT/
 *.tsbuildinfo
+playwright-report/
+test-results/

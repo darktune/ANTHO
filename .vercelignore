@@ -5,3 +5,7 @@ ANTHO SHOOT/
 *.sqlite
 .gemini/
 scratch/
+tests/
+playwright.config.ts
+playwright-report/
+test-results/
