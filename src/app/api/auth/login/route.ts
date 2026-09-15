@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
+import { createAdminToken } from '@/lib/auth';
 
 export async function POST(request: Request) {
   try {
@@ -54,10 +55,11 @@ export async function POST(request: Request) {
       message: 'Authenticated successfully.',
     });
 
-    // Set secure admin session cookie
+    // Set cryptographically signed HMAC-SHA256 admin session cookie
+    const token = await createAdminToken(email);
     response.cookies.set({
       name: 'antho_admin_token',
-      value: `auth_${Date.now()}_${Buffer.from(email).toString('base64')}`,
+      value: token,
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',

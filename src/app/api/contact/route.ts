@@ -1,24 +1,30 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { z } from 'zod';
+
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters').max(100),
+  email: z.string().email('Please provide a valid email address').max(150),
+  subject: z.string().max(200).optional().default('General Inquiry'),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(3000),
+});
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { name, email, subject, message } = body;
+    const rawBody = await request.json();
+    const parseResult = contactSchema.safeParse(rawBody);
 
-    if (!name || !email || !message) {
+    if (!parseResult.success) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required fields' },
+        {
+          error: 'Validation failed',
+          details: parseResult.error.flatten().fieldErrors,
+        },
         { status: 400 }
       );
     }
 
-    if (!email.includes('@')) {
-      return NextResponse.json(
-        { error: 'A valid email address is required' },
-        { status: 400 }
-      );
-    }
+    const { name, email, subject, message } = parseResult.data;
 
     // Record inquiry in database if SiteContent model is available, or log locally
     try {
@@ -28,7 +34,7 @@ export async function POST(request: Request) {
           key: inquiryKey,
           value: JSON.stringify({
             name,
-            email,
+            email: email.toLowerCase().trim(),
             subject: subject || 'General Inquiry',
             message,
             submittedAt: new Date().toISOString(),

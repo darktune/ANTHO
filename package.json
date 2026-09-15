@@ -13,7 +13,9 @@
     "db:deploy": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
     "db:studio": "prisma studio",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "test": "tsx --test tests/unit/pricing-integrity.test.ts tests/unit/shipping-matrix.test.ts tests/unit/auth-security.test.ts tests/unit/paystack-webhook.test.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",

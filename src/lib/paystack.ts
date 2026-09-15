@@ -178,11 +178,16 @@ export async function verifyPaystackTransaction(
 /**
  * Verify Paystack webhook signature
  */
-export function verifyWebhookSignature(rawBody: string, signature: string | null): boolean {
-  if (!signature || !PAYSTACK_SECRET_KEY) return false;
+export function verifyWebhookSignature(
+  rawBody: string,
+  signature: string | null,
+  customSecret?: string
+): boolean {
+  const secret = customSecret || process.env.PAYSTACK_SECRET_KEY || PAYSTACK_SECRET_KEY;
+  if (!signature || !secret) return false;
   try {
     const hash = crypto
-      .createHmac('sha512', PAYSTACK_SECRET_KEY)
+      .createHmac('sha512', secret)
       .update(rawBody)
       .digest('hex');
     return hash === signature;

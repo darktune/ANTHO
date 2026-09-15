@@ -1,26 +1,37 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { z } from 'zod';
+
+const newsletterSchema = z.object({
+  email: z.string().email('Please provide a valid email address').max(150),
+});
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { email } = body;
+    const rawBody = await request.json();
+    const parseResult = newsletterSchema.safeParse(rawBody);
 
-    if (!email || !email.includes('@')) {
+    if (!parseResult.success) {
       return NextResponse.json(
-        { error: 'Valid email address is required' },
+        {
+          error: 'Valid email address is required',
+          details: parseResult.error.flatten().fieldErrors,
+        },
         { status: 400 }
       );
     }
 
+    const { email } = parseResult.data;
+    const sanitizedEmail = email.toLowerCase().trim();
+
     try {
       await prisma.newsletter.upsert({
-        where: { email: email.toLowerCase().trim() },
+        where: { email: sanitizedEmail },
         update: {},
-        create: { email: email.toLowerCase().trim() },
+        create: { email: sanitizedEmail },
       });
     } catch (dbErr) {
-      console.warn('Database offline or transitioning, newsletter subscription logged locally:', email);
+      console.warn('Database offline or transitioning, newsletter subscription logged locally:', sanitizedEmail);
     }
 
     return NextResponse.json({
