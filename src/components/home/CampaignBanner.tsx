@@ -47,7 +47,7 @@ export default function CampaignBanner() {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <Link 
-            href="/collections/lagos-edit"
+            href="/collections/the-premier-launch"
             className="inline-block bg-[#FAFAF9] text-black px-10 py-4 text-xs font-medium tracking-widest uppercase hover:bg-[#C9A96E] hover:text-white transition-colors duration-300"
           >
             VIEW CAMPAIGN

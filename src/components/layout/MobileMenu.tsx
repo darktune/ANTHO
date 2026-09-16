@@ -16,8 +16,8 @@ const CATEGORY_ITEMS = [
 
 const DROP_LINKS = [
   { label: 'All Collections', href: '/collections' },
-  { label: 'Collection 001 // Genesis', href: '/collections/genesis' },
-  { label: 'Editorial Lookbook', href: '/lookbook', tag: 'SS26' },
+  { label: 'The Premier Launch', href: '/collections/the-premier-launch', tag: 'SS26' },
+  { label: 'Editorial Lookbook', href: '/lookbook' },
   { label: 'Events & Pop-Ups', href: '/events' },
 ];
 

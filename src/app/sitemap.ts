@@ -1,4 +1,4 @@
-﻿import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next';
 import { sampleProducts } from '@/lib/sample-data';
 import { prisma } from '@/lib/prisma';
 
@@ -87,10 +87,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Curated Collections
   const collectionSlugs = [
-    'genesis',
-    'lagos-nights',
-    'essentials',
-    'heritage',
+    'the-premier-launch',
+    'global-prevails',
+    'npng-fleece',
+    'lagos-archival',
     'new-arrivals',
   ];
 
