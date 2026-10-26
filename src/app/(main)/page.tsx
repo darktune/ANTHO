@@ -1,4 +1,5 @@
 import MinimalShowcase from '@/components/home/MinimalShowcase';
+import BrandTicker from '@/components/home/BrandTicker';
 import CurrentDrop from '@/components/home/CurrentDrop';
 import FeaturedCollection from '@/components/home/FeaturedCollection';
 
@@ -13,10 +14,13 @@ export default function HomePage() {
       {/* 1. Kinetic Hero Slideshow */}
       <MinimalShowcase />
 
-      {/* 2. Core 4-Piece Drop */}
+      {/* 2. Brand Ethos Ticker */}
+      <BrandTicker />
+
+      {/* 3. Core 4-Piece Drop */}
       <CurrentDrop />
 
-      {/* 3. Featured Curated Collections */}
+      {/* 4. Featured Curated Collections */}
       <FeaturedCollection />
     </main>
   );
