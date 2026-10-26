@@ -59,10 +59,18 @@ const SLIDES: Slide[] = [
   { 
     id: 6, 
     type: 'image', 
-    src: '/images/slideshow/13.JPEG', 
-    tag: 'PREVAILS GRAPHIC TEE', 
-    ctaText: 'VIEW PIECE',
-    ctaLink: '/products/antho-prevails-tee'
+    src: '/images/new-shoot/syllogi-sequence-1.jpg', 
+    tag: 'SYLLOGI SEQUENCE // 01', 
+    ctaText: 'VIEW LOOKBOOK',
+    ctaLink: '/lookbook'
+  },
+  { 
+    id: 7, 
+    type: 'image', 
+    src: '/images/new-shoot/syllogi-sequence-2.jpg', 
+    tag: 'SYLLOGI SEQUENCE // 02', 
+    ctaText: 'VIEW LOOKBOOK',
+    ctaLink: '/lookbook'
   },
 ];
 
