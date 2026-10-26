@@ -27,10 +27,10 @@ const SLIDES: Slide[] = [
   { 
     id: 2, 
     type: 'image', 
-    src: '/images/slideshow/1.jpg', 
-    tag: 'ANTHO 99\' POLO', 
-    ctaText: 'VIEW PIECE',
-    ctaLink: '/products/antho-99-polo'
+    src: '/images/new-shoot/architectural-form.jpg', 
+    tag: 'ARCHITECTURAL FORM', 
+    ctaText: 'VIEW LOOKBOOK',
+    ctaLink: '/lookbook'
   },
   { 
     id: 3, 
