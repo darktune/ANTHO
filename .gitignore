@@ -6,6 +6,7 @@ node_modules/
 *.db-journal
 *.sqlite
 ANTHO SHOOT/
+new shoot/
 *.tsbuildinfo
 playwright-report/
 test-results/

@@ -19,7 +19,7 @@ const SLIDES: Slide[] = [
   { 
     id: 1, 
     type: 'video', 
-    src: '/images/antho-shoot/video_2026-09-04_09-11-38.mp4', 
+    src: '/images/new-shoot/campaign-motion.mp4', 
     tag: 'CAMPAIGN MOTION REEL', 
     ctaText: 'SHOP DROP',
     ctaLink: '/shop'
@@ -110,13 +110,17 @@ export default function MinimalShowcase() {
             >
               <video
                 ref={videoRef}
-                src={currentSlide.src}
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="auto"
                 className="w-full h-full object-cover object-center"
-              />
+              >
+                <source src={currentSlide.src} type="video/mp4" />
+                <source src={currentSlide.src} type="video/quicktime" />
+                <source src={currentSlide.src} />
+              </video>
               {/* Very subtle bottom-only vignette to ensure legibility of bottom controls */}
               <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/75 via-black/25 to-transparent pointer-events-none" />
             </motion.div>

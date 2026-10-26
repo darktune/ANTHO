@@ -72,7 +72,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
     {
       id: "cu-01",
       type: "video",
-      src: "/images/antho-shoot/video_2026-09-04_09-11-38.mp4",
+      src: "/images/new-shoot/campaign-motion.mp4",
       poster: "/images/antho-shoot/IMG_3806.JPG",
       phase: "PHASE 01 // KINETIC CAMPAIGN TEASER",
       title: "Lagos to Ota: The Motion Prologue",
