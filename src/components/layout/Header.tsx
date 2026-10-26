@@ -1,5 +1,7 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useUIStore } from '@/stores/uiStore';
@@ -8,18 +10,64 @@ import { useCartStore } from '@/stores/cartStore';
 export default function Header() {
   const { openMobileMenu, openCartDrawer, theme, toggleTheme } = useUIStore();
   const cartItems = useCartStore((state) => state.items);
-  
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+
+  // On homepage: nav bar is hidden by default at the top and appears ONLY when scrolling.
+  // On other pages: nav bar is visible by default.
+  const [isVisible, setIsVisible] = useState(!isHomePage);
+
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
+  useEffect(() => {
+    if (!isHomePage) {
+      setIsVisible(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      // Appear when scrolling past 20px on the homepage; hide when at top
+      if (window.scrollY > 20) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Allow user to peek header on desktop by hovering within 25px of the very top edge
+      if (e.clientY <= 25) {
+        setIsVisible(true);
+      } else if (window.scrollY <= 20) {
+        setIsVisible(false);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isHomePage]);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-40 bg-[#FAFAF9]/95 dark:bg-[#0A0A0A]/95 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-sm transition-colors duration-300">
+    <header 
+      className={`fixed top-0 left-0 w-full z-40 bg-[#FAFAF9]/95 dark:bg-[#0A0A0A]/95 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-sm transition-all duration-400 ease-out ${
+        isVisible 
+          ? 'translate-y-0 opacity-100 pointer-events-auto' 
+          : '-translate-y-full opacity-0 pointer-events-none'
+      }`}
+    >
       <div className="flex items-center justify-between w-full h-16 sm:h-20 px-4 sm:px-8 md:px-12">
         
         {/* Left: Menu & Theme Toggle */}
         <div className="flex-1 flex items-center justify-start gap-1 sm:gap-5 min-w-0">
           <button 
             onClick={() => openMobileMenu()} 
-            className="uppercase tracking-[0.2em] text-[11px] sm:text-xs font-semibold hover:opacity-60 transition-opacity text-black dark:text-white shrink-0 min-h-[44px] px-2 flex items-center"
+            className="uppercase tracking-[0.2em] text-[11px] sm:text-xs font-semibold hover:opacity-60 transition-opacity text-black dark:text-white shrink-0 min-h-[44px] px-2 flex items-center cursor-pointer"
             aria-label="Open navigation menu"
           >
             MENU
@@ -30,7 +78,7 @@ export default function Header() {
           <button 
             onClick={() => toggleTheme()}
             aria-label={`Toggle Theme. Current: ${theme}`}
-            className="group flex items-center gap-1.5 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold hover:opacity-60 transition-all text-black dark:text-white shrink-0 min-h-[44px] px-2"
+            className="group flex items-center gap-1.5 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold hover:opacity-60 transition-all text-black dark:text-white shrink-0 min-h-[44px] px-2 cursor-pointer"
             title={`Current: ${theme.toUpperCase()} (Click to toggle Light / Dark / Auto)`}
           >
             {theme === 'dark' && (
@@ -92,7 +140,7 @@ export default function Header() {
         <div className="flex-1 flex justify-end min-w-0">
           <button 
             onClick={() => openCartDrawer()} 
-            className="uppercase tracking-[0.2em] text-[11px] sm:text-xs font-semibold hover:opacity-60 transition-opacity text-black dark:text-white shrink-0 min-h-[44px] px-2 flex items-center"
+            className="uppercase tracking-[0.2em] text-[11px] sm:text-xs font-semibold hover:opacity-60 transition-opacity text-black dark:text-white shrink-0 min-h-[44px] px-2 flex items-center cursor-pointer"
             aria-label={`View shopping bag containing ${cartCount} items`}
           >
             BAG [{cartCount}]
