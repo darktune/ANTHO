@@ -41,30 +41,30 @@ const SLIDES: Slide[] = [
   { 
     id: 3, 
     type: 'image', 
-    src: '/images/slideshow/5.JPEG', 
-    sequence: 'SEQUENCE 03 // NPNG FLEECE',
+    src: '/images/new-shoot/premier-launch-1.jpg', 
+    sequence: 'THE PREMIER LAUNCH // 01',
     name: 'NPNG HEAVYWEIGHT SWEATPANTS',
-    spec: '500GSM FRENCH TERRY • STACKED DRAPE',
+    spec: '500GSM FRENCH TERRY • MILLED DRAPE',
     ctaText: 'VIEW PIECE',
     ctaLink: '/products/antho-npng-sweats'
   },
   { 
     id: 4, 
     type: 'image', 
-    src: '/images/slideshow/7.JPEG', 
-    sequence: 'SEQUENCE 04 // GLOBAL INSIGNIA',
-    name: 'GLOBAL GRAPHIC TEE',
+    src: '/images/new-shoot/premier-launch-2.jpg', 
+    sequence: 'THE PREMIER LAUNCH // 02',
+    name: 'ANTHO PREVAILS GRAPHIC TEE',
     spec: '300GSM HIGH-DENSITY COMBED COTTON',
     ctaText: 'VIEW PIECE',
-    ctaLink: '/products/antho-global-tee'
+    ctaLink: '/products/antho-prevails-tee'
   },
   { 
     id: 5, 
     type: 'image', 
-    src: '/images/slideshow/9.jpg', 
-    sequence: 'SEQUENCE 05 // LAGOS ARCHIVE',
-    name: 'EDITORIAL ARCHIVE & LOOKBOOK',
-    spec: 'MILLED TEXTILES • YOUTH STREET CULTURE',
+    src: '/images/new-shoot/premier-launch-3.jpg', 
+    sequence: 'THE PREMIER LAUNCH // 03',
+    name: 'EDITORIAL STILLS // TERRACOTTA',
+    spec: 'SS26 STREET CULTURE // LAGOS EDIT',
     ctaText: 'VIEW LOOKBOOK',
     ctaLink: '/lookbook'
   },
