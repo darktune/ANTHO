@@ -6,21 +6,21 @@ import { Download } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'SS26 Editorial Lookbook — The Lagos Edit | ANTHO',
-  description: 'SS26 — The Lagos Edit. High-editorial documentation of contemporary Nigerian youth streetwear, architectural silhouettes, and cultural craftsmanship across 3 curated chapters.',
+  description: 'SS26 — The Lagos Edit. High-editorial documentation of contemporary Nigerian youth streetwear, architectural silhouettes, and cultural craftsmanship across 5 curated chapters.',
   alternates: {
     canonical: '/lookbook',
   },
   openGraph: {
     title: 'SS26 Editorial Lookbook | ANTHO — The Lagos Edit',
-    description: 'Curated editorial stills exploring contemporary Nigerian youth streetwear across 3 chapters.',
+    description: 'Curated editorial stills exploring contemporary Nigerian youth streetwear across 5 chapters.',
     url: 'https://www.anthosyllogi.xyz/lookbook',
-    images: ['/images/slideshow/1.jpg'],
+    images: ['/images/new-shoot/premier-launch-2.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'SS26 Editorial Lookbook | ANTHO',
     description: 'High-editorial documentation of contemporary Nigerian streetwear.',
-    images: ['/images/slideshow/1.jpg'],
+    images: ['/images/new-shoot/premier-launch-2.jpg'],
   },
 };
 
@@ -36,40 +36,63 @@ const lookbookActs = [
   {
     actNumber: '01',
     actTitle: 'Act I — Global Presence & Street Movement',
-    actSubtitle: 'High-energy editorial captures documenting contemporary Lagos youth expression.',
+    actSubtitle: 'High-energy editorial captures documenting contemporary Lagos youth expression and the iconic Antho Global Tee.',
     items: [
-      { id: '1', src: '/images/slideshow/10.jpg', title: 'Look 01 — Architectural Form', aspect: 'aspect-[3/4]', act: 'Act I' },
-      { id: '2', src: '/images/slideshow/11.JPEG', title: 'Look 02 — Raw Textile Structure', aspect: 'aspect-[4/5]', act: 'Act I' },
-      { id: '3', src: '/images/slideshow/12.jpg', title: 'Look 03 — Lagos Night Horizon', aspect: 'aspect-[3/4]', act: 'Act I' },
-      { id: '4', src: '/images/global_white/IMG_6580.JPEG', title: 'Look 04 — Global White Silhouette', aspect: 'aspect-[4/5]', act: 'Act I' },
-      { id: '5', src: '/images/global_white/IMG_6727.JPEG', title: 'Look 05 — Contemporary Cut Detail', aspect: 'aspect-[3/4]', act: 'Act I' },
-      { id: '6', src: '/images/global_black/IMG_6550.jpg', title: 'Look 06 — Onyx Black Street Attitude', aspect: 'aspect-[4/5]', act: 'Act I' },
+      { id: '1', src: '/images/global_white/IMG_6580.JPEG', title: 'Look 01 — Global White Silhouette', aspect: 'aspect-[4/5]', act: 'Act I' },
+      { id: '2', src: '/images/global_white/IMG_6727.JPEG', title: 'Look 02 — Contemporary Cut Detail', aspect: 'aspect-[3/4]', act: 'Act I' },
+      { id: '3', src: '/images/global_black/IMG_6550.jpg', title: 'Look 03 — Onyx Black Street Attitude', aspect: 'aspect-[4/5]', act: 'Act I' },
+      { id: '4', src: '/images/global_black/IMG_6693.JPEG', title: 'Look 04 — Chest Typography Insignia', aspect: 'aspect-[4/5]', act: 'Act I' },
+      { id: '5', src: '/images/global_black/IMG_4346.jpg', title: 'Look 05 — 300gsm Combed Cotton Drape', aspect: 'aspect-[3/4]', act: 'Act I' },
+      { id: '6', src: '/images/global_white/IMG_4344.jpg', title: 'Look 06 — Clean Architectural Form', aspect: 'aspect-[3/4]', act: 'Act I' },
     ]
   },
   {
     actNumber: '02',
     actTitle: 'Act II — Prevails Movement & Silhouette',
-    actSubtitle: 'Everyday street armor and culture rooted in youthful resilience.',
+    actSubtitle: 'Everyday street armor and culture rooted in youthful resilience — featuring Antho Prevails tees.',
     items: [
-      { id: '7', src: '/images/white_prevails/IMG_6714.JPEG', title: 'Look 07 — The Prevails Attitude', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '8', src: '/images/white_prevails/IMG_6590.JPEG', title: 'Look 08 — White Back Arch Detail', aspect: 'aspect-[4/5]', act: 'Act II' },
-      { id: '9', src: '/images/white_prevails/IMG_6630.JPEG', title: 'Look 09 — High-Density Silkscreen Form', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '10', src: '/images/black_prevails/IMG_4911.jpg', title: 'Look 10 — Prevails Noir Street Style', aspect: 'aspect-[4/5]', act: 'Act II' },
-      { id: '11', src: '/images/black_prevails/IMG_6704.JPEG', title: 'Look 11 — Dropped Shoulder Tailoring', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '12', src: '/images/black_prevails/IMG_6715.JPEG', title: 'Look 12 — Elastic Plastisol Detail', aspect: 'aspect-[4/5]', act: 'Act II' },
+      { id: '7', src: '/images/new-shoot/premier-launch-2.jpg', title: 'Look 07 — The Terracotta Syndicate', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '8', src: '/images/new-shoot/premier-launch-3.jpg', title: 'Look 08 — Overhead Perspective Form', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '9', src: '/images/new-shoot/syllogi-sequence-1.jpg', title: 'Look 09 — Dual Cross Silhouettes', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '10', src: '/images/new-shoot/syllogi-sequence-2.jpg', title: 'Look 10 — Street Statement Form', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '11', src: '/images/white_prevails/IMG_6714.JPEG', title: 'Look 11 — The Prevails Attitude', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '12', src: '/images/black_prevails/IMG_6704.JPEG', title: 'Look 12 — Dropped Shoulder Tailoring', aspect: 'aspect-[3/4]', act: 'Act II' },
     ]
   },
   {
     actNumber: '03',
     actTitle: 'Act III — Studio Atelier & Streetwear Detail',
-    actSubtitle: 'High-density silk-screen prints, mother-of-pearl buttons, and 500gsm fleece details.',
+    actSubtitle: 'Curated studio captures, female baby tees, ANTHO signature pieces, and textured fleece silhouettes.',
     items: [
-      { id: '13', src: '/images/global_black/IMG_4346.jpg', title: 'Look 13 — 300gsm Combed Cotton Drape', aspect: 'aspect-[3/4]', act: 'Act III' },
-      { id: '14', src: '/images/global_black/IMG_6693.JPEG', title: 'Look 14 — Chest Typography Insignia', aspect: 'aspect-[4/5]', act: 'Act III' },
-      { id: '15', src: '/images/global_white/IMG_4344.jpg', title: 'Look 15 — Clean Architectural Form', aspect: 'aspect-[3/4]', act: 'Act III' },
-      { id: '16', src: '/images/white_prevails/IMG_6598.JPEG', title: 'Look 16 — Hem & Cuff Reinforcement', aspect: 'aspect-[4/5]', act: 'Act III' },
-      { id: '17', src: '/images/black_prevails/IMG_6594.JPEG', title: 'Look 17 — Monochrome Tonal Balance', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '13', src: '/images/new-shoot/architectural-form.jpg', title: 'Look 13 — Architectural Form Golden Hour', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '14', src: '/images/new-shoot/premier-launch-1.jpg', title: 'Look 14 — NPNG Crest & Sweat Drape', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '15', src: '/images/slideshow/10.jpg', title: 'Look 15 — Architectural Silhouette Cut', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '16', src: '/images/slideshow/11.JPEG', title: 'Look 16 — Raw Milled Textile Structure', aspect: 'aspect-[4/5]', act: 'Act III' },
+      { id: '17', src: '/images/slideshow/12.jpg', title: 'Look 17 — Lagos Night Horizon', aspect: 'aspect-[3/4]', act: 'Act III' },
       { id: '18', src: '/images/antho-shoot/IMG_3806.JPG', title: 'Look 18 — Editorial Drape On Form', aspect: 'aspect-[4/5]', act: 'Act III' },
+    ]
+  },
+  {
+    actNumber: '04',
+    actTitle: 'Act IV — The Christos Polos // Architectural Pique',
+    actSubtitle: 'Boxy pique polos in rich crimson red, optic white, onyx black, and black long-sleeve knitwear.',
+    items: [
+      { id: '19', src: '/images/products/polos/photo_1_2026-09-04_09-11-37.jpg', title: 'Look 19 — Crimson Red Christos Pique', aspect: 'aspect-[3/4]', act: 'Act IV' },
+      { id: '20', src: '/images/slideshow/1.jpg', title: 'Look 20 — Optic White Architectural Pique', aspect: 'aspect-[3/4]', act: 'Act IV' },
+      { id: '21', src: '/images/antho-shoot/IMG_3809.JPG', title: 'Look 21 — Onyx Black Christos Knit', aspect: 'aspect-[4/5]', act: 'Act IV' },
+      { id: '22', src: '/images/products/polos/Snapchat-1079248294.jpg', title: 'Look 22 — Black Long-Sleeve Ribbed Cuff Detail', aspect: 'aspect-[3/4]', act: 'Act IV' },
+      { id: '23', src: '/images/products/polos/Snapchat-848713023.jpg', title: 'Look 23 — Mother-of-Pearl Button Hardware', aspect: 'aspect-[4/5]', act: 'Act IV' },
+    ]
+  },
+  {
+    actNumber: '05',
+    actTitle: 'Act V — Independence Commemorative Series',
+    actSubtitle: 'Limited-edition Independence streetwear tees celebrating Nigerian heritage, resilience, and sovereignty.',
+    items: [
+      { id: '24', src: '/images/global_black/global_black_BACK.png', title: 'Look 24 — Independence Noir Insignia', aspect: 'aspect-[3/4]', act: 'Act V' },
+      { id: '25', src: '/images/global_black/front_glbl.png', title: 'Look 25 — Commemorative Chest Placement', aspect: 'aspect-[3/4]', act: 'Act V' },
+      { id: '26', src: '/images/slideshow/7.JPEG', title: 'Look 26 — Cultural Sovereignty Silkscreen', aspect: 'aspect-[4/5]', act: 'Act V' },
+      { id: '27', src: '/images/slideshow/13.JPEG', title: 'Look 27 — Woven in Lagos Heritage', aspect: 'aspect-[3/4]', act: 'Act V' },
     ]
   }
 ];
@@ -79,6 +102,8 @@ export default function LookbookPage() {
     { name: 'Home', url: '/' },
     { name: 'Lookbook', url: '/lookbook' },
   ];
+
+  const totalStills = lookbookActs.reduce((acc, act) => acc + act.items.length, 0);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 sm:pb-32 pt-20 sm:pt-28 md:pt-36">
@@ -93,11 +118,11 @@ export default function LookbookPage() {
 
       {/* Header */}
       <section className="text-center px-4 max-w-4xl mx-auto mb-16 sm:mb-24">
-        <span className="text-xs uppercase tracking-[0.3em] text-[#C9A96E] mb-2 sm:mb-3 block">EDITORIAL JOURNAL</span>
+        <span className="text-xs uppercase tracking-[0.3em] text-[#C9A96E] mb-2 sm:mb-3 block font-mono">EDITORIAL JOURNAL</span>
         <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-neutral-900 dark:text-white tracking-tight mb-3 sm:mb-4">LOOKBOOK</h1>
-        <p className="text-xs sm:text-sm md:text-base text-neutral-500 dark:text-neutral-400 font-light tracking-[0.2em] uppercase mb-4">SS26 — The Lagos Edit &bull; Three Chapters</p>
+        <p className="text-xs sm:text-sm md:text-base text-neutral-500 dark:text-neutral-400 font-light tracking-[0.2em] uppercase mb-4">SS26 — The Lagos Edit &bull; Five Curated Acts</p>
         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[9px] sm:text-[10px] font-mono tracking-widest text-neutral-500 dark:text-neutral-400 uppercase">
-          <span>19 CURATED STILLS &bull; HIGH-RES DOWNLOADS ENABLED</span>
+          <span>{totalStills} CURATED STILLS &bull; HIGH-RES DOWNLOADS ENABLED</span>
         </div>
       </section>
 

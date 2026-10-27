@@ -7,7 +7,7 @@ import { formatPrice } from '@/lib/utils';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function CurrentDrop() {
-  const dropProducts = sampleProducts.slice(0, 4);
+  const dropProducts = sampleProducts;
 
   return (
     <section id="current-drop" className="w-full py-20 sm:py-24 md:py-32 px-4 sm:px-8 md:px-12 bg-[#FAFAF9] dark:bg-[#0A0A0A] text-[#0A0A0A] dark:text-[#FAFAF9] transition-colors duration-300">
@@ -19,14 +19,14 @@ export default function CurrentDrop() {
             <div className="flex items-center gap-2.5 mb-2">
               <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
               <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-mono text-[#C9A96E] font-semibold">
-                LAUNCH DOSSIER // SS26
+                LAUNCH DOSSIER // CHRISTOS POLOS & INDEPENDENCE SERIES
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight uppercase">
               Current Drop
             </h2>
             <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-2 max-w-md">
-              Four definitive streetwear silhouettes engineered with custom-milled textiles and intentional drape.
+              Five definitive launch pieces: four architectural Christos polos and the commemorative Independence graphic tee.
             </p>
           </div>
 
@@ -39,8 +39,8 @@ export default function CurrentDrop() {
           </Link>
         </div>
 
-        {/* 4-Column Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {/* 5-Column Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6">
           {dropProducts.map((product, idx) => {
             const primaryImage = product.images?.[0]?.url || '/images/antho-shoot/IMG_3806.JPG';
             const secondaryImage = product.images?.[1]?.url || primaryImage;

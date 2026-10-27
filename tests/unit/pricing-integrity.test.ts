@@ -4,16 +4,17 @@ import { sampleProducts } from '../../src/lib/sample-data';
 import { getShippingCost, FREE_SHIPPING_THRESHOLD } from '../../src/lib/constants';
 
 test('Product Catalog & Pricing Integrity Suite', async (t) => {
-  await t.test('Catalog strictly contains only 4 curated youth streetwear pieces', () => {
-    assert.equal(sampleProducts.length, 4, 'Catalog must contain exactly 4 products');
+  await t.test('Catalog strictly contains only 5 active launch pieces (Polos & Independence Tee)', () => {
+    assert.equal(sampleProducts.length, 5, 'Catalog must contain exactly 5 active launch products');
   });
 
-  await t.test('All 4 products have deterministic, non-discounted luxury pricing', () => {
+  await t.test('All 5 products have deterministic, non-discounted luxury pricing', () => {
     const expectedPrices: Record<string, number> = {
-      'antho-99-polo': 4500000,       // ₦45,000
-      'antho-npng-sweats': 2500000,    // ₦25,000
-      'antho-global-tee': 3000000,     // ₦30,000
-      'antho-prevails-tee': 1500000,   // ₦15,000
+      'red-christos-polo': 3500000,              // ₦35,000
+      'white-christos-polo': 3500000,            // ₦35,000
+      'black-christos-polo': 3500000,            // ₦35,000
+      'black-longsleeve-christos-polo': 3500000, // ₦35,000
+      'independence-tee-black': 1799900,         // ₦17,999
     };
 
     for (const [slug, expectedPrice] of Object.entries(expectedPrices)) {
@@ -27,8 +28,8 @@ test('Product Catalog & Pricing Integrity Suite', async (t) => {
   await t.test('Server-side cart recalculation prevents price tampering exploit', () => {
     // Malicious client payload with tampered unit price of 100 kobo (1 NGN)
     const tamperedClientItems = [
-      { slug: 'antho-99-polo', quantity: 2, price: 100 },
-      { slug: 'antho-global-tee', quantity: 1, price: 50 },
+      { slug: 'red-christos-polo', quantity: 2, price: 100 },
+      { slug: 'independence-tee-black', quantity: 1, price: 50 },
     ];
 
     let authoritativeSubtotal = 0;
@@ -39,19 +40,19 @@ test('Product Catalog & Pricing Integrity Suite', async (t) => {
       authoritativeSubtotal += catalogProduct.price * item.quantity;
     }
 
-    // Expected: (45,000 * 2) + (30,000 * 1) = ₦120,000 = 12,000,000 kobo
-    assert.equal(authoritativeSubtotal, 12000000);
+    // Expected: (35,000 * 2) + (17,999 * 1) = ₦87,999 = 8,799,900 kobo
+    assert.equal(authoritativeSubtotal, 8799900);
     assert.notEqual(authoritativeSubtotal, 250, 'Server must reject client tampered subtotal');
   });
 
   await t.test('Total order calculation combines authoritative subtotal and shipping', () => {
-    const polo = sampleProducts.find((p) => p.slug === 'antho-99-polo')!;
+    const polo = sampleProducts.find((p) => p.slug === 'red-christos-polo')!;
     const shipping = getShippingCost('Lagos');
 
-    const subtotal = polo.price * 1; // 4,500,000
+    const subtotal = polo.price * 1; // 3,500,000
     const shippingCost = shipping.cost; // 650,000
-    const total = subtotal + shippingCost; // 5,150,000
+    const total = subtotal + shippingCost; // 4,150,000
 
-    assert.equal(total, 5150000, 'Total must equal authoritative subtotal + Lagos shipping');
+    assert.equal(total, 4150000, 'Total must equal authoritative subtotal + Lagos shipping');
   });
 });

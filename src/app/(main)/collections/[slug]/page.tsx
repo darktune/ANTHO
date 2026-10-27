@@ -72,6 +72,10 @@ export default async function CollectionPage({ params }: Props) {
       products = sampleProducts.filter(p => 
         p.category.toLowerCase().includes('sweatpant') || p.category.toLowerCase().includes('polo')
       ) as any;
+    } else if (slug === 'christos-polos') {
+      products = sampleProducts.filter(p => 
+        p.category.toLowerCase().includes('polo')
+      ) as any;
     } else if (slug === 'the-premier-launch' || slug === 'lagos-archival' || slug === 'new-arrivals') {
       products = sampleProducts as any;
     } else {

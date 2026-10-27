@@ -10,9 +10,9 @@ const collections = [
     name: 'The Premier Launch', 
     slug: 'the-premier-launch', 
     count: 4,
-    subtitle: 'SS26 Hero Capsule',
-    description: 'The definitive 4-piece launch capsule engineered for youth and young adult streetwear connoisseurs.',
-    image: '/images/slideshow/6.JPEG'
+    subtitle: 'Prevails Movement Series',
+    description: 'The definitive Prevails graphic capsule engineered with high-density silkscreen on 300gsm combed cotton.',
+    image: '/images/new-shoot/premier-launch-2.jpg'
   },
   { 
     id: '2', 
@@ -21,19 +21,28 @@ const collections = [
     count: 2,
     subtitle: '300gsm Heavyweight Cut',
     description: 'Iconic high-density graphic tees honoring cultural resilience and contemporary youth expression.',
-    image: '/images/global_black/global_black_BACK.png'
+    image: '/images/global_white/IMG_6580.JPEG'
   },
   { 
     id: '3', 
     name: 'NPNG & Architectural Fleece', 
     slug: 'npng-fleece', 
     count: 2,
-    subtitle: '500gsm Streetwear Silhouettes',
+    subtitle: '500gsm Heavyweight Fleece',
     description: 'Milled French terry sweatpants and boxy pique polo shirts designed with intentional stacked drape.',
-    image: '/images/antho-shoot/IMG_3807.JPG'
+    image: '/images/new-shoot/premier-launch-1.jpg'
   },
   { 
     id: '4', 
+    name: 'The Christos Polos', 
+    slug: 'christos-polos', 
+    count: 4,
+    subtitle: '280gsm Architectural Pique',
+    description: 'Boxy pique polos in red, optic white, onyx black, and long-sleeve knitwear with mother-of-pearl buttons.',
+    image: '/images/slideshow/1.jpg'
+  },
+  { 
+    id: '5', 
     name: 'Lagos Archival Syndicate', 
     slug: 'lagos-archival', 
     count: 4,
