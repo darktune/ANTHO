@@ -66,9 +66,8 @@ export const SIZE_CHART = {
 } as const;
 
 export const CATEGORIES = [
-  "Classic ANTHO Polos",
-  "ANTHO Sweatpants",
-  "ANTHO Graphic Tees",
+  "Christos Polos",
+  "Independence Graphic Tees",
 ] as const;
 
 export const PRODUCT_COLORS = [
@@ -110,9 +109,8 @@ export const NAV_LINKS = [
 export const FOOTER_LINKS = {
   shop: [
     { label: "All Products", href: "/shop" },
-    { label: "Classic ANTHO Polos", href: "/shop?category=Classic+ANTHO+Polos" },
-    { label: "ANTHO Sweatpants", href: "/shop?category=ANTHO+Sweatpants" },
-    { label: "ANTHO Graphic Tees", href: "/shop?category=ANTHO+Graphic+Tees" },
+    { label: "The Christos Polos", href: "/shop?category=Christos+Polos" },
+    { label: "Independence Series", href: "/shop?category=Independence+Graphic+Tees" },
   ],
   help: [
     { label: "Client FAQs", href: "/faq" },

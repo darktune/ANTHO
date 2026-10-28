@@ -64,7 +64,11 @@ export default async function CollectionPage({ params }: Props) {
   // Smart fallback filtering based on curated capsules
   let products = dbProducts;
   if (!products || products.length === 0) {
-    if (slug === 'global-prevails') {
+    if (slug === 'the-premier-launch') {
+      products = sampleProducts.filter(p => 
+        p.name.toLowerCase().includes('prevails') || p.category.toLowerCase().includes('graphic')
+      ) as any;
+    } else if (slug === 'global-prevails') {
       products = sampleProducts.filter(p => 
         p.category.toLowerCase().includes('graphic') || p.name.toLowerCase().includes('global') || p.name.toLowerCase().includes('prevails')
       ) as any;
@@ -76,8 +80,6 @@ export default async function CollectionPage({ params }: Props) {
       products = sampleProducts.filter(p => 
         p.category.toLowerCase().includes('polo')
       ) as any;
-    } else if (slug === 'the-premier-launch' || slug === 'lagos-archival' || slug === 'new-arrivals') {
-      products = sampleProducts as any;
     } else {
       products = sampleProducts as any;
     }

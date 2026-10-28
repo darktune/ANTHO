@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cartStore';
 import { formatPrice } from '@/lib/utils';
+import { FREE_SHIPPING_THRESHOLD } from '@/lib/constants';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { Minus, Plus, X } from 'lucide-react';
 import Image from 'next/image';
@@ -148,14 +149,14 @@ export default function CartPage() {
               </Link>
             </div>
 
-            {subtotal < 5000000 && (
+            {subtotal < FREE_SHIPPING_THRESHOLD && (
               <p className="text-xs text-center text-neutral-500 dark:text-stone-500 mt-6">
-                Spend {formatPrice(5000000 - subtotal)} more to unlock free shipping across Nigeria.
+                Direct dispatch across Nigeria via tracked courier. Rates calculated at checkout.
               </p>
             )}
-            {subtotal >= 5000000 && (
+            {subtotal >= FREE_SHIPPING_THRESHOLD && (
               <p className="text-xs text-center text-[#C9A96E] font-semibold mt-6 uppercase tracking-wider">
-                ✓ Free Shipping Unlocked
+                ✓ Free Priority Shipping Unlocked
               </p>
             )}
           </div>

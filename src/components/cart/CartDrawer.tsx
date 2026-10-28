@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect } from 'react';
 import Link from 'next/link';
@@ -7,6 +7,7 @@ import { X, Plus, Minus, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '@/stores/uiStore';
 import { useCartStore } from '@/stores/cartStore';
+import { formatPrice } from '@/lib/utils';
 
 export default function CartDrawer() {
   const { isCartDrawerOpen, closeCartDrawer } = useUIStore();
@@ -92,7 +93,7 @@ export default function CartDrawer() {
                           {(item.size || item.color) && (
                             <p className="text-neutral-500 text-xs mt-1">{[item.size, item.color].filter(Boolean).join(", ")}</p>
                           )}
-                          <p className="text-[#C9A96E] text-xs sm:text-sm mt-2 font-mono">₦ {(item.price / 100).toLocaleString()}</p>
+                          <p className="text-[#C9A96E] text-xs sm:text-sm mt-2 font-mono">{formatPrice(item.price)}</p>
                         </div>
                         <div className="flex items-center border border-black/20 dark:border-white/20 w-fit rounded-sm mt-4">
                           <button 
@@ -124,7 +125,7 @@ export default function CartDrawer() {
               <div className="p-5 sm:p-6 border-t border-black/10 dark:border-white/10 bg-[#FAFAF9] dark:bg-[#0A0A0A]">
                 <div className="flex justify-between items-center mb-5">
                   <span className="tracking-widest uppercase text-xs font-semibold">Subtotal</span>
-                  <span className="text-[#C9A96E] text-base sm:text-lg font-mono">₦ {(subtotal / 100).toLocaleString()}</span>
+                  <span className="text-[#C9A96E] text-base sm:text-lg font-mono">{formatPrice(subtotal)}</span>
                 </div>
                 <div className="space-y-3">
                   <Link 

@@ -195,6 +195,25 @@ export function CheckoutForm({ subtotal }: CheckoutFormProps) {
               </select>
             </div>
           </div>
+
+          {selectedState && (
+            <div className="p-3.5 bg-stone-100 dark:bg-stone-900/90 border border-[#C9A96E]/40 rounded-sm flex items-center justify-between text-xs">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#C9A96E] animate-pulse" />
+                <div>
+                  <span className="font-semibold text-neutral-900 dark:text-white uppercase tracking-wider block">
+                    {getShippingCost(selectedState).state}
+                  </span>
+                  <span className="text-neutral-500 text-[11px]">
+                    {getShippingCost(selectedState).estimatedDays}
+                  </span>
+                </div>
+              </div>
+              <span className="font-mono text-sm font-bold text-[#C9A96E]">
+                {formatPrice(getShippingCost(selectedState).cost)}
+              </span>
+            </div>
+          )}
         </div>
       </section>
 
