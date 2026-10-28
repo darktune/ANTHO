@@ -100,8 +100,8 @@ export default function MinimalShowcase() {
   useEffect(() => {
     if (!isPlaying) return;
 
-    // Video slide plays for 8s, image slides for 4.5s
-    const duration = currentSlide.type === 'video' ? 8000 : 4500;
+    // Video slide plays for 26.5s (full video runtime), image slides for 5.5s
+    const duration = currentSlide.type === 'video' ? 26500 : 5500;
     const interval = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
     }, duration);
@@ -135,26 +135,26 @@ export default function MinimalShowcase() {
               <video
                 ref={videoRef}
                 autoPlay
-                loop
                 muted
                 playsInline
                 preload="auto"
+                onEnded={() => handleNext()}
                 className="w-full h-full object-cover object-center"
               >
                 <source src={currentSlide.src} type="video/mp4" />
                 <source src={currentSlide.src} type="video/quicktime" />
                 <source src={currentSlide.src} />
               </video>
-              {/* Subtle cinematic gradient in the lower portion to enhance text legibility without blocking models */}
-              <div className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+              {/* Subtle cinematic gradient in the lower third strictly behind text */}
+              <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
             </motion.div>
           ) : (
             <motion.div
               key={`image-${currentSlide.src}`}
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, ease: 'easeInOut' }}
               className="relative w-full h-full"
             >
               <Image
@@ -162,59 +162,61 @@ export default function MinimalShowcase() {
                 alt={currentSlide.name}
                 fill
                 priority
+                unoptimized
+                sizes="100vw"
                 className="object-cover object-center"
               />
-              {/* Subtle cinematic gradient in the lower portion */}
-              <div className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+              {/* Subtle cinematic gradient in the lower third strictly behind text */}
+              <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* 2. Centered Editorial Typography Lockup (Unique, Refined, Non-Overshadowing) */}
-      <div className="relative z-20 flex flex-col items-center text-center px-4 max-w-2xl mx-auto mb-20 sm:mb-24 pb-2 sm:pb-4 pointer-events-auto">
+      {/* 2. Centered Editorial Typography Lockup (Refined, Non-Overshadowing, Lower-Third) */}
+      <div className="relative z-20 flex flex-col items-center text-center px-4 max-w-xl mx-auto mb-10 sm:mb-12 md:mb-14 pb-1 sm:pb-2 pointer-events-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={`content-${currentSlide.id}`}
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-center"
           >
             {/* Sequence Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full mb-2.5 sm:mb-3">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-black/50 backdrop-blur-md border border-white/10 rounded-full mb-1.5 sm:mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" />
-              <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.3em] text-[#C9A96E] font-medium">
+              <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.25em] text-[#C9A96E] font-medium">
                 {currentSlide.sequence}
               </span>
             </div>
 
-            {/* Cloth Name / Headline */}
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-white tracking-wide uppercase drop-shadow-md font-light mb-1.5 sm:mb-2 leading-tight">
+            {/* Cloth Name / Headline - Made smaller & more elegant to avoid overshadowing faces */}
+            <h2 className="font-serif text-lg sm:text-xl md:text-2xl text-white tracking-[0.16em] uppercase drop-shadow-md font-light mb-1 sm:mb-1.5 leading-snug">
               {currentSlide.name}
             </h2>
 
             {/* Fabric / Textile Spec */}
             {currentSlide.spec && (
-              <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-white/70 mb-5 sm:mb-6 max-w-lg">
+              <p className="text-[8.5px] sm:text-[9.5px] font-mono uppercase tracking-[0.2em] text-white/65 mb-3 sm:mb-4 max-w-md">
                 {currentSlide.spec}
               </p>
             )}
 
-            {/* Centered Curated Action Buttons */}
-            <div className="flex items-center gap-3 sm:gap-4">
+            {/* Centered Curated Action Buttons - Compact Luxury Proportion */}
+            <div className="flex items-center gap-2.5 sm:gap-3">
               <Link
                 href={currentSlide.ctaLink || '/shop'}
-                className="px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-black hover:bg-[#C9A96E] hover:text-black text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] transition-all duration-300 shadow-lg flex items-center gap-2 group cursor-pointer"
+                className="px-5 sm:px-6 py-2 sm:py-2.5 bg-white text-black hover:bg-[#C9A96E] hover:text-black text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-md flex items-center gap-1.5 group cursor-pointer"
               >
                 <span>{currentSlide.ctaText || 'VIEW PIECE'}</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
               <Link
                 href="/lookbook"
-                className="px-6 sm:px-8 py-2.5 sm:py-3 bg-black/50 backdrop-blur-md border border-white/30 text-white hover:bg-white hover:text-black text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] transition-all duration-300 cursor-pointer"
+                className="px-5 sm:px-6 py-2 sm:py-2.5 bg-black/50 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer"
               >
                 LOOKBOOK
               </Link>
