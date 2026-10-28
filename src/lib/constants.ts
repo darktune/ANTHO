@@ -1,8 +1,9 @@
 import type { ShippingZone } from "@/types";
 
 export const NIGERIAN_STATES = [
-  "Covenant University",
-  "Lagos",
+  "Covenant University (CU)",
+  "Lagos (Mainland)",
+  "Lagos (Island)",
   "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
   "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu",
   "FCT - Abuja", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina",
@@ -11,9 +12,12 @@ export const NIGERIAN_STATES = [
 ] as const;
 
 export const SHIPPING_ZONES: ShippingZone[] = [
-  { state: "Covenant University", cost: 300000, estimatedDays: "Campus drop / Tradefair pickup" },
-  { state: "Lagos", cost: 650000, estimatedDays: "1-2 business days" },
-  { state: "Ogun", cost: 650000, estimatedDays: "2-3 business days" },
+  { state: "Covenant University (CU)", cost: 650000, estimatedDays: "Campus drop / Tradefair pickup" },
+  { state: "Lagos (Mainland)", cost: 550000, estimatedDays: "1-2 business days" },
+  { state: "Lagos (Island)", cost: 850000, estimatedDays: "1-2 business days" },
+  { state: "Lagos", cost: 550000, estimatedDays: "1-2 business days" },
+  { state: "Covenant University", cost: 650000, estimatedDays: "Campus drop / Tradefair pickup" },
+  { state: "CU", cost: 650000, estimatedDays: "Campus drop / Tradefair pickup" },
 ];
 
 // Default shipping for other states across Nigeria
@@ -26,7 +30,20 @@ export const DEFAULT_SHIPPING: ShippingZone = {
 export const FREE_SHIPPING_THRESHOLD = 50000000; // Free threshold (or high default)
 
 export function getShippingCost(state: string): ShippingZone {
-  return SHIPPING_ZONES.find((z) => z.state.toLowerCase() === state.toLowerCase()) || { ...DEFAULT_SHIPPING, state };
+  const normalized = (state || "").toLowerCase().trim();
+  if (normalized.includes("covenant") || normalized === "cu" || normalized.includes("(cu)")) {
+    return { state: "Covenant University (CU)", cost: 650000, estimatedDays: "Campus drop / Tradefair pickup" };
+  }
+  if (normalized.includes("island")) {
+    return { state: "Lagos (Island)", cost: 850000, estimatedDays: "1-2 business days" };
+  }
+  if (normalized.includes("mainland")) {
+    return { state: "Lagos (Mainland)", cost: 550000, estimatedDays: "1-2 business days" };
+  }
+  if (normalized === "lagos") {
+    return { state: "Lagos (Mainland)", cost: 550000, estimatedDays: "1-2 business days" };
+  }
+  return SHIPPING_ZONES.find((z) => z.state.toLowerCase() === normalized) || { ...DEFAULT_SHIPPING, state };
 }
 
 export const SIZE_CHART = {

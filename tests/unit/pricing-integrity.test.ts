@@ -50,9 +50,9 @@ test('Product Catalog & Pricing Integrity Suite', async (t) => {
     const shipping = getShippingCost('Lagos');
 
     const subtotal = polo.price * 1; // 3,500,000
-    const shippingCost = shipping.cost; // 650,000
-    const total = subtotal + shippingCost; // 4,150,000
+    const shippingCost = shipping.cost; // 550,000 (Lagos Mainland default)
+    const total = subtotal + shippingCost; // 4,050,000
 
-    assert.equal(total, 4150000, 'Total must equal authoritative subtotal + Lagos shipping');
+    assert.equal(total, 4050000, 'Total must equal authoritative subtotal + Lagos shipping');
   });
 });

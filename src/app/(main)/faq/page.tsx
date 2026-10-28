@@ -23,7 +23,7 @@ export default function FAQPage() {
     },
     {
       title: 'What are your shipping rates?',
-      content: 'Covenant University (CU) delivery is ₦3,000 NGN; Lagos State is ₦6,500 NGN; and Nationwide shipping across all other 35 states in Nigeria is ₦9,000 NGN.'
+      content: 'Delivery to Covenant University (CU) is ₦6,500 NGN; Lagos (Mainland) is ₦5,500 NGN; Lagos (Island) is ₦8,500 NGN; and Nationwide delivery across all other states in Nigeria is ₦9,000 NGN.'
     },
     {
       title: 'How can I track my order?',

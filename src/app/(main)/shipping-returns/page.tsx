@@ -62,19 +62,25 @@ export default function ShippingReturnsPage() {
               <li className="flex items-start gap-2">
                 <span className="text-[#C9A96E]">&bull;</span>
                 <span>
-                  <strong className="text-black dark:text-white font-medium">Covenant University (CU):</strong> ₦3,000 NGN — Campus drop / Tradefair pop-up pickup.
+                  <strong className="text-black dark:text-white font-medium">Covenant University (CU):</strong> ₦6,500 NGN — Campus drop / Tradefair pop-up pickup.
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#C9A96E]">&bull;</span>
                 <span>
-                  <strong className="text-black dark:text-white font-medium">Lagos State:</strong> ₦6,500 NGN — 1–2 business days dispatch following processing.
+                  <strong className="text-black dark:text-white font-medium">Lagos (Mainland):</strong> ₦5,500 NGN — 1–2 business days dispatch following processing.
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#C9A96E]">&bull;</span>
                 <span>
-                  <strong className="text-black dark:text-white font-medium">Nationwide (All Other 35 States):</strong> ₦9,000 NGN — Tracked domestic logistics across Nigeria (3–5 business days).
+                  <strong className="text-black dark:text-white font-medium">Lagos (Island):</strong> ₦8,500 NGN — 1–2 business days dispatch following processing.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#C9A96E]">&bull;</span>
+                <span>
+                  <strong className="text-black dark:text-white font-medium">Nationwide (All Other States):</strong> ₦9,000 NGN — Tracked domestic logistics across Nigeria (3–5 business days).
                 </span>
               </li>
             </ul>
