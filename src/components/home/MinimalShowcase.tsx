@@ -121,6 +121,17 @@ export default function MinimalShowcase() {
     poster.src = '/images/new-shoot/campaign-motion-poster.webp';
   }, []);
 
+  // Synchronize video playback with active slide state
+  useEffect(() => {
+    if (videoRef.current) {
+      if (currentIndex === 0 && isPlaying) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [currentIndex, isPlaying]);
+
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -144,60 +155,52 @@ export default function MinimalShowcase() {
   return (
     <section className="relative w-full h-screen min-h-[620px] flex flex-col justify-end items-center overflow-hidden select-none bg-black">
       
-      {/* 1. Full-bleed Media Container (100% Unobscured) */}
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          {currentSlide.type === 'video' ? (
-            <motion.div
-              key={`video-${currentSlide.src}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: 'easeInOut' }}
-              className="relative w-full h-full"
+      {/* 1. Full-bleed Media Container (100% Unobscured & Instantaneous Transitions) */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+        {SLIDES.map((slide, idx) => {
+          const isActive = idx === currentIndex;
+          return (
+            <div
+              key={`slide-${slide.id}`}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
+              }`}
+              aria-hidden={!isActive}
             >
-              <video
-                ref={videoRef}
-                autoPlay
-                muted
-                playsInline
-                preload="auto"
-                poster="/images/new-shoot/campaign-motion-poster.webp"
-                onEnded={() => handleNext()}
-                className="w-full h-full object-cover object-center"
-              >
-                <source src={currentSlide.src} type="video/mp4" />
-                <source src={currentSlide.src} type="video/quicktime" />
-                <source src={currentSlide.src} />
-              </video>
+              {slide.type === 'video' ? (
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  muted
+                  playsInline
+                  preload="auto"
+                  poster="/images/new-shoot/campaign-motion-poster.webp"
+                  onEnded={() => handleNext()}
+                  className="w-full h-full object-cover object-center"
+                >
+                  <source src={slide.src} type="video/mp4" />
+                  <source src={slide.src} type="video/quicktime" />
+                  <source src={slide.src} />
+                </video>
+              ) : (
+                <Image
+                  src={slide.src}
+                  alt={slide.name}
+                  fill
+                  unoptimized
+                  priority={idx <= 2}
+                  loading={idx <= 2 ? 'eager' : 'lazy'}
+                  placeholder={slide.blurDataURL ? 'blur' : 'empty'}
+                  blurDataURL={slide.blurDataURL}
+                  sizes="100vw"
+                  className="object-cover object-center"
+                />
+              )}
               {/* Subtle cinematic gradient in the lower third strictly behind text */}
               <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key={`image-${currentSlide.src}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: 'easeInOut' }}
-              className="relative w-full h-full"
-            >
-              <Image
-                src={currentSlide.src}
-                alt={currentSlide.name}
-                fill
-                priority
-                placeholder={currentSlide.blurDataURL ? "blur" : "empty"}
-                blurDataURL={currentSlide.blurDataURL}
-                sizes="100vw"
-                quality={88}
-                className="object-cover object-center"
-              />
-              {/* Subtle cinematic gradient in the lower third strictly behind text */}
-              <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          );
+        })}
       </div>
 
       {/* 2. Centered Editorial Typography Lockup (Refined, Non-Overshadowing, Lower-Third) */}

@@ -13,7 +13,7 @@ const collections = [
     subtitle: 'CAPSULE 01 // PREVAILS SERIES',
     tag: 'PREVAILS TEE',
     description: 'The definitive Prevails graphic capsule engineered with high-density silkscreen on 300gsm combed cotton.',
-    image: '/images/new-shoot/premier-launch-2.jpg',
+    image: '/images/new-shoot/premier-launch-2.webp',
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const collections = [
     subtitle: 'CAPSULE 03 // 500GSM FLEECE',
     tag: 'NPNG SWEATS',
     description: 'Milled French terry sweatpants and boxy pique polo shirts designed with intentional stacked drape.',
-    image: '/images/new-shoot/premier-launch-1.jpg',
+    image: '/images/new-shoot/premier-launch-1.webp',
   },
   {
     id: 4,

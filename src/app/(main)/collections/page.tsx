@@ -12,7 +12,7 @@ const collections = [
     count: 4,
     subtitle: 'Prevails Movement Series',
     description: 'The definitive Prevails graphic capsule engineered with high-density silkscreen on 300gsm combed cotton.',
-    image: '/images/new-shoot/premier-launch-2.jpg'
+    image: '/images/new-shoot/premier-launch-2.webp'
   },
   { 
     id: '2', 
@@ -30,7 +30,7 @@ const collections = [
     count: 2,
     subtitle: '500gsm Heavyweight Fleece',
     description: 'Milled French terry sweatpants and boxy pique polo shirts designed with intentional stacked drape.',
-    image: '/images/new-shoot/premier-launch-1.jpg'
+    image: '/images/new-shoot/premier-launch-1.webp'
   },
   { 
     id: '4', 

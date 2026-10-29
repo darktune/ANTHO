@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     title: 'SS26 Editorial Lookbook | ANTHO — The Lagos Edit',
     description: 'Curated editorial stills exploring contemporary Nigerian youth streetwear across 5 chapters.',
     url: 'https://www.anthosyllogi.xyz/lookbook',
-    images: ['/images/new-shoot/premier-launch-2.jpg'],
+    images: ['/images/new-shoot/premier-launch-2.webp'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'SS26 Editorial Lookbook | ANTHO',
     description: 'High-editorial documentation of contemporary Nigerian streetwear.',
-    images: ['/images/new-shoot/premier-launch-2.jpg'],
+    images: ['/images/new-shoot/premier-launch-2.webp'],
   },
 };
 
@@ -51,10 +51,10 @@ const lookbookActs = [
     actTitle: 'Act II — Prevails Movement & Silhouette',
     actSubtitle: 'Everyday street armor and culture rooted in youthful resilience — featuring Antho Prevails tees.',
     items: [
-      { id: '7', src: '/images/new-shoot/premier-launch-2.jpg', title: 'Look 07 — The Terracotta Syndicate', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '8', src: '/images/new-shoot/premier-launch-3.jpg', title: 'Look 08 — Overhead Perspective Form', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '9', src: '/images/new-shoot/syllogi-sequence-1.jpg', title: 'Look 09 — Dual Cross Silhouettes', aspect: 'aspect-[3/4]', act: 'Act II' },
-      { id: '10', src: '/images/new-shoot/syllogi-sequence-2.jpg', title: 'Look 10 — Street Statement Form', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '7', src: '/images/new-shoot/premier-launch-2.webp', title: 'Look 07 — The Terracotta Syndicate', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '8', src: '/images/new-shoot/premier-launch-3.webp', title: 'Look 08 — Overhead Perspective Form', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '9', src: '/images/new-shoot/syllogi-sequence-1.webp', title: 'Look 09 — Dual Cross Silhouettes', aspect: 'aspect-[3/4]', act: 'Act II' },
+      { id: '10', src: '/images/new-shoot/syllogi-sequence-2.webp', title: 'Look 10 — Street Statement Form', aspect: 'aspect-[3/4]', act: 'Act II' },
       { id: '11', src: '/images/white_prevails/IMG_6714.JPEG', title: 'Look 11 — The Prevails Attitude', aspect: 'aspect-[3/4]', act: 'Act II' },
       { id: '12', src: '/images/black_prevails/IMG_6704.JPEG', title: 'Look 12 — Dropped Shoulder Tailoring', aspect: 'aspect-[3/4]', act: 'Act II' },
     ]
@@ -64,8 +64,8 @@ const lookbookActs = [
     actTitle: 'Act III — Studio Atelier & Streetwear Detail',
     actSubtitle: 'Curated studio captures, female baby tees, ANTHO signature pieces, and textured fleece silhouettes.',
     items: [
-      { id: '13', src: '/images/new-shoot/architectural-form.jpg', title: 'Look 13 — Architectural Form Golden Hour', aspect: 'aspect-[3/4]', act: 'Act III' },
-      { id: '14', src: '/images/new-shoot/premier-launch-1.jpg', title: 'Look 14 — NPNG Crest & Sweat Drape', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '13', src: '/images/new-shoot/architectural-form.webp', title: 'Look 13 — Architectural Form Golden Hour', aspect: 'aspect-[3/4]', act: 'Act III' },
+      { id: '14', src: '/images/new-shoot/premier-launch-1.webp', title: 'Look 14 — NPNG Crest & Sweat Drape', aspect: 'aspect-[3/4]', act: 'Act III' },
       { id: '15', src: '/images/slideshow/10.jpg', title: 'Look 15 — Architectural Silhouette Cut', aspect: 'aspect-[3/4]', act: 'Act III' },
       { id: '16', src: '/images/slideshow/11.JPEG', title: 'Look 16 — Raw Milled Textile Structure', aspect: 'aspect-[4/5]', act: 'Act III' },
       { id: '17', src: '/images/slideshow/12.jpg', title: 'Look 17 — Lagos Night Horizon', aspect: 'aspect-[3/4]', act: 'Act III' },
