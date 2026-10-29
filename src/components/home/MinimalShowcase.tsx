@@ -5,11 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, Pause, ArrowRight } from 'lucide-react';
+import heroLqip from '@/lib/hero-lqip.json';
 
 interface Slide {
   id: number;
   type: 'image' | 'video';
   src: string;
+  blurDataURL?: string;
   sequence: string;
   name: string;
   spec: string;
@@ -31,7 +33,8 @@ const SLIDES: Slide[] = [
   { 
     id: 2, 
     type: 'image', 
-    src: '/images/new-shoot/architectural-form.jpg', 
+    src: '/images/new-shoot/architectural-form.webp',
+    blurDataURL: (heroLqip as Record<string, string>)['architectural-form'],
     sequence: 'SEQUENCE 02 // ARCHITECTURAL FORM',
     name: 'THE ARCHITECTURAL POLO & GRAPHICS',
     spec: '280GSM COMBED PIQUE • 300GSM SILKSCREEN',
@@ -41,7 +44,8 @@ const SLIDES: Slide[] = [
   { 
     id: 3, 
     type: 'image', 
-    src: '/images/new-shoot/premier-launch-1.jpg', 
+    src: '/images/new-shoot/premier-launch-1.webp', 
+    blurDataURL: (heroLqip as Record<string, string>)['premier-launch-1'],
     sequence: 'THE PREMIER LAUNCH // 01',
     name: 'NPNG HEAVYWEIGHT SWEATPANTS',
     spec: '500GSM FRENCH TERRY • MILLED DRAPE',
@@ -51,7 +55,8 @@ const SLIDES: Slide[] = [
   { 
     id: 4, 
     type: 'image', 
-    src: '/images/new-shoot/premier-launch-2.jpg', 
+    src: '/images/new-shoot/premier-launch-2.webp', 
+    blurDataURL: (heroLqip as Record<string, string>)['premier-launch-2'],
     sequence: 'THE PREMIER LAUNCH // 02',
     name: 'ANTHO PREVAILS GRAPHIC TEE',
     spec: '300GSM HIGH-DENSITY COMBED COTTON',
@@ -61,7 +66,8 @@ const SLIDES: Slide[] = [
   { 
     id: 5, 
     type: 'image', 
-    src: '/images/new-shoot/premier-launch-3.jpg', 
+    src: '/images/new-shoot/premier-launch-3.webp', 
+    blurDataURL: (heroLqip as Record<string, string>)['premier-launch-3'],
     sequence: 'THE PREMIER LAUNCH // 03',
     name: 'EDITORIAL STILLS // TERRACOTTA',
     spec: 'SS26 STREET CULTURE // LAGOS EDIT',
@@ -71,7 +77,8 @@ const SLIDES: Slide[] = [
   { 
     id: 6, 
     type: 'image', 
-    src: '/images/new-shoot/syllogi-sequence-1.jpg', 
+    src: '/images/new-shoot/syllogi-sequence-1.webp', 
+    blurDataURL: (heroLqip as Record<string, string>)['syllogi-sequence-1'],
     sequence: 'SEQUENCE 06 // SYLLOGI CROSS',
     name: 'ANTHO CROSS GRAPHIC TEE',
     spec: 'CUSTOM RAGLAN STITCH • HIGH-DENSITY PRINT',
@@ -81,7 +88,8 @@ const SLIDES: Slide[] = [
   { 
     id: 7, 
     type: 'image', 
-    src: '/images/new-shoot/syllogi-sequence-2.jpg', 
+    src: '/images/new-shoot/syllogi-sequence-2.webp', 
+    blurDataURL: (heroLqip as Record<string, string>)['syllogi-sequence-2'],
     sequence: 'SEQUENCE 07 // SYLLOGI SEQUENCE',
     name: 'MY HATERS WATCHIN STATEMENT TEE',
     spec: 'VINTAGE SCREENPRINT • 300GSM COTTON',
@@ -96,6 +104,22 @@ export default function MinimalShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentSlide = SLIDES[currentIndex];
+
+  // High-performance image architecture:
+  // Pre-load all slideshow assets silently into memory during initial video playback
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    SLIDES.forEach((slide) => {
+      if (slide.type === 'image' && slide.src) {
+        const img = new window.Image();
+        img.src = slide.src;
+      }
+    });
+
+    const poster = new window.Image();
+    poster.src = '/images/new-shoot/campaign-motion-poster.webp';
+  }, []);
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -138,6 +162,7 @@ export default function MinimalShowcase() {
                 muted
                 playsInline
                 preload="auto"
+                poster="/images/new-shoot/campaign-motion-poster.webp"
                 onEnded={() => handleNext()}
                 className="w-full h-full object-cover object-center"
               >
@@ -162,8 +187,10 @@ export default function MinimalShowcase() {
                 alt={currentSlide.name}
                 fill
                 priority
-                unoptimized
+                placeholder={currentSlide.blurDataURL ? "blur" : "empty"}
+                blurDataURL={currentSlide.blurDataURL}
                 sizes="100vw"
+                quality={88}
                 className="object-cover object-center"
               />
               {/* Subtle cinematic gradient in the lower third strictly behind text */}
