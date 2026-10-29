@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { 
   FolderArchive, 
@@ -11,7 +11,12 @@ import {
   Film, 
   MapPin, 
   Volume2, 
-  VolumeX 
+  VolumeX,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  Info,
+  CheckCircle2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SOCIAL_LINKS } from '@/lib/constants';
@@ -73,7 +78,7 @@ export const CU_ARCHIVE_DATA: ArchiveFolderData = {
       id: "cu-01",
       type: "video",
       src: "/images/new-shoot/campaign-motion.mp4",
-      poster: "/images/antho-shoot/IMG_3806.JPG",
+      poster: "/images/new-shoot/campaign-motion-poster.webp",
       phase: "PHASE 01 // KINETIC CAMPAIGN TEASER",
       title: "Lagos to Ota: The Motion Prologue",
       date: "May 28, 2026",
@@ -331,23 +336,73 @@ export default function EventArchiveFolder({
   const [isOpen, setIsOpen] = useState(false);
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
+  const [activeTab, setActiveTab] = useState<'exhibits' | 'narrative' | 'dossier'>('exhibits');
 
-  // Close modal on Escape key
+  const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const handlePrevMedia = () => {
+    setActiveMediaIndex((prev) => (prev - 1 + folderData.items.length) % folderData.items.length);
+  };
+
+  const handleNextMedia = () => {
+    setActiveMediaIndex((prev) => (prev + 1) % folderData.items.length);
+  };
+
+  // Keyboard navigation & Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isOpen) return;
       if (e.key === 'Escape') setIsOpen(false);
+      if (e.key === 'ArrowLeft') handlePrevMedia();
+      if (e.key === 'ArrowRight') handleNextMedia();
     };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = 'unset';
     }
+
     return () => {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, folderData.items.length]);
+
+  // Touch swipe detection
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 45) {
+      handleNextMedia();
+    } else if (diff < -45) {
+      handlePrevMedia();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  // Keep active thumbnail centered in filmstrip
+  useEffect(() => {
+    if (thumbnailRefs.current[activeMediaIndex]) {
+      thumbnailRefs.current[activeMediaIndex]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
+  }, [activeMediaIndex]);
 
   const activeItem = folderData.items[activeMediaIndex];
 
@@ -485,10 +540,10 @@ export default function EventArchiveFolder({
 
       </div>
 
-      {/* Full Scrollable Dossier Popup Page (Modal) */}
+      {/* Full Organized Dossier Popup Page (Modal) */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex justify-center p-2 sm:p-4 md:p-8">
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex justify-center p-2 sm:p-4 md:p-6">
             
             {/* Backdrop click to dismiss */}
             <div 
@@ -498,16 +553,16 @@ export default function EventArchiveFolder({
 
             {/* Dossier Document Container */}
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              initial={{ opacity: 0, y: 25, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 30, scale: 0.98 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-4xl bg-[#FAFAF9] dark:bg-[#0D0D0D] text-[#0A0A0A] dark:text-[#FAFAF9] border border-black/20 dark:border-white/20 shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92dvh] sm:max-h-[90vh]"
+              exit={{ opacity: 0, y: 25, scale: 0.98 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 w-full max-w-4xl bg-[#FAFAF9] dark:bg-[#0D0D0D] text-[#0A0A0A] dark:text-[#FAFAF9] border border-black/20 dark:border-white/20 shadow-2xl overflow-hidden flex flex-col my-auto max-h-[94dvh] sm:max-h-[92vh]"
             >
               {/* Sticky Top Header Bar */}
               <div className="sticky top-0 z-30 bg-[#FAFAF9]/95 dark:bg-[#0D0D0D]/95 backdrop-blur-md border-b border-black/10 dark:border-white/10 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between">
                 <div className="flex items-center gap-2.5 sm:gap-3">
-                  <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-red-600 animate-pulse shrink-0" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse shrink-0" />
                   <div>
                     <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-mono text-[#C9A96E] font-bold block">
                       ARCHIVE DOSSIER // DECLASSIFIED
@@ -519,12 +574,12 @@ export default function EventArchiveFolder({
                 </div>
 
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="hidden md:inline font-mono text-[10px] text-neutral-400">
+                  <span className="hidden sm:inline font-mono text-[10px] text-neutral-400 bg-black/5 dark:bg-white/5 px-2.5 py-1 rounded">
                     {folderData.caseCode}
                   </span>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="p-2 sm:p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/10 rounded-full transition-colors"
+                    className="p-2 sm:p-2.5 min-w-[40px] min-h-[40px] flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/10 rounded-full transition-colors cursor-pointer"
                     aria-label="Close Case File"
                   >
                     <X className="w-5 h-5" />
@@ -532,237 +587,389 @@ export default function EventArchiveFolder({
                 </div>
               </div>
 
+              {/* Dossier Navigation Tab Bar (Streamlined Organization) */}
+              <div className="flex items-center gap-1.5 px-4 sm:px-6 py-2.5 border-b border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03] overflow-x-auto hide-scrollbar">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('exhibits')}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
+                    activeTab === 'exhibits'
+                      ? 'bg-[#C9A96E] text-black shadow-sm'
+                      : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
+                  }`}
+                >
+                  <Film className="w-3.5 h-3.5" />
+                  <span>01. Exhibit Theater ({folderData.items.length})</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('narrative')}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
+                    activeTab === 'narrative'
+                      ? 'bg-[#C9A96E] text-black shadow-sm'
+                      : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
+                  }`}
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>02. Chronology & Log</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('dossier')}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
+                    activeTab === 'dossier'
+                      ? 'bg-[#C9A96E] text-black shadow-sm'
+                      : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
+                  }`}
+                >
+                  <Info className="w-3.5 h-3.5" />
+                  <span>03. Provenance & Stats</span>
+                </button>
+              </div>
+
               {/* Scrollable Dossier Body */}
-              <div className="overflow-y-auto p-4 sm:p-6 md:p-8 space-y-8 sm:space-y-12 divide-y divide-black/10 dark:divide-white/10 custom-scrollbar">
+              <div className="overflow-y-auto p-4 sm:p-6 md:p-8 space-y-6 custom-scrollbar">
                 
-                {/* Dossier Header Info */}
-                <div className="space-y-4">
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono">
-                    <span className="px-2.5 py-1 bg-red-600 text-white font-bold uppercase text-[9px]">
-                      RESTRICTED VAULT // PUBLIC DECLASSIFICATION
-                    </span>
-                    <span className="text-neutral-500 font-bold">{folderData.date}</span>
-                    <span className="text-neutral-400">&bull;</span>
-                    <span className="text-neutral-500">{folderData.location}</span>
-                  </div>
-
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif tracking-tight uppercase">
-                    {folderData.title}
-                  </h1>
-
-                  <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans max-w-3xl">
-                    {folderData.summary}
-                  </p>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                    {folderData.stats.map((stat) => (
-                      <div key={stat.label} className="p-3 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
-                        <span className="block text-[9px] uppercase tracking-wider text-neutral-500">{stat.label}</span>
-                        <span className="font-mono text-sm font-bold text-neutral-900 dark:text-white">{stat.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Primary Cinema Feature (Active Media Preview) */}
-                <div className="pt-8 sm:pt-10 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-[#C9A96E] font-semibold">
-                      CURRENT EXHIBIT: {activeItem.phase}
-                    </span>
-                    <span className="text-xs font-mono text-neutral-500">
-                      ENTRY {activeMediaIndex + 1} OF {folderData.items.length}
-                    </span>
-                  </div>
-
-                  <div className="relative aspect-video w-full bg-black rounded-sm overflow-hidden border border-black/20 dark:border-white/20 shadow-xl">
-                    {activeItem.type === 'video' ? (
-                      <div className="relative w-full h-full">
-                        <video
-                          key={activeItem.src}
-                          src={activeItem.src}
-                          poster={activeItem.poster}
-                          controls
-                          autoPlay
-                          muted={isMuted}
-                          playsInline
-                          className="w-full h-full object-contain"
-                        />
-                        <button
-                          onClick={() => setIsMuted(!isMuted)}
-                          className="absolute top-4 right-4 p-2 bg-black/70 hover:bg-black text-white rounded-full backdrop-blur-md transition-colors z-20"
-                          title={isMuted ? "Unmute" : "Mute"}
-                        >
-                          {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="relative w-full h-full">
-                        <Image
-                          key={activeItem.src}
-                          src={activeItem.src}
-                          alt={activeItem.title}
-                          fill
-                          priority
-                          className="object-contain"
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Active Media Story & Context Box */}
-                  <div className="p-4 sm:p-6 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 space-y-3">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                      <h4 className="text-base sm:text-lg font-serif font-bold uppercase tracking-tight text-neutral-900 dark:text-white">
-                        {activeItem.title}
-                      </h4>
-                      <span className="text-xs font-mono text-neutral-500">{activeItem.date}</span>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                      {activeItem.story}
-                    </p>
-
-                    <div className="pt-2 flex items-center justify-between">
-                      <a
-                        href={activeItem.socialLink.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C9A96E] hover:underline"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span>{activeItem.socialLink.label} &rarr;</span>
-                      </a>
-                      <span className="text-[10px] font-mono text-neutral-400">
-                        VIA {activeItem.socialLink.platform.toUpperCase()}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Media Strip Timeline (Horizontal Scrollable Thumbnails) */}
-                <div className="pt-8 sm:pt-10 space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-neutral-500 font-semibold">
-                      ARCHIVE TIMELINE (TAP TO INSPECT)
-                    </span>
-                    <span className="text-[10px] font-mono text-neutral-400">
-                      {folderData.items.length} EXHIBITS
-                    </span>
-                  </div>
-
-                  <div className="flex gap-3 overflow-x-auto pb-4 pt-1 hide-scrollbar">
-                    {folderData.items.map((item, index) => {
-                      const isSelected = index === activeMediaIndex;
-                      return (
-                        <button
-                          key={item.id}
-                          type="button"
-                          onClick={() => setActiveMediaIndex(index)}
-                          className={`group relative shrink-0 w-28 sm:w-36 aspect-[4/3] rounded-sm overflow-hidden border-2 transition-all duration-300 text-left ${
-                            isSelected 
-                              ? 'border-[#C9A96E] ring-2 ring-[#C9A96E]/30 scale-[1.02]' 
-                              : 'border-black/10 dark:border-white/10 opacity-70 hover:opacity-100'
-                          }`}
-                        >
-                          <Image
-                            src={item.type === 'video' ? (item.poster || item.src) : item.src}
-                            alt={item.title}
-                            fill
-                            className="object-cover"
-                          />
-                          
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                          
-                          {item.type === 'video' && (
-                            <div className="absolute top-1.5 right-1.5 p-1 bg-black/60 rounded text-white">
-                              <Film className="w-3 h-3" />
-                            </div>
-                          )}
-
-                          <div className="absolute bottom-1.5 left-2 right-2">
-                            <span className="block text-[8px] font-mono text-[#C9A96E] uppercase leading-none mb-0.5">
-                              0{index + 1}
-                            </span>
-                            <span className="block text-[10px] font-bold text-white uppercase leading-tight line-clamp-1">
-                              {item.title}
-                            </span>
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Complete Story / Behind-the-Scenes Process Breakdown */}
-                <div className="pt-8 sm:pt-10 space-y-8">
-                  <div className="border-b border-black/10 dark:border-white/10 pb-4">
-                    <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#C9A96E] block mb-1">
-                      CHRONOLOGICAL NARRATIVE
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-serif uppercase tracking-tight text-neutral-900 dark:text-white">
-                      The Process: Step-by-Step Production Log
-                    </h3>
-                  </div>
-
+                {/* TAB 1: EXHIBIT THEATER (Interactive Slider / Carousel) */}
+                {activeTab === 'exhibits' && (
                   <div className="space-y-6">
-                    {folderData.items.map((item, idx) => (
-                      <div 
-                        key={item.id}
-                        className={`p-4 sm:p-5 border transition-colors ${
-                          idx === activeMediaIndex
-                            ? 'border-[#C9A96E] bg-[#C9A96E]/5 dark:bg-[#C9A96E]/10'
-                            : 'border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30'
-                        }`}
-                      >
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                          <span className="text-[9px] font-mono uppercase tracking-widest text-[#C9A96E] font-bold">
-                            {item.phase}
-                          </span>
-                          <span className="text-[10px] font-mono text-neutral-400">{item.date}</span>
-                        </div>
-
-                        <h4 className="text-sm sm:text-base font-serif font-bold uppercase text-neutral-900 dark:text-white mb-2">
-                          {item.title}
-                        </h4>
-
-                        <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed mb-3">
-                          {item.story}
-                        </p>
-
-                        <div className="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5">
+                    
+                    {/* Media Slider Box with Left/Right Navigation */}
+                    <div 
+                      className="relative aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] w-full max-h-[500px] bg-black rounded-sm overflow-hidden border border-black/20 dark:border-white/20 shadow-xl group/theater select-none"
+                      onTouchStart={handleTouchStart}
+                      onTouchMove={handleTouchMove}
+                      onTouchEnd={handleTouchEnd}
+                    >
+                      {/* Active Media (Image or Video) */}
+                      {activeItem.type === 'video' ? (
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <video
+                            key={activeItem.src}
+                            src={activeItem.src}
+                            poster={activeItem.poster || '/images/new-shoot/campaign-motion-poster.webp'}
+                            controls
+                            autoPlay
+                            loop
+                            muted={isMuted}
+                            playsInline
+                            className="w-full h-full object-contain"
+                          />
                           <button
                             type="button"
-                            onClick={() => {
-                              setActiveMediaIndex(idx);
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
-                            }}
-                            className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 hover:text-black dark:hover:text-white"
+                            onClick={() => setIsMuted(!isMuted)}
+                            className="absolute top-3 right-3 p-2 bg-black/70 hover:bg-black text-white rounded-full backdrop-blur-md transition-colors z-20 border border-white/20 cursor-pointer"
+                            title={isMuted ? "Unmute" : "Mute"}
                           >
-                            [ Inspect In Player &uarr; ]
+                            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                           </button>
+                        </div>
+                      ) : (
+                        <div className="relative w-full h-full">
+                          <Image
+                            key={activeItem.src}
+                            src={activeItem.src}
+                            alt={activeItem.title}
+                            fill
+                            priority
+                            unoptimized
+                            className="object-contain"
+                          />
+                        </div>
+                      )}
 
-                          <a
-                            href={item.socialLink.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#C9A96E] hover:underline flex items-center gap-1.5"
+                      {/* Top Overlay Badge */}
+                      <div className="absolute top-3 left-3 z-20 flex items-center gap-2 pointer-events-none">
+                        <div className="bg-black/80 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase text-white font-bold flex items-center gap-1.5 shadow-md">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" />
+                          <span>EXHIBIT {String(activeMediaIndex + 1).padStart(2, '0')} / {String(folderData.items.length).padStart(2, '0')}</span>
+                        </div>
+                        <span className="hidden sm:inline-block bg-black/60 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full text-[9px] font-mono tracking-wider uppercase text-[#C9A96E]">
+                          {activeItem.phase.split('//')[0].trim()}
+                        </span>
+                      </div>
+
+                      {/* Floating Previous Arrow Button */}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePrevMedia();
+                        }}
+                        aria-label="Previous exhibit"
+                        className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-20 w-9 sm:w-11 h-9 sm:h-11 rounded-full bg-black/60 hover:bg-black text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-xl cursor-pointer"
+                      >
+                        <ChevronLeft className="w-5 sm:w-6 h-5 sm:h-6" />
+                      </button>
+
+                      {/* Floating Next Arrow Button */}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleNextMedia();
+                        }}
+                        aria-label="Next exhibit"
+                        className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 z-20 w-9 sm:w-11 h-9 sm:h-11 rounded-full bg-black/60 hover:bg-black text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-xl cursor-pointer"
+                      >
+                        <ChevronRight className="w-5 sm:w-6 h-5 sm:h-6" />
+                      </button>
+
+                      {/* Bottom Dot Indicators */}
+                      <div className="absolute bottom-3 inset-x-0 z-20 flex justify-center items-center gap-1.5 pointer-events-none">
+                        {folderData.items.map((_, i) => (
+                          <span
+                            key={i}
+                            className={`h-1 rounded-full transition-all duration-300 ${
+                              i === activeMediaIndex ? 'w-6 bg-[#C9A96E]' : 'w-1.5 bg-white/40'
+                            }`}
+                          />
+                        ))}
+                      </div>
+
+                    </div>
+
+                    {/* Filmstrip Thumbnails Row (Tap to Jump) */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center text-[10px] font-mono text-neutral-500 uppercase tracking-widest px-1">
+                        <span>Filmstrip Archive (Swipe or Tap)</span>
+                        <span>{activeMediaIndex + 1} of {folderData.items.length} Selected</span>
+                      </div>
+
+                      <div className="flex gap-2.5 overflow-x-auto pb-2 pt-1 hide-scrollbar">
+                        {folderData.items.map((item, index) => {
+                          const isSelected = index === activeMediaIndex;
+                          return (
+                            <button
+                              key={item.id}
+                              ref={(el) => { thumbnailRefs.current[index] = el; }}
+                              type="button"
+                              onClick={() => setActiveMediaIndex(index)}
+                              className={`group relative shrink-0 w-24 sm:w-32 aspect-[4/3] rounded-sm overflow-hidden border-2 transition-all duration-200 text-left cursor-pointer ${
+                                isSelected 
+                                  ? 'border-[#C9A96E] ring-2 ring-[#C9A96E]/40 scale-[1.02] shadow-md' 
+                                  : 'border-black/10 dark:border-white/10 opacity-60 hover:opacity-100 hover:border-black/30 dark:hover:border-white/30'
+                              }`}
+                            >
+                              <Image
+                                src={item.type === 'video' ? (item.poster || '/images/new-shoot/campaign-motion-poster.webp') : item.src}
+                                alt={item.title}
+                                fill
+                                unoptimized
+                                className="object-cover"
+                              />
+                              
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                              
+                              {item.type === 'video' && (
+                                <div className="absolute top-1 right-1 p-0.5 bg-black/70 rounded text-white">
+                                  <Film className="w-3 h-3 text-[#C9A96E]" />
+                                </div>
+                              )}
+
+                              <div className="absolute bottom-1 left-1.5 right-1.5">
+                                <span className="block text-[8px] font-mono text-[#C9A96E] uppercase leading-none font-bold">
+                                  0{index + 1}
+                                </span>
+                                <span className="block text-[9px] font-semibold text-white uppercase leading-tight line-clamp-1">
+                                  {item.title}
+                                </span>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Active Exhibit Dossier Detail Card */}
+                    <div className="p-5 sm:p-7 bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 space-y-4">
+                      
+                      <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-black/10 dark:border-white/10">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A96E]" />
+                          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C9A96E] font-bold">
+                            {activeItem.phase}
+                          </span>
+                        </div>
+                        <span className="text-xs font-mono text-neutral-500 font-medium">
+                          {activeItem.date}
+                        </span>
+                      </div>
+
+                      <div>
+                        <h4 className="text-lg sm:text-xl font-serif font-bold uppercase tracking-tight text-neutral-900 dark:text-white">
+                          {activeItem.title}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed mt-2.5">
+                          {activeItem.story}
+                        </p>
+                      </div>
+
+                      {/* Card Footer: Social Link & Slide Controls */}
+                      <div className="pt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-black/5 dark:border-white/5">
+                        <a
+                          href={activeItem.socialLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C9A96E] hover:underline"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span>{activeItem.socialLink.label} &rarr;</span>
+                        </a>
+
+                        {/* Quick Next/Prev Thumb Actions */}
+                        <div className="flex items-center gap-2 self-end sm:self-auto">
+                          <button
+                            type="button"
+                            onClick={handlePrevMedia}
+                            className="px-3 py-1.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-xs font-mono uppercase tracking-wider rounded-sm transition-colors cursor-pointer"
                           >
-                            <span>Open {item.socialLink.platform} Post</span>
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
+                            &larr; Prev
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleNextMedia}
+                            className="px-3 py-1.5 bg-[#C9A96E]/15 hover:bg-[#C9A96E]/25 text-[#C9A96E] text-xs font-mono uppercase tracking-wider font-bold rounded-sm transition-colors cursor-pointer"
+                          >
+                            Next &rarr;
+                          </button>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
 
-                {/* Footer Disclaimer & Sign-off */}
-                <div className="pt-8 text-center text-xs font-mono text-neutral-500 space-y-2">
-                  <p className="uppercase tracking-widest">
+                    </div>
+
+                  </div>
+                )}
+
+                {/* TAB 2: CHRONOLOGY & PRODUCTION LOG */}
+                {activeTab === 'narrative' && (
+                  <div className="space-y-6">
+                    <div className="border-b border-black/10 dark:border-white/10 pb-4">
+                      <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#C9A96E] block mb-1">
+                        MISSION TIMELINE // FIELD NOTES
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-serif uppercase tracking-tight text-neutral-900 dark:text-white">
+                        Complete Step-by-Step Production Log
+                      </h3>
+                      <p className="text-xs text-neutral-500 mt-1">
+                        Chronological debrief detailing all {folderData.items.length} development and runway milestones.
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      {folderData.items.map((item, idx) => (
+                        <div 
+                          key={item.id}
+                          className={`p-4 sm:p-5 border transition-all ${
+                            idx === activeMediaIndex
+                              ? 'border-[#C9A96E] bg-[#C9A96E]/5 dark:bg-[#C9A96E]/10 shadow-sm'
+                              : 'border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30'
+                          }`}
+                        >
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <span className="text-[9px] font-mono uppercase tracking-widest text-[#C9A96E] font-bold">
+                              {item.phase}
+                            </span>
+                            <span className="text-[10px] font-mono text-neutral-400">{item.date}</span>
+                          </div>
+
+                          <h4 className="text-sm sm:text-base font-serif font-bold uppercase text-neutral-900 dark:text-white mb-2">
+                            {item.title}
+                          </h4>
+
+                          <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed mb-3">
+                            {item.story}
+                          </p>
+
+                          <div className="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setActiveMediaIndex(idx);
+                                setActiveTab('exhibits');
+                              }}
+                              className="text-[10px] uppercase font-mono tracking-widest text-[#C9A96E] hover:underline font-semibold cursor-pointer"
+                            >
+                              [ Inspect In Theater &uarr; ]
+                            </button>
+
+                            <a
+                              href={item.socialLink.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-500 hover:text-black dark:hover:text-white flex items-center gap-1.5"
+                            >
+                              <span>Open {item.socialLink.platform} Post</span>
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB 3: CASE PROVENANCE & SPECS */}
+                {activeTab === 'dossier' && (
+                  <div className="space-y-6">
+                    <div className="border-b border-black/10 dark:border-white/10 pb-4">
+                      <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#C9A96E] block mb-1">
+                        ARCHIVE PROVENANCE & DOSSIER REPORT
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-serif uppercase tracking-tight text-neutral-900 dark:text-white">
+                        {folderData.title}
+                      </h3>
+                    </div>
+
+                    <div className="p-5 bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 space-y-3">
+                      <h4 className="text-xs font-mono uppercase tracking-widest font-bold text-[#C9A96E]">
+                        EXECUTIVE SUMMARY
+                      </h4>
+                      <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans">
+                        {folderData.summary}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {folderData.stats.map((stat) => (
+                        <div key={stat.label} className="p-3.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
+                          <span className="block text-[9px] uppercase tracking-wider text-neutral-500">{stat.label}</span>
+                          <span className="font-mono text-sm font-bold text-neutral-900 dark:text-white mt-0.5 block">{stat.value}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="p-4 border border-dashed border-black/20 dark:border-white/20 space-y-2 text-xs font-mono text-neutral-600 dark:text-neutral-400">
+                      <div className="flex justify-between">
+                        <span className="text-neutral-400 uppercase">VENUE LOCATION:</span>
+                        <span className="text-neutral-900 dark:text-white font-medium">{folderData.venue}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-neutral-400 uppercase">JURISDICTION:</span>
+                        <span className="text-neutral-900 dark:text-white font-medium">{folderData.location}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-neutral-400 uppercase">CASE DESIGNATION:</span>
+                        <span className="text-[#C9A96E] font-bold">{folderData.caseCode}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-neutral-400 uppercase">RECORD INTEGRITY:</span>
+                        <span className="text-emerald-500 font-bold flex items-center gap-1">
+                          <CheckCircle2 className="w-3.5 h-3.5" /> VERIFIED DECLASSIFIED
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Footer Sign-Off */}
+                <div className="pt-6 border-t border-black/10 dark:border-white/10 text-center text-xs font-mono text-neutral-500 space-y-1">
+                  <p className="uppercase tracking-widest text-[10px]">
                     ANTHO SYLLOGI // DECLASSIFIED ARCHIVAL DIVISION
                   </p>
-                  <p className="text-[10px] text-neutral-400">
+                  <p className="text-[9px] text-neutral-400">
                     &copy; 2026 ANTHO. All photo, video, and pattern rights reserved.
                   </p>
                 </div>

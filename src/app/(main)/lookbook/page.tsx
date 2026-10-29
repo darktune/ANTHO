@@ -77,11 +77,12 @@ const lookbookActs = [
     actTitle: 'Act IV — The Christos Polos // Architectural Pique',
     actSubtitle: 'Boxy pique polos in rich crimson red, optic white, onyx black, and black long-sleeve knitwear.',
     items: [
-      { id: '19', src: '/images/products/polos/photo_1_2026-09-04_09-11-37.jpg', title: 'Look 19 — Crimson Red Christos Pique', aspect: 'aspect-[3/4]', act: 'Act IV' },
-      { id: '20', src: '/images/slideshow/1.jpg', title: 'Look 20 — Optic White Architectural Pique', aspect: 'aspect-[3/4]', act: 'Act IV' },
-      { id: '21', src: '/images/antho-shoot/IMG_3809.JPG', title: 'Look 21 — Onyx Black Christos Knit', aspect: 'aspect-[4/5]', act: 'Act IV' },
-      { id: '22', src: '/images/products/polos/Snapchat-1079248294.jpg', title: 'Look 22 — Black Long-Sleeve Ribbed Cuff Detail', aspect: 'aspect-[3/4]', act: 'Act IV' },
-      { id: '23', src: '/images/products/polos/Snapchat-848713023.jpg', title: 'Look 23 — Mother-of-Pearl Button Hardware', aspect: 'aspect-[4/5]', act: 'Act IV' },
+      { id: '19', src: '/images/products/polos/red-christos-front.webp', title: 'Look 19 — Crimson Red Christos Pique', aspect: 'aspect-[3/4]', act: 'Act IV' },
+      { id: '20', src: '/images/products/polos/white-christos-front.webp', title: 'Look 20 — Optic White Architectural Pique', aspect: 'aspect-[3/4]', act: 'Act IV' },
+      { id: '21', src: '/images/lookbook/christos-syndicate-ensemble.webp', title: 'Look 21 — The Christos Syndicate Ensemble', aspect: 'aspect-[4/3]', act: 'Act IV' },
+      { id: '22', src: '/images/products/polos/black-longsleeve-front.webp', title: 'Look 22 — Black Long-Sleeve Architectural Form', aspect: 'aspect-[3/4]', act: 'Act IV' },
+      { id: '23', src: '/images/products/polos/black-christos-front.webp', title: 'Look 23 — Onyx Black Shortsleeve Christos Polo', aspect: 'aspect-[3/4]', act: 'Act IV' },
+      { id: '23b', src: '/images/products/polos/red-christos-model.webp', title: 'Look 23B — Crimson Red Fitted Silhouette', aspect: 'aspect-[3/4]', act: 'Act IV' },
     ]
   },
   {

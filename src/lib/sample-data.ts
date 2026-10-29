@@ -17,9 +17,10 @@ export const sampleProducts: Product[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     images: [
-      { id: 'img-rcp-1', url: '/images/products/polos/photo_1_2026-09-04_09-11-37.jpg', alt: 'ANTHO Red Christos Polo Front Cut', position: 0 },
-      { id: 'img-rcp-2', url: '/images/products/polos/Snapchat-1079248294.jpg', alt: 'ANTHO Red Christos Polo Collar & Hardware Detail', position: 1 },
-      { id: 'img-rcp-3', url: '/images/products/polos/Snapchat-848713023.jpg', alt: 'ANTHO Red Christos Polo Editorial Form', position: 2 },
+      { id: 'img-rcp-1', url: '/images/products/polos/red-christos-front.webp', alt: 'ANTHO Red Christos Polo Front Cut', position: 0 },
+      { id: 'img-rcp-2', url: '/images/products/polos/red-christos-model.webp', alt: 'ANTHO Red Christos Polo Editorial Drape', position: 1 },
+      { id: 'img-rcp-3', url: '/images/products/polos/red-christos-detail.webp', alt: 'ANTHO Red Christos Polo Collar & Hardware Detail', position: 2 },
+      { id: 'img-rcp-4', url: '/images/products/polos/red-christos-back.webp', alt: 'ANTHO Red Christos Polo Silhouette Form', position: 3 },
     ],
     variants: [
       { id: 'v-rcp-s', size: 'S', color: 'Crimson Red', colorHex: '#DC2626', stock: 15 },
@@ -45,9 +46,10 @@ export const sampleProducts: Product[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     images: [
-      { id: 'img-wcp-1', url: '/images/slideshow/1.jpg', alt: 'ANTHO White Christos Polo Architectural View', position: 0 },
-      { id: 'img-wcp-2', url: '/images/global_white/IMG_6580.JPEG', alt: 'ANTHO White Christos Polo Silhouette Form', position: 1 },
-      { id: 'img-wcp-3', url: '/images/global_white/IMG_6727.JPEG', alt: 'ANTHO White Christos Polo Textile Texture', position: 2 },
+      { id: 'img-wcp-1', url: '/images/products/polos/white-christos-front.webp', alt: 'ANTHO White Christos Polo Architectural View', position: 0 },
+      { id: 'img-wcp-2', url: '/images/products/polos/white-christos-duo.webp', alt: 'ANTHO White Christos Polo Duo Editorial', position: 1 },
+      { id: 'img-wcp-3', url: '/images/products/polos/Snapchat-1079248294.jpg', alt: 'ANTHO White Christos Polo Crest & Details', position: 2 },
+      { id: 'img-wcp-4', url: '/images/products/polos/Snapchat-848713023.jpg', alt: 'ANTHO White Christos Polo 99 Back View', position: 3 },
     ],
     variants: [
       { id: 'v-wcp-s', size: 'S', color: 'Optic White', colorHex: '#FAFAF9', stock: 15 },
@@ -73,9 +75,10 @@ export const sampleProducts: Product[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     images: [
-      { id: 'img-bcp-1', url: '/images/antho-shoot/IMG_3809.JPG', alt: 'ANTHO Black Christos Polo Studio Still', position: 0 },
-      { id: 'img-bcp-2', url: '/images/black_prevails/IMG_4911.jpg', alt: 'ANTHO Black Christos Polo Street Attitude', position: 1 },
-      { id: 'img-bcp-3', url: '/images/global_black/IMG_6550.jpg', alt: 'ANTHO Black Christos Polo Editorial Drape', position: 2 },
+      { id: 'img-bcp-1', url: '/images/products/polos/black-christos-front.webp', alt: 'ANTHO Black Christos Polo Studio Still', position: 0 },
+      { id: 'img-bcp-2', url: '/images/products/polos/black-christos-full.webp', alt: 'ANTHO Black Christos Polo Street Attitude', position: 1 },
+      { id: 'img-bcp-3', url: '/images/products/polos/black-christos-pose.webp', alt: 'ANTHO Black Christos Polo Editorial Drape', position: 2 },
+      { id: 'img-bcp-4', url: '/images/products/polos/black-christos-detail.webp', alt: 'ANTHO Black Christos Polo Hardware Detail', position: 3 },
     ],
     variants: [
       { id: 'v-bcp-s', size: 'S', color: 'Onyx Black', colorHex: '#0A0A0A', stock: 15 },
@@ -101,9 +104,9 @@ export const sampleProducts: Product[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     images: [
-      { id: 'img-blscp-1', url: '/images/products/polos/Snapchat-1079248294.jpg', alt: 'ANTHO Black Long-Sleeve Christos Polo Front', position: 0 },
-      { id: 'img-blscp-2', url: '/images/antho-shoot/IMG_3806.JPG', alt: 'ANTHO Black Long-Sleeve Christos Polo Silhouette', position: 1 },
-      { id: 'img-blscp-3', url: '/images/global_black/front_glbl.png', alt: 'ANTHO Black Long-Sleeve Christos Polo Studio Cut', position: 2 },
+      { id: 'img-blscp-1', url: '/images/products/polos/black-longsleeve-front.webp', alt: 'ANTHO Black Long-Sleeve Christos Polo Front', position: 0 },
+      { id: 'img-blscp-2', url: '/images/products/polos/black-longsleeve-detail.webp', alt: 'ANTHO Black Long-Sleeve Christos Polo Silhouette', position: 1 },
+      { id: 'img-blscp-3', url: '/images/products/polos/black-longsleeve-editorial.webp', alt: 'ANTHO Black Long-Sleeve Christos Polo Studio Cut', position: 2 },
     ],
     variants: [
       { id: 'v-blscp-s', size: 'S', color: 'Onyx Black', colorHex: '#0A0A0A', stock: 12 },
