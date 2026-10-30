@@ -5,10 +5,20 @@ import { getShippingCost, FREE_SHIPPING_THRESHOLD } from '../../src/lib/constant
 
 test('Product Catalog & Pricing Integrity Suite', async (t) => {
   await t.test('Catalog strictly contains only 5 active launch pieces (Polos & Independence Tee)', () => {
-    assert.equal(sampleProducts.length, 5, 'Catalog must contain exactly 5 active launch products');
+    const activeProducts = sampleProducts.filter((p) => !p.isSoldOut);
+    assert.equal(activeProducts.length, 5, 'Catalog must contain exactly 5 active launch products');
   });
 
-  await t.test('All 5 products have deterministic, non-discounted luxury pricing', () => {
+  await t.test('All 4 archived capsule pieces are strictly marked as sold out with zero stock', () => {
+    const archived = sampleProducts.filter((p) => p.isSoldOut);
+    assert.equal(archived.length, 4, 'Must have exactly 4 archived pieces');
+    for (const piece of archived) {
+      assert.equal(piece.isSoldOut, true, `${piece.slug} must be marked isSoldOut`);
+      assert.equal(piece.variants.every((v) => v.stock === 0), true, `${piece.slug} must have zero stock`);
+    }
+  });
+
+  await t.test('All 5 launch products have deterministic, non-discounted luxury pricing', () => {
     const expectedPrices: Record<string, number> = {
       'red-christos-polo': 3500000,              // ₦35,000
       'white-christos-polo': 3500000,            // ₦35,000
@@ -22,6 +32,7 @@ test('Product Catalog & Pricing Integrity Suite', async (t) => {
       assert.ok(product, `Product with slug "${slug}" must exist in catalog`);
       assert.equal(product.price, expectedPrice, `Price for ${slug} must be ${expectedPrice} kobo`);
       assert.equal((product as any).compareAtPrice, undefined, `compareAtPrice must be undefined for ${slug}`);
+      assert.equal(product.isSoldOut, false, `${slug} must be active`);
     }
   });
 

@@ -96,6 +96,13 @@ export async function POST(request: Request) {
         );
       }
 
+      if ((catalogProduct as any).isSoldOut) {
+        return NextResponse.json(
+          { error: `"${catalogProduct.name}" is an archived piece and is completely sold out.` },
+          { status: 400 }
+        );
+      }
+
       const authoritativePrice = catalogProduct.price; // Stored strictly in Kobo
       const itemTotal = authoritativePrice * item.quantity;
       calculatedSubtotal += itemTotal;

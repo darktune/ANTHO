@@ -23,6 +23,8 @@ export default function ProductInfo({ product }: { product: any }) {
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const [sizeTab, setSizeTab] = useState<'tops' | 'bottoms'>('tops');
 
+  const isSoldOut = product.isSoldOut === true || (product.variants && product.variants.length > 0 && product.variants.every((v: any) => v.stock === 0));
+
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
   const colors = [
     { color: 'Black', colorHex: '#000000' },
@@ -106,12 +108,38 @@ export default function ProductInfo({ product }: { product: any }) {
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-neutral-900 dark:text-[#FAFAF9] mb-2 uppercase tracking-tight">
           {product.name}
         </h1>
-        <div className="text-xl sm:text-2xl font-mono text-neutral-900 dark:text-[#FAFAF9]">
-          {formatPrice ? formatPrice(product.price) : `₦${product.price / 100}`}
-        </div>
+        {isSoldOut ? (
+          <div className="text-sm font-mono tracking-[0.2em] uppercase text-neutral-400 dark:text-stone-500 font-semibold">
+            ARCHIVED RELEASE // SOLD OUT
+          </div>
+        ) : (
+          <div className="text-xl sm:text-2xl font-mono text-neutral-900 dark:text-[#FAFAF9]">
+            {formatPrice ? formatPrice(product.price) : `₦${product.price / 100}`}
+          </div>
+        )}
       </div>
 
-      <div className="space-y-5">
+      {isSoldOut ? (
+        <div className="space-y-4 pt-2">
+          <div className="p-5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-sm">
+            <p className="text-xs font-mono uppercase tracking-[0.25em] text-[#C9A96E] font-semibold mb-1.5">
+              VAULTED ARCHIVAL PIECE
+            </p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              This piece from our archive has concluded its limited run and is completely sold out. Documented here for archival history.
+            </p>
+          </div>
+          <button
+            type="button"
+            disabled
+            className="w-full bg-neutral-200 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-500 font-mono min-h-[48px] py-4 text-xs tracking-[0.25em] uppercase cursor-not-allowed border border-neutral-300 dark:border-neutral-700 font-semibold"
+          >
+            SOLD OUT // ARCHIVE PIECE
+          </button>
+        </div>
+      ) : (
+        <>
+        <div className="space-y-5">
         <div>
           <div className="flex justify-between mb-2">
             <span className="text-xs uppercase tracking-wider text-neutral-600 dark:text-[#A8A29E] font-medium">
@@ -181,14 +209,25 @@ export default function ProductInfo({ product }: { product: any }) {
             BUY NOW
           </button>
         </div>
+        </>
+      )}
 
         <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-[#A8A29E]/30">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold">
-              In Stock &bull; Ready to Ship
-            </span>
-          </div>
+          {isSoldOut ? (
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-neutral-400" />
+              <span className="text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold font-mono">
+                Archival Edition &bull; Out of Circulation
+              </span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold">
+                In Stock &bull; Ready to Ship
+              </span>
+            </div>
+          )}
           <button 
             type="button"
             onClick={handleShare}

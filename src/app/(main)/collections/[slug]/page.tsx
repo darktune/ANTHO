@@ -64,22 +64,24 @@ export default async function CollectionPage({ params }: Props) {
   // Smart fallback filtering based on curated capsules
   let products = dbProducts;
   if (!products || products.length === 0) {
-    if (slug === 'the-premier-launch') {
+    if (slug === 'christos-polos') {
       products = sampleProducts.filter(p => 
-        p.name.toLowerCase().includes('prevails') || p.category.toLowerCase().includes('graphic')
+        p.category === 'Christos Polos' || p.slug.includes('christos')
+      ) as any;
+    } else if (slug === 'the-premier-launch') {
+      products = sampleProducts.filter(p => 
+        p.slug === 'antho-prevails-tee' || p.slug === 'antho-global-tee'
       ) as any;
     } else if (slug === 'global-prevails') {
       products = sampleProducts.filter(p => 
-        p.category.toLowerCase().includes('graphic') || p.name.toLowerCase().includes('global') || p.name.toLowerCase().includes('prevails')
+        p.slug === 'independence-tee-black' || p.slug === 'antho-global-tee' || p.slug === 'antho-prevails-tee'
       ) as any;
     } else if (slug === 'npng-fleece') {
       products = sampleProducts.filter(p => 
-        p.category.toLowerCase().includes('sweatpant') || p.category.toLowerCase().includes('polo')
+        p.slug === 'antho-npng-sweats' || p.slug === 'antho-99-polo'
       ) as any;
-    } else if (slug === 'christos-polos') {
-      products = sampleProducts.filter(p => 
-        p.category.toLowerCase().includes('polo')
-      ) as any;
+    } else if (slug === 'lagos-archival') {
+      products = sampleProducts.filter(p => p.isSoldOut) as any;
     } else {
       products = sampleProducts as any;
     }

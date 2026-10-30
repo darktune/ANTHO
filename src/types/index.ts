@@ -29,6 +29,7 @@ export interface Product {
   isPublished: boolean;
   isFeatured: boolean;
   isBestSeller: boolean;
+  isSoldOut?: boolean;
   createdAt: Date;
   updatedAt: Date;
   variants: ProductVariant[];
@@ -45,6 +46,7 @@ export interface ProductBasic {
   category: string;
   isFeatured: boolean;
   isBestSeller: boolean;
+  isSoldOut?: boolean;
   images: ProductImage[];
   variants: ProductVariant[];
 }

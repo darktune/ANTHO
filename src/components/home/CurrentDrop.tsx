@@ -7,7 +7,7 @@ import { formatPrice } from '@/lib/utils';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function CurrentDrop() {
-  const dropProducts = sampleProducts;
+  const dropProducts = sampleProducts.filter((p) => !p.isSoldOut);
 
   return (
     <section id="current-drop" className="w-full py-20 sm:py-24 md:py-32 px-4 sm:px-8 md:px-12 bg-[#FAFAF9] dark:bg-[#0A0A0A] text-[#0A0A0A] dark:text-[#FAFAF9] transition-colors duration-300">
